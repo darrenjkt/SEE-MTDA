@@ -57,16 +57,16 @@ def run(cfg):
     within the mesher class. It only seems to work when the mesh_process function is in the global scope of the main.
     """    
     if cfg.MESHER.NAME == 'gt_mesh':
-        print('create_meshes.py [run]: Meshing with GT box boundaries')
+        print('surface_completion.py [run]: Meshing with GT box boundaries')
         mesh_process = mesh_process_gt
     elif cfg.MESHER.NAME == 'det_mesh':
-        print('create_meshes.py [run]: Meshing with instance seg boundaries')
+        print('surface_completion.py [run]: Meshing with instance seg boundaries')
         mesh_process = mesh_process_det
     elif cfg.MESHER.NAME in ['ext_mesh', 'det_ext_mesh']:
-        print('create_meshes.py [run]: Loading in externally meshed objects')
+        print('surface_completion.py [run]: Loading in externally meshed objects')
         mesh_process = mesh_process_ext
     else:        
-        print('create_meshes.py [run]: Mesher method not supported')
+        print('surface_completion.py [run]: Mesher method not supported')
         return None
     
     t1 = time.time()
