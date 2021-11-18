@@ -6,7 +6,7 @@ Code release for the paper **See Eye to Eye: A Lidar-Agnostic 3D Detection Frame
 
 Our code is based on [OpenPCDet v0.3.0](https://github.com/open-mmlab/OpenPCDet/tree/v0.3.0) with DA configurations adopted from [ST3D](https://github.com/CVMI-Lab/ST3D). 
 
-## Detectors
+## Model Zoo
 
 ### Source: Waymo
 | Source | Model | Method | Download | 
@@ -29,3 +29,32 @@ Please refer to INSTALL.md for installation instructions.
 
 ## Dataset Preparation
 Please refer to DATASET_PREPARATION.md instructions on downloading and preparing datasets. 
+
+## Usage
+
+#### 1. Object Isolation
+Get instance masks for all images. 
+```
+bash see/mmdetection/tools/see_masks/prepare_baraja_masks.sh
+```
+
+#### 2. Surface Completion and Point Sampling
+Create meshes using instance masks and sample from the meshes
+```
+python create_meshes.py --cfg_file cfgs/BAR-DM-ORH005.yaml
+```
+
+#### 3. Point Cloud Detector 
+For training, see the following example. Replace the cfg file with any of the other cfg files in the `tools/cfgs` folder. 
+```
+cd detector/tools
+python train.py --cfg_file cfgs/source-waymo/secondiou/see/secondiou_ros_custom1000_GM-ORH005.yaml
+```
+
+For testing, download the models from the links above and modify the cfg and ckpt paths below. For the cfg files, please link to the yaml files in the output folder instead of the ones in the `tools/cfg` folder. 
+```
+cd detector/tools
+python test.py --cfg_file /SEE-MTDA/detector/output/source-waymo/secondiou/see/secondiou_ros_custom1000_GM-ORH005/default/secondiou_ros_custom1000_GM-ORH005_eval-baraja100.yaml \
+--ckpt /SEE-MTDA/detector/output/SEE-models/w-k_secondiou_see_6552.pth \
+--batch_size 1
+```
