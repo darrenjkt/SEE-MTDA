@@ -40,27 +40,23 @@ We have provided a `docker/run.sh` to launch the necessary docker images as well
 Please refer to `docs/DATASET_PREPARATION.md` instructions on downloading and preparing datasets. 
 
 ## Usage
-
-For (1) and (2), run the following docker image with our provided script:
+### 1. SEE
+In this phase, we isolate the objects, create meshes and sample from them. Firstly, run the docker image as follows:
 ```
 bash docker/run.sh -i see
 ```
-
-#### (1) Image instance segmentation
 Get instance masks for all images. 
 ```
 cd see
 bash prepare_baraja_masks.sh
 ```
-
-#### (2) SEE Framework
-Here we transform our objects into the canonical domain i.e. we isolate the objects, create meshes and sample from them. 
+Once we have the masks, we can isolate the objects and transform them into the canonical domain.
 ```
 cd see
 python surface_completion.py --cfg_file cfgs/BAR-DM-ORH005.yaml
 ```
 
-#### (3) Point Cloud Detector 
+### 2. Point Cloud Detector 
 To run train/test the detector, run the following docker image with our provided script:
 ```
 bash docker/run.sh -i detector
