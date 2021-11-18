@@ -6,7 +6,7 @@ Code release for the paper **See Eye to Eye: A Lidar-Agnostic 3D Detection Frame
 
 Our code is based on [OpenPCDet v0.3.0](https://github.com/open-mmlab/OpenPCDet/tree/v0.3.0) with DA configurations adopted from [ST3D](https://github.com/CVMI-Lab/ST3D). 
 
-## Detectors
+## Model Zoo
 
 ### Source: Waymo
 | Source | Model | Method | Download | 
