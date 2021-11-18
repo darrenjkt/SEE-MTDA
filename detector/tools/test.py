@@ -49,7 +49,7 @@ def parse_config():
     # cfg.EXP_GROUP_PATH = '/'.join(args.cfg_file.split('/')[1:-1])  # remove 'cfgs' and 'xxxx.yaml'
     
     # Assumes initial was run with extra folder in cfgs (see tweak_orh)
-    # Assumes you run cfg from /ST3D/output/.../ folder
+    # Assumes you run cfg from output/.../ folder
     # change back to :7 if you are testing the pre-refactored mesh 
     cfg.EVAL_DIR = '/'.join(args.cfg_file.split('/')[:8])
 

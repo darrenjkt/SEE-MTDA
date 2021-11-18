@@ -1,8 +1,9 @@
 #!/bin/bash
 
 DATA_PATH="/anonymoustofu/data"
-CODE_PATH="/anonymoustofu/SEE-MTDA"
+CODE_PATH="/anonymoustofu/code/SEE-MTDA"
 
+# -i options are "see" and "detector". 
 while getopts ":i:g:" flag
 do
         case "${flag}" in
@@ -17,7 +18,8 @@ do
         esac
 done
 
-# Setting GPUs
+# Setting GPUs.
+# Accepts e.g. "0", "0,1,2" (if not specific, we will just use all gpus)
 if [ "$gpus" == "" ]; then
         GPU_ID="all"     
 else

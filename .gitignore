@@ -5,7 +5,6 @@
 *.npy
 eval
 *.pth
-# docker/run.sh
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

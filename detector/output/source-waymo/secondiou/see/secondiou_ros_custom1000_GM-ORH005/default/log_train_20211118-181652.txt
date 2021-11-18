@@ -1,0 +1,385 @@
+[2021-11-18 18:16:52,814  train.py 91  INFO]  **********************Start logging**********************
+[2021-11-18 18:16:52,814  train.py 93  INFO]  CUDA_VISIBLE_DEVICES=0
+[2021-11-18 18:16:52,814  train.py 98  INFO]  cfg_file         cfgs/source-waymo/secondiou/see/secondiou_ros_custom1000_GM-ORH005.yaml
+[2021-11-18 18:16:52,814  train.py 98  INFO]  batch_size       4
+[2021-11-18 18:16:52,814  train.py 98  INFO]  epochs           150
+[2021-11-18 18:16:52,814  train.py 98  INFO]  workers          4
+[2021-11-18 18:16:52,814  train.py 98  INFO]  extra_tag        default
+[2021-11-18 18:16:52,814  train.py 98  INFO]  ckpt             None
+[2021-11-18 18:16:52,814  train.py 98  INFO]  pretrained_model None
+[2021-11-18 18:16:52,814  train.py 98  INFO]  launcher         none
+[2021-11-18 18:16:52,814  train.py 98  INFO]  tcp_port         18888
+[2021-11-18 18:16:52,814  train.py 98  INFO]  sync_bn          False
+[2021-11-18 18:16:52,815  train.py 98  INFO]  fix_random_seed  False
+[2021-11-18 18:16:52,815  train.py 98  INFO]  ckpt_save_interval 1
+[2021-11-18 18:16:52,815  train.py 98  INFO]  local_rank       0
+[2021-11-18 18:16:52,815  train.py 98  INFO]  max_ckpt_save_num 30
+[2021-11-18 18:16:52,815  train.py 98  INFO]  merge_all_iters_to_one_epoch False
+[2021-11-18 18:16:52,815  train.py 98  INFO]  set_cfgs         None
+[2021-11-18 18:16:52,815  train.py 98  INFO]  max_waiting_mins 0
+[2021-11-18 18:16:52,815  train.py 98  INFO]  start_epoch      0
+[2021-11-18 18:16:52,815  train.py 98  INFO]  save_to_file     False
+[2021-11-18 18:16:52,815  config.py 13  INFO]  cfg.ROOT_DIR: /SEE-MTDA/detector
+[2021-11-18 18:16:52,815  config.py 13  INFO]  cfg.LOCAL_RANK: 0
+[2021-11-18 18:16:52,815  config.py 13  INFO]  cfg.CLASS_NAMES: ['Vehicle']
+[2021-11-18 18:16:52,815  config.py 10  INFO]  
+cfg.DATA_CONFIG = edict()
+[2021-11-18 18:16:52,815  config.py 13  INFO]  cfg.DATA_CONFIG.DATASET: MeshedWaymoDataset
+[2021-11-18 18:16:52,815  config.py 13  INFO]  cfg.DATA_CONFIG.DATA_PATH: ../../data/waymo/custom_1000
+[2021-11-18 18:16:52,815  config.py 10  INFO]  
+cfg.DATA_CONFIG.DATA_SPLIT = edict()
+[2021-11-18 18:16:52,815  config.py 13  INFO]  cfg.DATA_CONFIG.DATA_SPLIT.train: train
+[2021-11-18 18:16:52,815  config.py 13  INFO]  cfg.DATA_CONFIG.DATA_SPLIT.test: train
+[2021-11-18 18:16:52,816  config.py 10  INFO]  
+cfg.DATA_CONFIG.SAMPLED_INTERVAL = edict()
+[2021-11-18 18:16:52,816  config.py 13  INFO]  cfg.DATA_CONFIG.SAMPLED_INTERVAL.train: 0
+[2021-11-18 18:16:52,816  config.py 13  INFO]  cfg.DATA_CONFIG.SAMPLED_INTERVAL.test: 0
+[2021-11-18 18:16:52,816  config.py 13  INFO]  cfg.DATA_CONFIG.INFO_WITH_FAKELIDAR: False
+[2021-11-18 18:16:52,816  config.py 10  INFO]  
+cfg.DATA_CONFIG.DATA_AUGMENTOR = edict()
+[2021-11-18 18:16:52,816  config.py 13  INFO]  cfg.DATA_CONFIG.DATA_AUGMENTOR.DISABLE_AUG_LIST: ['normalize_object_size']
+[2021-11-18 18:16:52,816  config.py 13  INFO]  cfg.DATA_CONFIG.DATA_AUGMENTOR.AUG_CONFIG_LIST: [{'NAME': 'random_object_scaling', 'SCALE_UNIFORM_NOISE': [0.7, 0.95]}, {'NAME': 'normalize_object_size', 'SIZE_RES': [-0.91, -0.49, -0.26]}, {'NAME': 'random_world_flip', 'ALONG_AXIS_LIST': ['x', 'y']}, {'NAME': 'random_world_rotation', 'WORLD_ROT_ANGLE': [-0.78539816, 0.78539816]}, {'NAME': 'random_world_scaling', 'WORLD_SCALE_RANGE': [0.95, 1.05]}]
+[2021-11-18 18:16:52,816  config.py 10  INFO]  
+cfg.DATA_CONFIG.POINT_FEATURE_ENCODING = edict()
+[2021-11-18 18:16:52,816  config.py 13  INFO]  cfg.DATA_CONFIG.POINT_FEATURE_ENCODING.encoding_type: absolute_coordinates_encoding
+[2021-11-18 18:16:52,816  config.py 13  INFO]  cfg.DATA_CONFIG.POINT_FEATURE_ENCODING.used_feature_list: ['x', 'y', 'z']
+[2021-11-18 18:16:52,816  config.py 13  INFO]  cfg.DATA_CONFIG.POINT_FEATURE_ENCODING.src_feature_list: ['x', 'y', 'z', 'intensity', 'elongation']
+[2021-11-18 18:16:52,816  config.py 13  INFO]  cfg.DATA_CONFIG.DATA_PROCESSOR: [{'NAME': 'mask_points_and_boxes_outside_range', 'REMOVE_OUTSIDE_BOXES': True}, {'NAME': 'shuffle_points', 'SHUFFLE_ENABLED': {'train': True, 'test': True}}, {'NAME': 'transform_points_to_voxels', 'VOXEL_SIZE': [0.1, 0.1, 0.15], 'MAX_POINTS_PER_VOXEL': 5, 'MAX_NUMBER_OF_VOXELS': {'train': 80000, 'test': 90000}}]
+[2021-11-18 18:16:52,816  config.py 13  INFO]  cfg.DATA_CONFIG._BASE_CONFIG_: cfgs/dataset_configs/da_waymo_dataset_custom1000_meshed.yaml
+[2021-11-18 18:16:52,816  config.py 13  INFO]  cfg.DATA_CONFIG.PROCESSED_DATA_TAG: waymo_meshed_WAY-GM-ORH005
+[2021-11-18 18:16:52,816  config.py 13  INFO]  cfg.DATA_CONFIG.POINT_CLOUD_RANGE: [-75.2, -75.2, -2, 75.2, 75.2, 4]
+[2021-11-18 18:16:52,816  config.py 13  INFO]  cfg.DATA_CONFIG.MIN_POINTS_OF_GT: 50
+[2021-11-18 18:16:52,816  config.py 10  INFO]  
+cfg.DATA_CONFIG.INFO_PATH = edict()
+[2021-11-18 18:16:52,816  config.py 13  INFO]  cfg.DATA_CONFIG.INFO_PATH.train: ['infos_meshed_WAY-GM-ORH005/waymo_infos_train.pkl']
+[2021-11-18 18:16:52,817  config.py 13  INFO]  cfg.DATA_CONFIG.INFO_PATH.test: ['infos_meshed_WAY-GM-ORH005/waymo_infos_train.pkl']
+[2021-11-18 18:16:52,817  config.py 10  INFO]  
+cfg.DATA_CONFIG_TAR = edict()
+[2021-11-18 18:16:52,817  config.py 13  INFO]  cfg.DATA_CONFIG_TAR.DATASET: MeshedKittiDataset
+[2021-11-18 18:16:52,817  config.py 13  INFO]  cfg.DATA_CONFIG_TAR.DATA_PATH: ../../data/kitti
+[2021-11-18 18:16:52,817  config.py 10  INFO]  
+cfg.DATA_CONFIG_TAR.DATA_SPLIT = edict()
+[2021-11-18 18:16:52,817  config.py 13  INFO]  cfg.DATA_CONFIG_TAR.DATA_SPLIT.train: train
+[2021-11-18 18:16:52,817  config.py 13  INFO]  cfg.DATA_CONFIG_TAR.DATA_SPLIT.test: val
+[2021-11-18 18:16:52,817  config.py 10  INFO]  
+cfg.DATA_CONFIG_TAR.DATA_AUGMENTOR = edict()
+[2021-11-18 18:16:52,817  config.py 13  INFO]  cfg.DATA_CONFIG_TAR.DATA_AUGMENTOR.DISABLE_AUG_LIST: ['random_object_scaling', 'random_object_rotation']
+[2021-11-18 18:16:52,817  config.py 13  INFO]  cfg.DATA_CONFIG_TAR.DATA_AUGMENTOR.AUG_CONFIG_LIST: [{'NAME': 'random_object_scaling', 'SCALE_UNIFORM_NOISE': [0.9, 1.1]}, {'NAME': 'random_object_rotation', 'ROT_PROB': 1.0, 'ROT_UNIFORM_NOISE': [-0.78539816, 0.78539816]}, {'NAME': 'random_world_flip', 'ALONG_AXIS_LIST': ['x', 'y']}, {'NAME': 'random_world_rotation', 'WORLD_ROT_ANGLE': [-0.78539816, 0.78539816]}, {'NAME': 'random_world_scaling', 'WORLD_SCALE_RANGE': [0.95, 1.05]}]
+[2021-11-18 18:16:52,817  config.py 10  INFO]  
+cfg.DATA_CONFIG_TAR.POINT_FEATURE_ENCODING = edict()
+[2021-11-18 18:16:52,817  config.py 13  INFO]  cfg.DATA_CONFIG_TAR.POINT_FEATURE_ENCODING.encoding_type: absolute_coordinates_encoding
+[2021-11-18 18:16:52,817  config.py 13  INFO]  cfg.DATA_CONFIG_TAR.POINT_FEATURE_ENCODING.used_feature_list: ['x', 'y', 'z']
+[2021-11-18 18:16:52,817  config.py 13  INFO]  cfg.DATA_CONFIG_TAR.POINT_FEATURE_ENCODING.src_feature_list: ['x', 'y', 'z', 'intensity']
+[2021-11-18 18:16:52,817  config.py 13  INFO]  cfg.DATA_CONFIG_TAR.DATA_PROCESSOR: [{'NAME': 'mask_points_and_boxes_outside_range', 'REMOVE_OUTSIDE_BOXES': True}, {'NAME': 'shuffle_points', 'SHUFFLE_ENABLED': {'train': True, 'test': False}}, {'NAME': 'transform_points_to_voxels', 'VOXEL_SIZE': [0.1, 0.1, 0.15], 'MAX_POINTS_PER_VOXEL': 5, 'MAX_NUMBER_OF_VOXELS': {'train': 80000, 'test': 90000}}]
+[2021-11-18 18:16:52,817  config.py 13  INFO]  cfg.DATA_CONFIG_TAR._BASE_CONFIG_: cfgs/dataset_configs/da_kitti_dataset_meshed.yaml
+[2021-11-18 18:16:52,817  config.py 13  INFO]  cfg.DATA_CONFIG_TAR.TARGET: True
+[2021-11-18 18:16:52,817  config.py 13  INFO]  cfg.DATA_CONFIG_TAR.FOV_POINTS_ONLY: False
+[2021-11-18 18:16:52,818  config.py 13  INFO]  cfg.DATA_CONFIG_TAR.CLASS_NAMES: ['Car']
+[2021-11-18 18:16:52,818  config.py 13  INFO]  cfg.DATA_CONFIG_TAR.SHIFT_COOR: [0.0, 0.0, 1.6]
+[2021-11-18 18:16:52,818  config.py 13  INFO]  cfg.DATA_CONFIG_TAR.FILTER_MIN_POINTS_IN_GT: 50
+[2021-11-18 18:16:52,818  config.py 10  INFO]  
+cfg.DATA_CONFIG_TAR.INFO_PATH = edict()
+[2021-11-18 18:16:52,818  config.py 13  INFO]  cfg.DATA_CONFIG_TAR.INFO_PATH.train: ['infos_meshed_KIT-GM-ORH005/kitti_infos_train.pkl']
+[2021-11-18 18:16:52,818  config.py 13  INFO]  cfg.DATA_CONFIG_TAR.INFO_PATH.test: ['infos_meshed_KIT-GM-ORH005/kitti_infos_val.pkl']
+[2021-11-18 18:16:52,818  config.py 13  INFO]  cfg.DATA_CONFIG_TAR.POINT_CLOUD_RANGE: [-75.2, -75.2, -2, 75.2, 75.2, 4]
+[2021-11-18 18:16:52,818  config.py 10  INFO]  
+cfg.DATA_CONFIG_TAR.TEST = edict()
+[2021-11-18 18:16:52,818  config.py 10  INFO]  
+cfg.DATA_CONFIG_TAR.TEST.BOX_FILTER = edict()
+[2021-11-18 18:16:52,818  config.py 13  INFO]  cfg.DATA_CONFIG_TAR.TEST.BOX_FILTER.USE_IMAGE_AREA_FILTER: True
+[2021-11-18 18:16:52,818  config.py 13  INFO]  cfg.DATA_CONFIG_TAR.TEST.BOX_FILTER.FOV_FILTER: True
+[2021-11-18 18:16:52,818  config.py 13  INFO]  cfg.DATA_CONFIG_TAR.TEST.BOX_FILTER.LIMIT_RANGE: [-75.2, -75.2, -2, 75.2, 75.2, 4]
+[2021-11-18 18:16:52,818  config.py 10  INFO]  
+cfg.MODEL = edict()
+[2021-11-18 18:16:52,818  config.py 13  INFO]  cfg.MODEL.NAME: SECONDNetIoU
+[2021-11-18 18:16:52,818  config.py 10  INFO]  
+cfg.MODEL.VFE = edict()
+[2021-11-18 18:16:52,818  config.py 13  INFO]  cfg.MODEL.VFE.NAME: MeanVFE
+[2021-11-18 18:16:52,818  config.py 10  INFO]  
+cfg.MODEL.BACKBONE_3D = edict()
+[2021-11-18 18:16:52,818  config.py 13  INFO]  cfg.MODEL.BACKBONE_3D.NAME: VoxelBackBone8x
+[2021-11-18 18:16:52,818  config.py 10  INFO]  
+cfg.MODEL.MAP_TO_BEV = edict()
+[2021-11-18 18:16:52,819  config.py 13  INFO]  cfg.MODEL.MAP_TO_BEV.NAME: HeightCompression
+[2021-11-18 18:16:52,819  config.py 13  INFO]  cfg.MODEL.MAP_TO_BEV.NUM_BEV_FEATURES: 256
+[2021-11-18 18:16:52,819  config.py 10  INFO]  
+cfg.MODEL.BACKBONE_2D = edict()
+[2021-11-18 18:16:52,819  config.py 13  INFO]  cfg.MODEL.BACKBONE_2D.NAME: BaseBEVBackbone
+[2021-11-18 18:16:52,819  config.py 13  INFO]  cfg.MODEL.BACKBONE_2D.LAYER_NUMS: [5, 5]
+[2021-11-18 18:16:52,819  config.py 13  INFO]  cfg.MODEL.BACKBONE_2D.LAYER_STRIDES: [1, 2]
+[2021-11-18 18:16:52,819  config.py 13  INFO]  cfg.MODEL.BACKBONE_2D.NUM_FILTERS: [128, 256]
+[2021-11-18 18:16:52,819  config.py 13  INFO]  cfg.MODEL.BACKBONE_2D.UPSAMPLE_STRIDES: [1, 2]
+[2021-11-18 18:16:52,819  config.py 13  INFO]  cfg.MODEL.BACKBONE_2D.NUM_UPSAMPLE_FILTERS: [256, 256]
+[2021-11-18 18:16:52,819  config.py 10  INFO]  
+cfg.MODEL.DENSE_HEAD = edict()
+[2021-11-18 18:16:52,819  config.py 13  INFO]  cfg.MODEL.DENSE_HEAD.NAME: AnchorHeadSingle
+[2021-11-18 18:16:52,819  config.py 13  INFO]  cfg.MODEL.DENSE_HEAD.CLASS_AGNOSTIC: False
+[2021-11-18 18:16:52,819  config.py 13  INFO]  cfg.MODEL.DENSE_HEAD.USE_DIRECTION_CLASSIFIER: True
+[2021-11-18 18:16:52,819  config.py 13  INFO]  cfg.MODEL.DENSE_HEAD.DIR_OFFSET: 0.78539
+[2021-11-18 18:16:52,819  config.py 13  INFO]  cfg.MODEL.DENSE_HEAD.DIR_LIMIT_OFFSET: 0.0
+[2021-11-18 18:16:52,819  config.py 13  INFO]  cfg.MODEL.DENSE_HEAD.NUM_DIR_BINS: 2
+[2021-11-18 18:16:52,819  config.py 13  INFO]  cfg.MODEL.DENSE_HEAD.ANCHOR_GENERATOR_CONFIG: [{'class_name': 'Vehicle', 'anchor_sizes': [[4.2, 2.0, 1.6]], 'anchor_rotations': [0, 1.57], 'anchor_bottom_heights': [0], 'align_center': False, 'feature_map_stride': 8, 'matched_threshold': 0.55, 'unmatched_threshold': 0.4}]
+[2021-11-18 18:16:52,819  config.py 10  INFO]  
+cfg.MODEL.DENSE_HEAD.TARGET_ASSIGNER_CONFIG = edict()
+[2021-11-18 18:16:52,820  config.py 13  INFO]  cfg.MODEL.DENSE_HEAD.TARGET_ASSIGNER_CONFIG.NAME: AxisAlignedTargetAssigner
+[2021-11-18 18:16:52,820  config.py 13  INFO]  cfg.MODEL.DENSE_HEAD.TARGET_ASSIGNER_CONFIG.POS_FRACTION: -1.0
+[2021-11-18 18:16:52,820  config.py 13  INFO]  cfg.MODEL.DENSE_HEAD.TARGET_ASSIGNER_CONFIG.SAMPLE_SIZE: 512
+[2021-11-18 18:16:52,820  config.py 13  INFO]  cfg.MODEL.DENSE_HEAD.TARGET_ASSIGNER_CONFIG.NORM_BY_NUM_EXAMPLES: False
+[2021-11-18 18:16:52,820  config.py 13  INFO]  cfg.MODEL.DENSE_HEAD.TARGET_ASSIGNER_CONFIG.MATCH_HEIGHT: False
+[2021-11-18 18:16:52,820  config.py 13  INFO]  cfg.MODEL.DENSE_HEAD.TARGET_ASSIGNER_CONFIG.BOX_CODER: ResidualCoder
+[2021-11-18 18:16:52,820  config.py 10  INFO]  
+cfg.MODEL.DENSE_HEAD.LOSS_CONFIG = edict()
+[2021-11-18 18:16:52,820  config.py 10  INFO]  
+cfg.MODEL.DENSE_HEAD.LOSS_CONFIG.LOSS_WEIGHTS = edict()
+[2021-11-18 18:16:52,820  config.py 13  INFO]  cfg.MODEL.DENSE_HEAD.LOSS_CONFIG.LOSS_WEIGHTS.cls_weight: 1.0
+[2021-11-18 18:16:52,820  config.py 13  INFO]  cfg.MODEL.DENSE_HEAD.LOSS_CONFIG.LOSS_WEIGHTS.loc_weight: 2.0
+[2021-11-18 18:16:52,820  config.py 13  INFO]  cfg.MODEL.DENSE_HEAD.LOSS_CONFIG.LOSS_WEIGHTS.dir_weight: 0.2
+[2021-11-18 18:16:52,820  config.py 13  INFO]  cfg.MODEL.DENSE_HEAD.LOSS_CONFIG.LOSS_WEIGHTS.code_weights: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+[2021-11-18 18:16:52,820  config.py 10  INFO]  
+cfg.MODEL.ROI_HEAD = edict()
+[2021-11-18 18:16:52,820  config.py 13  INFO]  cfg.MODEL.ROI_HEAD.NAME: SECONDHead
+[2021-11-18 18:16:52,820  config.py 13  INFO]  cfg.MODEL.ROI_HEAD.CLASS_AGNOSTIC: True
+[2021-11-18 18:16:52,820  config.py 13  INFO]  cfg.MODEL.ROI_HEAD.SHARED_FC: [256, 256]
+[2021-11-18 18:16:52,820  config.py 13  INFO]  cfg.MODEL.ROI_HEAD.IOU_FC: [256, 256]
+[2021-11-18 18:16:52,820  config.py 13  INFO]  cfg.MODEL.ROI_HEAD.DP_RATIO: 0.3
+[2021-11-18 18:16:52,820  config.py 10  INFO]  
+cfg.MODEL.ROI_HEAD.NMS_CONFIG = edict()
+[2021-11-18 18:16:52,820  config.py 10  INFO]  
+cfg.MODEL.ROI_HEAD.NMS_CONFIG.TRAIN = edict()
+[2021-11-18 18:16:52,821  config.py 13  INFO]  cfg.MODEL.ROI_HEAD.NMS_CONFIG.TRAIN.NMS_TYPE: nms_gpu
+[2021-11-18 18:16:52,821  config.py 13  INFO]  cfg.MODEL.ROI_HEAD.NMS_CONFIG.TRAIN.MULTI_CLASSES_NMS: False
+[2021-11-18 18:16:52,821  config.py 13  INFO]  cfg.MODEL.ROI_HEAD.NMS_CONFIG.TRAIN.NMS_PRE_MAXSIZE: 9000
+[2021-11-18 18:16:52,821  config.py 13  INFO]  cfg.MODEL.ROI_HEAD.NMS_CONFIG.TRAIN.NMS_POST_MAXSIZE: 512
+[2021-11-18 18:16:52,821  config.py 13  INFO]  cfg.MODEL.ROI_HEAD.NMS_CONFIG.TRAIN.NMS_THRESH: 0.8
+[2021-11-18 18:16:52,821  config.py 10  INFO]  
+cfg.MODEL.ROI_HEAD.NMS_CONFIG.TEST = edict()
+[2021-11-18 18:16:52,821  config.py 13  INFO]  cfg.MODEL.ROI_HEAD.NMS_CONFIG.TEST.NMS_TYPE: nms_gpu
+[2021-11-18 18:16:52,821  config.py 13  INFO]  cfg.MODEL.ROI_HEAD.NMS_CONFIG.TEST.MULTI_CLASSES_NMS: False
+[2021-11-18 18:16:52,821  config.py 13  INFO]  cfg.MODEL.ROI_HEAD.NMS_CONFIG.TEST.NMS_PRE_MAXSIZE: 1024
+[2021-11-18 18:16:52,821  config.py 13  INFO]  cfg.MODEL.ROI_HEAD.NMS_CONFIG.TEST.NMS_POST_MAXSIZE: 100
+[2021-11-18 18:16:52,821  config.py 13  INFO]  cfg.MODEL.ROI_HEAD.NMS_CONFIG.TEST.NMS_THRESH: 0.7
+[2021-11-18 18:16:52,821  config.py 10  INFO]  
+cfg.MODEL.ROI_HEAD.ROI_GRID_POOL = edict()
+[2021-11-18 18:16:52,821  config.py 13  INFO]  cfg.MODEL.ROI_HEAD.ROI_GRID_POOL.GRID_SIZE: 7
+[2021-11-18 18:16:52,821  config.py 13  INFO]  cfg.MODEL.ROI_HEAD.ROI_GRID_POOL.IN_CHANNEL: 512
+[2021-11-18 18:16:52,821  config.py 13  INFO]  cfg.MODEL.ROI_HEAD.ROI_GRID_POOL.DOWNSAMPLE_RATIO: 8
+[2021-11-18 18:16:52,821  config.py 10  INFO]  
+cfg.MODEL.ROI_HEAD.TARGET_CONFIG = edict()
+[2021-11-18 18:16:52,821  config.py 13  INFO]  cfg.MODEL.ROI_HEAD.TARGET_CONFIG.BOX_CODER: ResidualCoder
+[2021-11-18 18:16:52,822  config.py 13  INFO]  cfg.MODEL.ROI_HEAD.TARGET_CONFIG.ROI_PER_IMAGE: 128
+[2021-11-18 18:16:52,822  config.py 13  INFO]  cfg.MODEL.ROI_HEAD.TARGET_CONFIG.FG_RATIO: 0.5
+[2021-11-18 18:16:52,822  config.py 13  INFO]  cfg.MODEL.ROI_HEAD.TARGET_CONFIG.SAMPLE_ROI_BY_EACH_CLASS: True
+[2021-11-18 18:16:52,822  config.py 13  INFO]  cfg.MODEL.ROI_HEAD.TARGET_CONFIG.CLS_SCORE_TYPE: raw_roi_iou
+[2021-11-18 18:16:52,822  config.py 13  INFO]  cfg.MODEL.ROI_HEAD.TARGET_CONFIG.CLS_FG_THRESH: 0.75
+[2021-11-18 18:16:52,822  config.py 13  INFO]  cfg.MODEL.ROI_HEAD.TARGET_CONFIG.CLS_BG_THRESH: 0.25
+[2021-11-18 18:16:52,822  config.py 13  INFO]  cfg.MODEL.ROI_HEAD.TARGET_CONFIG.CLS_BG_THRESH_LO: 0.1
+[2021-11-18 18:16:52,822  config.py 13  INFO]  cfg.MODEL.ROI_HEAD.TARGET_CONFIG.HARD_BG_RATIO: 0.8
+[2021-11-18 18:16:52,822  config.py 13  INFO]  cfg.MODEL.ROI_HEAD.TARGET_CONFIG.REG_FG_THRESH: 0.55
+[2021-11-18 18:16:52,822  config.py 10  INFO]  
+cfg.MODEL.ROI_HEAD.LOSS_CONFIG = edict()
+[2021-11-18 18:16:52,822  config.py 13  INFO]  cfg.MODEL.ROI_HEAD.LOSS_CONFIG.IOU_LOSS: BinaryCrossEntropy
+[2021-11-18 18:16:52,822  config.py 10  INFO]  
+cfg.MODEL.ROI_HEAD.LOSS_CONFIG.LOSS_WEIGHTS = edict()
+[2021-11-18 18:16:52,822  config.py 13  INFO]  cfg.MODEL.ROI_HEAD.LOSS_CONFIG.LOSS_WEIGHTS.rcnn_iou_weight: 1.0
+[2021-11-18 18:16:52,822  config.py 13  INFO]  cfg.MODEL.ROI_HEAD.LOSS_CONFIG.LOSS_WEIGHTS.code_weights: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+[2021-11-18 18:16:52,822  config.py 10  INFO]  
+cfg.MODEL.POST_PROCESSING = edict()
+[2021-11-18 18:16:52,822  config.py 13  INFO]  cfg.MODEL.POST_PROCESSING.RECALL_THRESH_LIST: [0.3, 0.5, 0.7]
+[2021-11-18 18:16:52,822  config.py 13  INFO]  cfg.MODEL.POST_PROCESSING.SCORE_THRESH: 0.1
+[2021-11-18 18:16:52,823  config.py 13  INFO]  cfg.MODEL.POST_PROCESSING.OUTPUT_RAW_SCORE: False
+[2021-11-18 18:16:52,823  config.py 13  INFO]  cfg.MODEL.POST_PROCESSING.EVAL_METRIC: kitti
+[2021-11-18 18:16:52,823  config.py 10  INFO]  
+cfg.MODEL.POST_PROCESSING.NMS_CONFIG = edict()
+[2021-11-18 18:16:52,823  config.py 13  INFO]  cfg.MODEL.POST_PROCESSING.NMS_CONFIG.MULTI_CLASSES_NMS: False
+[2021-11-18 18:16:52,823  config.py 13  INFO]  cfg.MODEL.POST_PROCESSING.NMS_CONFIG.NMS_TYPE: nms_gpu
+[2021-11-18 18:16:52,823  config.py 13  INFO]  cfg.MODEL.POST_PROCESSING.NMS_CONFIG.NMS_THRESH: 0.01
+[2021-11-18 18:16:52,823  config.py 13  INFO]  cfg.MODEL.POST_PROCESSING.NMS_CONFIG.NMS_PRE_MAXSIZE: 4096
+[2021-11-18 18:16:52,823  config.py 13  INFO]  cfg.MODEL.POST_PROCESSING.NMS_CONFIG.NMS_POST_MAXSIZE: 500
+[2021-11-18 18:16:52,823  config.py 10  INFO]  
+cfg.OPTIMIZATION = edict()
+[2021-11-18 18:16:52,823  config.py 13  INFO]  cfg.OPTIMIZATION.NUM_EPOCHS: 150
+[2021-11-18 18:16:52,823  config.py 13  INFO]  cfg.OPTIMIZATION.BATCH_SIZE_PER_GPU: 4
+[2021-11-18 18:16:52,823  config.py 13  INFO]  cfg.OPTIMIZATION.OPTIMIZER: adam_onecycle
+[2021-11-18 18:16:52,823  config.py 13  INFO]  cfg.OPTIMIZATION.LR: 0.003
+[2021-11-18 18:16:52,823  config.py 13  INFO]  cfg.OPTIMIZATION.WEIGHT_DECAY: 0.01
+[2021-11-18 18:16:52,823  config.py 13  INFO]  cfg.OPTIMIZATION.MOMENTUM: 0.9
+[2021-11-18 18:16:52,823  config.py 13  INFO]  cfg.OPTIMIZATION.MOMS: [0.95, 0.85]
+[2021-11-18 18:16:52,823  config.py 13  INFO]  cfg.OPTIMIZATION.PCT_START: 0.4
+[2021-11-18 18:16:52,823  config.py 13  INFO]  cfg.OPTIMIZATION.DIV_FACTOR: 10
+[2021-11-18 18:16:52,823  config.py 13  INFO]  cfg.OPTIMIZATION.DECAY_STEP_LIST: [35, 45]
+[2021-11-18 18:16:52,824  config.py 13  INFO]  cfg.OPTIMIZATION.LR_DECAY: 0.1
+[2021-11-18 18:16:52,824  config.py 13  INFO]  cfg.OPTIMIZATION.LR_CLIP: 1e-07
+[2021-11-18 18:16:52,824  config.py 13  INFO]  cfg.OPTIMIZATION.LR_WARMUP: False
+[2021-11-18 18:16:52,824  config.py 13  INFO]  cfg.OPTIMIZATION.WARMUP_EPOCH: 1
+[2021-11-18 18:16:52,824  config.py 13  INFO]  cfg.OPTIMIZATION.GRAD_NORM_CLIP: 10
+[2021-11-18 18:16:52,824  config.py 13  INFO]  cfg.TAG: secondiou_ros_custom1000_GM-ORH005
+[2021-11-18 18:16:52,824  config.py 13  INFO]  cfg.EXP_GROUP_PATH: source-waymo/secondiou/see
+[2021-11-18 18:16:52,882  meshed_waymo_dataset.py 45  INFO]  Loading Waymo dataset
+[2021-11-18 18:16:53,567  meshed_waymo_dataset.py 60  INFO]  Total skipped info 0
+[2021-11-18 18:16:53,567  meshed_waymo_dataset.py 61  INFO]  Total samples for Waymo dataset: 1000
+[2021-11-18 18:16:55,967  train.py 148  INFO]  SECONDNetIoU(
+  (vfe): MeanVFE()
+  (backbone_3d): VoxelBackBone8x(
+    (conv_input): SparseSequential(
+      (0): SubMConv3d()
+      (1): BatchNorm1d(16, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+      (2): ReLU()
+    )
+    (conv1): SparseSequential(
+      (0): SparseSequential(
+        (0): SubMConv3d()
+        (1): BatchNorm1d(16, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+    )
+    (conv2): SparseSequential(
+      (0): SparseSequential(
+        (0): SparseConv3d()
+        (1): BatchNorm1d(32, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (1): SparseSequential(
+        (0): SubMConv3d()
+        (1): BatchNorm1d(32, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (2): SparseSequential(
+        (0): SubMConv3d()
+        (1): BatchNorm1d(32, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+    )
+    (conv3): SparseSequential(
+      (0): SparseSequential(
+        (0): SparseConv3d()
+        (1): BatchNorm1d(64, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (1): SparseSequential(
+        (0): SubMConv3d()
+        (1): BatchNorm1d(64, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (2): SparseSequential(
+        (0): SubMConv3d()
+        (1): BatchNorm1d(64, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+    )
+    (conv4): SparseSequential(
+      (0): SparseSequential(
+        (0): SparseConv3d()
+        (1): BatchNorm1d(64, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (1): SparseSequential(
+        (0): SubMConv3d()
+        (1): BatchNorm1d(64, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (2): SparseSequential(
+        (0): SubMConv3d()
+        (1): BatchNorm1d(64, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+    )
+    (conv_out): SparseSequential(
+      (0): SparseConv3d()
+      (1): BatchNorm1d(128, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+      (2): ReLU()
+    )
+  )
+  (map_to_bev_module): HeightCompression()
+  (pfe): None
+  (backbone_2d): BaseBEVBackbone(
+    (blocks): ModuleList(
+      (0): Sequential(
+        (0): ZeroPad2d(padding=(1, 1, 1, 1), value=0.0)
+        (1): Conv2d(256, 128, kernel_size=(3, 3), stride=(1, 1), bias=False)
+        (2): BatchNorm2d(128, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (3): ReLU()
+        (4): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (5): BatchNorm2d(128, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (6): ReLU()
+        (7): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (8): BatchNorm2d(128, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (9): ReLU()
+        (10): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (11): BatchNorm2d(128, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (12): ReLU()
+        (13): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (14): BatchNorm2d(128, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (15): ReLU()
+        (16): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (17): BatchNorm2d(128, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (18): ReLU()
+      )
+      (1): Sequential(
+        (0): ZeroPad2d(padding=(1, 1, 1, 1), value=0.0)
+        (1): Conv2d(128, 256, kernel_size=(3, 3), stride=(2, 2), bias=False)
+        (2): BatchNorm2d(256, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (3): ReLU()
+        (4): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (5): BatchNorm2d(256, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (6): ReLU()
+        (7): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (8): BatchNorm2d(256, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (9): ReLU()
+        (10): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (11): BatchNorm2d(256, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (12): ReLU()
+        (13): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (14): BatchNorm2d(256, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (15): ReLU()
+        (16): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (17): BatchNorm2d(256, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (18): ReLU()
+      )
+    )
+    (deblocks): ModuleList(
+      (0): Sequential(
+        (0): ConvTranspose2d(128, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (1): BatchNorm2d(256, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (1): Sequential(
+        (0): ConvTranspose2d(256, 256, kernel_size=(2, 2), stride=(2, 2), bias=False)
+        (1): BatchNorm2d(256, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+    )
+  )
+  (dense_head): AnchorHeadSingle(
+    (cls_loss_func): SigmoidFocalClassificationLoss()
+    (reg_loss_func): WeightedSmoothL1Loss()
+    (dir_loss_func): WeightedCrossEntropyLoss()
+    (conv_cls): Conv2d(512, 2, kernel_size=(1, 1), stride=(1, 1))
+    (conv_box): Conv2d(512, 14, kernel_size=(1, 1), stride=(1, 1))
+    (conv_dir_cls): Conv2d(512, 4, kernel_size=(1, 1), stride=(1, 1))
+  )
+  (point_head): None
+  (roi_head): SECONDHead(
+    (proposal_target_layer): ProposalTargetLayer()
+    (reg_loss_func): WeightedSmoothL1Loss()
+    (shared_fc_layer): Sequential(
+      (0): Conv1d(25088, 256, kernel_size=(1,), stride=(1,), bias=False)
+      (1): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ReLU()
+      (3): Dropout(p=0.3, inplace=False)
+      (4): Conv1d(256, 256, kernel_size=(1,), stride=(1,), bias=False)
+      (5): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (6): ReLU()
+    )
+    (iou_layers): Sequential(
+      (0): Conv1d(256, 256, kernel_size=(1,), stride=(1,), bias=False)
+      (1): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ReLU()
+      (3): Dropout(p=0.3, inplace=False)
+      (4): Conv1d(256, 256, kernel_size=(1,), stride=(1,), bias=False)
+      (5): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (6): ReLU()
+      (7): Conv1d(256, 1, kernel_size=(1,), stride=(1,))
+    )
+  )
+)
+[2021-11-18 18:16:55,969  train.py 159  INFO]  **********************Start training source-waymo/secondiou/see/secondiou_ros_custom1000_GM-ORH005(default)**********************

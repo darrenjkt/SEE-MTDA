@@ -10,7 +10,6 @@ from pcdet.models import build_network, model_fn_decorator
 import torch.distributed as dist
 from train_utils.optimization import build_optimizer, build_scheduler
 from train_utils.train_utils import train_model
-from train_utils.train_st_utils import train_model_st
 
 
 from pathlib import Path
@@ -114,13 +113,7 @@ def main():
         merge_all_iters_to_one_epoch=args.merge_all_iters_to_one_epoch,
         total_epochs=args.epochs
     )
-    if cfg.get('SELF_TRAIN', None):
-        target_set, target_loader, target_sampler = build_dataloader(
-            cfg.DATA_CONFIG_TAR, cfg.DATA_CONFIG_TAR.CLASS_NAMES, args.batch_size,
-            dist_train, workers=args.workers, logger=logger, training=True
-        )
-    else:
-        target_set = target_loader = target_sampler = None
+    target_set = target_loader = target_sampler = None
 
     model = build_network(model_cfg=cfg.MODEL, num_class=len(cfg.CLASS_NAMES),
                           dataset=source_set)
@@ -154,11 +147,7 @@ def main():
         model = nn.parallel.DistributedDataParallel(model, device_ids=[cfg.LOCAL_RANK % torch.cuda.device_count()])
     logger.info(model)
 
-    if cfg.get('SELF_TRAIN', None):
-        total_iters_each_epoch = len(target_loader) if not args.merge_all_iters_to_one_epoch \
-                                            else len(target_loader) // args.epochs
-    else:
-        total_iters_each_epoch = len(source_loader) if not args.merge_all_iters_to_one_epoch \
+    total_iters_each_epoch = len(source_loader) if not args.merge_all_iters_to_one_epoch \
             else len(source_loader) // args.epochs
 
     lr_scheduler, lr_warmup_scheduler = build_scheduler(
@@ -166,13 +155,10 @@ def main():
         last_epoch=last_epoch, optim_cfg=cfg.OPTIMIZATION
     )
 
-    # select proper trainer
-    train_func = train_model_st if cfg.get('SELF_TRAIN', None) else train_model
-
     # -----------------------start training---------------------------
     logger.info('**********************Start training %s/%s(%s)**********************'
                 % (cfg.EXP_GROUP_PATH, cfg.TAG, args.extra_tag))
-    train_func(
+    train_model(
         model,
         optimizer,
         source_loader,
