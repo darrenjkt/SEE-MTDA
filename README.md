@@ -29,7 +29,11 @@ Due to the [Waymo Dataset License Agreement](https://waymo.com/open/terms/) we c
 | nuScenes | PV-RCNN | SEE | [model](https://drive.google.com/file/d/1NBBClCyapwf5vEds_XDGJqUV68RpIwJx/view?usp=sharing) |
 
 ## Installation
-Please refer to INSTALL.md for installation instructions.
+This repo is structured in 2 parts: see and detector. For each part, we have provided a separate docker image which can be obtained as follows:
+- `docker pull anonymoustofu/see-mtda:see-v1.0`
+- `docker pull anonymoustofu/see-mtda:detector-v1.0`
+
+We have provided a `docker/run.sh` to launch the necessary docker images as well for each part. Please edit the folder names for mounting local volumes into the docker image. We currently do not provide other installation methods but refer to `docker/see/Dockerfile` or `docker/detector/Dockerfile` for more information about installation requirements. 
 
 ## Dataset Preparation
 Please refer to DATASET_PREPARATION.md instructions on downloading and preparing datasets. 
