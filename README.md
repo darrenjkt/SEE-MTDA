@@ -53,7 +53,8 @@ python train.py --cfg_file cfgs/source-waymo/secondiou/see/secondiou_ros_custom1
 
 For testing, download the models from the links above and modify the cfg and ckpt paths below. For the cfg files, please link to the yaml files in the output folder instead of the ones in the `tools/cfg` folder. 
 ```
-python test.py --cfg_file /ST3D/output/source-waymo/secondiou/see/secondiou_ros_custom1000_GM-ORH005/default/secondiou_ros_custom1000_GM-ORH005_eval-baraja100.yaml \
---ckpt /ST3D/output/SEE-models/w-k_secondiou_see_6552.pth \
+cd detector/tools
+python test.py --cfg_file /SEE-MTDA/detector/output/source-waymo/secondiou/see/secondiou_ros_custom1000_GM-ORH005/default/secondiou_ros_custom1000_GM-ORH005_eval-baraja100.yaml \
+--ckpt /SEE-MTDA/detector/output/SEE-models/w-k_secondiou_see_6552.pth \
 --batch_size 1
 ```
