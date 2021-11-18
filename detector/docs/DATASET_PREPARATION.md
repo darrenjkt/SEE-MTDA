@@ -16,7 +16,7 @@ SEE-MTDA
 ├── detector
 ...
 ```
-We have provided the Hybrid Task Cascade segmentation masks as well as the infos required. If you'd like to regenerate the infos pkl file, you can run:
+All the files should already be provided without needing extra steps. We have provided the Hybrid Task Cascade segmentation masks as well as the infos required. If you'd like to regenerate the infos pkl file, you can run:
 ```python 
 python -m pcdet.datasets.baraja.meshed_baraja_dataset create_baraja_infos tools/cfgs/dataset_configs/baraja_dataset_meshed.yaml
 ```
