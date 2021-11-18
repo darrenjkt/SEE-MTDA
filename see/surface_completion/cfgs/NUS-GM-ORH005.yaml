@@ -1,0 +1,24 @@
+DATA_PATH: '/meshcloud/data/nuscenes/custom_t4025-v3980'
+EXTRA_TAG: 'NUS-GM-ORH005'
+
+DATASET: 
+    NAME: 'nuscenes'
+    CLASSES: ['car']
+    POINT_CLOUD_RANGE: [-24, -24, -2, 24, 24, 4]
+    LIDAR_NSWEEPS: 2
+    CUSTOM: True
+    DET2D_MASK: False
+
+MESHER: 
+    NAME: gt_mesh
+    MIN_LIDAR_PTS_TO_MESH: 60    
+    VRES: 1.25
+
+    MESH_ALGORITHM: 
+        NAME: ball_pivoting
+        RADIUS: 1.155
+    
+    SAMPLING: 
+        NAME: vres_ring_based_sampling
+        TYPE: 'poisson'
+        OPTIMAL_RING_HEIGHT: 0.05
