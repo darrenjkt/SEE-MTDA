@@ -1,4 +1,4 @@
-DATA_PATH: '/meshcloud/data/baraja'
+DATA_PATH: '/SEE-MTDA/data/baraja'
 
 DATASET: 
     NAME: 'baraja'
@@ -12,7 +12,7 @@ DATASET:
 
 MESHER: 
     NAME: det_mesh
-    MIN_LIDAR_PTS_TO_MESH: 20
+    MIN_LIDAR_PTS_TO_MESH: 30
     VRES: 0.3
 
     CLUSTERING: 

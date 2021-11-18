@@ -1,5 +1,5 @@
 DATASET: 'WaymoDataset'
-DATA_PATH: '../data/waymo/custom_1000'
+DATA_PATH: '../../data/waymo/custom_1000'
 PROCESSED_DATA_TAG: 'waymo_processed_data'
 
 DATA_SPLIT: {

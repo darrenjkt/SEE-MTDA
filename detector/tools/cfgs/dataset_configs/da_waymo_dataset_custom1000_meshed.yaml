@@ -1,5 +1,5 @@
 DATASET: 'MeshedWaymoDataset'
-DATA_PATH: '../data/waymo/custom_1000'
+DATA_PATH: '../../data/waymo/custom_1000'
 
 DATA_SPLIT: {
     'train': train,

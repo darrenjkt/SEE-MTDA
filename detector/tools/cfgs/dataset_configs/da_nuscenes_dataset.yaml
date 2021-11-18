@@ -1,5 +1,5 @@
 DATASET: 'NuScenesDataset'
-DATA_PATH: '../data/nuscenes'
+DATA_PATH: '../../data/nuscenes'
 
 VERSION: 'v1.0-trainval'
 SET_NAN_VELOCITY_TO_ZEROS: True

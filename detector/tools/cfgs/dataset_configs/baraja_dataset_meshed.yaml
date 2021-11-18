@@ -1,5 +1,5 @@
 DATASET: 'MeshedBarajaDataset'
-DATA_PATH: '../data/baraja'
+DATA_PATH: '../../data/baraja'
 
 POINT_CLOUD_RANGE: [-75.2, -75.2, -2, 75.2, 75.2, 4]
 
