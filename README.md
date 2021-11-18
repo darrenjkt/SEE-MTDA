@@ -1,8 +1,5 @@
 # SEE-MTDA
 
-#### TODO: write docs for using docker, download links for datasets/ckpt and all. Maybe have a ckpt folder for model zoo and instance seg at SEE-MTDA/trained_models
-
-
 Code release for the paper **See Eye to Eye: A Lidar-Agnostic 3D Detection Framework for Unsupervised Multi-Target Domain Adaptation**
 
 ![pipeline](./docs/pipeline.png)
@@ -10,6 +7,11 @@ Code release for the paper **See Eye to Eye: A Lidar-Agnostic 3D Detection Frame
 Our code is based on [OpenPCDet v0.3.0](https://github.com/open-mmlab/OpenPCDet/tree/v0.3.0) with DA configurations adopted from [ST3D](https://github.com/CVMI-Lab/ST3D). 
 
 ## Model Zoo
+Please place all downloaded models into the `model_zoo` folder. See `model_zoo/README.md` for more details. 
+
+### Instance Segmentation Models
+Pre-trained instance segmentation models can be obtained from the model zoo of [mmdetection](https://github.com/open-mmlab/mmdetection). Our paper uses 
+Hybrid Task Cascade (download model [here](https://download.openmmlab.com/mmdetection/v2.0/htc/htc_x101_64x4d_fpn_dconv_c3-c5_mstrain_400_1400_16x1_20e_coco/htc_x101_64x4d_fpn_dconv_c3-c5_mstrain_400_1400_16x1_20e_coco_20200312-946fd751.pth)).
 
 ### Source: Waymo
 | Source | Model | Method | Download | 
@@ -35,20 +37,22 @@ This repo is structured in 2 parts: see and detector. For each part, we have pro
 We have provided a `docker/run.sh` to launch the necessary docker images as well for each part. Please edit the folder names for mounting local volumes into the docker image. We currently do not provide other installation methods but refer to `docker/see/Dockerfile` or `docker/detector/Dockerfile` for more information about installation requirements. 
 
 ## Dataset Preparation
-Please refer to DATASET_PREPARATION.md instructions on downloading and preparing datasets. 
+Please refer to `docs/DATASET_PREPARATION.md` instructions on downloading and preparing datasets. 
 
 ## Usage
 
-#### 1. Object Isolation
+#### 1. Image instance segmentation
 Get instance masks for all images. 
 ```
-bash see/mmdetection/tools/see_masks/prepare_baraja_masks.sh
+cd see
+bash prepare_baraja_masks.sh
 ```
 
-#### 2. Surface Completion and Point Sampling
-Create meshes using instance masks and sample from the meshes
+#### 2. SEE Framework
+Here we transform our objects into the canonical domain i.e. we isolate the objects, create meshes and sample from them. 
 ```
-python create_meshes.py --cfg_file cfgs/BAR-DM-ORH005.yaml
+cd see
+python surface_completion.py --cfg_file cfgs/BAR-DM-ORH005.yaml
 ```
 
 #### 3. Point Cloud Detector 
