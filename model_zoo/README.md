@@ -16,7 +16,7 @@ SEE-MTDA
 
 ### Instance Segmentation Models
 We used pre-trained models obtained from the model zoo of [mmdetection](https://github.com/open-mmlab/mmdetection). For our paper, we used 
-Hybrid Task Cascade [download](https://download.openmmlab.com/mmdetection/v2.0/htc/htc_x101_64x4d_fpn_dconv_c3-c5_mstrain_400_1400_16x1_20e_coco/htc_x101_64x4d_fpn_dconv_c3-c5_mstrain_400_1400_16x1_20e_coco_20200312-946fd751.pth).
+Hybrid Task Cascade(download model [here](https://download.openmmlab.com/mmdetection/v2.0/htc/htc_x101_64x4d_fpn_dconv_c3-c5_mstrain_400_1400_16x1_20e_coco/htc_x101_64x4d_fpn_dconv_c3-c5_mstrain_400_1400_16x1_20e_coco_20200312-946fd751.pth)).
 
 ### Source: Waymo
 | Source | Model | Method | Download | 
