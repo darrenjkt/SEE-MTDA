@@ -1,5 +1,9 @@
 # SEE-MTDA
 
+#### TODO: Remove ST3D specific files from the detector code
+#### TODO: write docs for using docker, download links for datasets/ckpt and all. Maybe have a ckpt folder for model zoo and instance seg at SEE-MTDA/trained_models
+
+
 Code release for the paper **See Eye to Eye: A Lidar-Agnostic 3D Detection Framework for Unsupervised Multi-Target Domain Adaptation**
 
 ![pipeline](./docs/pipeline.png)
