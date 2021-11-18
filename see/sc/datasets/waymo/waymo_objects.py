@@ -1,6 +1,6 @@
 import os
 import json
-import datasets.shared_utils as shared_utils
+import sc.datasets.shared_utils as shared_utils
 from PIL import Image, ImageEnhance
 from pathlib import Path
 import glob

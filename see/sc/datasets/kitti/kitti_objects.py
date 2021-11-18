@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 from . import kitti_utils
-import datasets.shared_utils as shared_utils
+import sc.datasets.shared_utils as shared_utils
 import pickle
 import glob
 from pathlib import Path

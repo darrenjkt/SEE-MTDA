@@ -6,12 +6,12 @@ import argparse
 from pathlib import Path
 from pathos.pools import ProcessPool
 from tqdm import tqdm
-from datasets.shared_utils import convert_to_o3dpcd
+from sc.datasets.shared_utils import convert_to_o3dpcd
 import setproctitle
 import yaml
 import open3d as o3d
 from easydict import EasyDict
-from mesher import Mesher
+from sc.mesher.mesher import Mesher
 import shutil
 
 def mesh_process_gt(sample_idx):    

@@ -1,6 +1,6 @@
 import open3d as o3d
 import numpy as np
-from datasets.shared_utils import cart2sph, sph2cart, convert_to_o3dpcd, compress_to_bev
+from sc.datasets.shared_utils import cart2sph, sph2cart, convert_to_o3dpcd, compress_to_bev
 from sklearn.neighbors import NearestNeighbors
 
 

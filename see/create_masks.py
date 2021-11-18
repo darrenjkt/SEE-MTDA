@@ -10,7 +10,7 @@ import argparse
 import matplotlib.pyplot as plt
 from pycocotools import mask
 import setproctitle
-from mask_utils import mask2polygon, segm2json, xyxy2xywh
+from common_utils.mask_utils import mask2polygon, segm2json, xyxy2xywh
 from mmdet.apis import inference_detector, init_detector, show_result_pyplot
 
 INFO = {

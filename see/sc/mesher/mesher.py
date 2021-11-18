@@ -2,17 +2,17 @@ import open3d as o3d
 import numpy as np
 import time
 import os
-from datasets.shared_utils import convert_to_o3dpcd, get_o3dbox
+from sc.datasets.shared_utils import convert_to_o3dpcd, get_o3dbox
 import pprint
 from pathlib import Path
 import glob
 
-from datasets.nuscenes.nuscenes_objects import NuscenesObjects
-from datasets.waymo.waymo_objects import WaymoObjects
-from datasets.kitti.kitti_objects import KittiObjects
-from datasets.baraja.baraja_objects import BarajaObjects
-from mesher_methods import db_scan, ball_pivoting, poisson_surface_reconstruction, alpha_shapes
-from mesher_methods import vres_ring_based_sampling, surface_area_based_sampling, virtual_lidar_sampling
+from sc.datasets.nuscenes.nuscenes_objects import NuscenesObjects
+from sc.datasets.waymo.waymo_objects import WaymoObjects
+from sc.datasets.kitti.kitti_objects import KittiObjects
+from sc.datasets.baraja.baraja_objects import BarajaObjects
+from .mesher_methods import db_scan, ball_pivoting, poisson_surface_reconstruction, alpha_shapes
+from .mesher_methods import vres_ring_based_sampling, surface_area_based_sampling, virtual_lidar_sampling
 
 __DATASETS__ = {
     'nuscenes': NuscenesObjects,

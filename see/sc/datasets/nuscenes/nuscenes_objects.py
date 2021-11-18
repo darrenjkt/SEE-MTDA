@@ -10,7 +10,7 @@ from nuscenes.nuscenes import NuScenes
 from nuscenes.utils.data_classes import LidarPointCloud
 from nuscenes.utils.geometry_utils import view_points
 from pyquaternion import Quaternion
-import datasets.shared_utils as shared_utils
+import sc.datasets.shared_utils as shared_utils
 
 CAMERA_CHANNELS = ['CAM_FRONT', 'CAM_FRONT_RIGHT', 'CAM_BACK_RIGHT', 'CAM_BACK', 'CAM_BACK_LEFT', 'CAM_FRONT_LEFT']
 class2idx = {'pedestrian':0, 'car':2}
