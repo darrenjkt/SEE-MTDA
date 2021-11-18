@@ -1,21 +1,47 @@
 # Dataset Preparation
+In SEE-MTDA, we use a subset of the nuScenes and Waymo data. For nuScenes, we sorted the scenes by number of cars in the scene and selected the top 100 scenes, leading to 4025 frames. For Waymo, we selected the 100th frame from each sequence, leading to 1000 frames. SEE-MTDA should work equally as well, if not better, when more data is included. 
+
+### Baraja Spectrum-Scan™ Dataset
+Please download the [Baraja Spectrum-Scan™ Dataset](https://drive.google.com/file/d/16_azaVGiMVycGH799FX2RyRIWHrslU0R/view?usp=sharing) and organise the downloaded files as follows:
+```
+SEE-MTDA
+├── data
+│   ├── baraja
+│   │   │── ImageSets
+│   │   │── test
+│   │   │   ├──pcd & masks & image & calib & label
+│   │   │── infos
+│   │   │   ├──baraja_infos_test.pkl
+├── see
+├── detector
+...
+```
+We have provided the Hybrid Task Cascade segmentation masks as well as the infos required. If you'd like to regenerate the infos pkl file, you can run:
+```python 
+python -m pcdet.datasets.baraja.meshed_baraja_dataset create_baraja_infos tools/cfgs/dataset_configs/baraja_dataset_meshed.yaml
+```
 
 ### KITTI Dataset
 * Please download the official [KITTI 3D object detection](http://www.cvlibs.net/datasets/kitti/eval_object.php?obj_benchmark=3d) dataset and organize the downloaded files as follows:
 ```
-OpenPCDet
+SEE-MTDA
 ├── data
 │   ├── kitti
 │   │   │── ImageSets
 │   │   │── training
-│   │   │   ├──calib & velodyne & label_2 & image_2 & (optional: planes)
+│   │   │   ├──calib & velodyne & label_2 & image_2 
 │   │   │── testing
 │   │   │   ├──calib & velodyne & image_2
-├── pcdet
-├── tools
+│   │   │── infos_openpcdetv0.3.0
+│   │   │   ├──kitti_train_infos.pkl
+│   │   │   ├──kitti_val_infos.pkl
+│   │   │   ├──kitti_trainval_infos.pkl
+├── see
+├── detector
+...
 ```
 
-* Generate the data infos by running the following command: 
+* Generate the data infos by running the following command and placing it into the folder structure above: 
 ```python 
 python -m pcdet.datasets.kitti.kitti_dataset create_kitti_infos tools/cfgs/dataset_configs/kitti_dataset.yaml
 ```
@@ -25,7 +51,7 @@ Or download from our pre-generated infos [here](some_googledrive_link).
 * Please download the official [NuScenes 3D object detection dataset](https://www.nuscenes.org/download) and 
 organize the downloaded files as follows: 
 ```
-OpenPCDet
+SEE-MTDA
 ├── data
 │   ├── nuscenes
 │   │   │── v1.0-trainval (or v1.0-mini if you use mini)
@@ -33,8 +59,12 @@ OpenPCDet
 │   │   │   │── sweeps
 │   │   │   │── maps
 │   │   │   │── v1.0-trainval  
-├── pcdet
-├── tools
+│   │   │   │── infos_openpcdetv0.3.0
+│   │   │   │   ├──nuscenes_infos_10sweeps_train.pkl
+│   │   │   │   ├──nuscenes_infos_10sweeps_val.pkl
+├── see
+├── detector
+...
 ```
 
 * Install the `nuscenes-devkit` with version `1.0.5` by running the following command: 
@@ -55,7 +85,7 @@ including the training data `training_0000.tar~training_0031.tar` and the valida
 data `validation_0000.tar~validation_0007.tar`.
 * Unzip all the above `xxxx.tar` files to the directory of `data/waymo/raw_data` as follows (You could get 798 *train* tfrecord and 202 *val* tfrecord ):  
 ```
-OpenPCDet
+SEE-MTDA
 ├── data
 │   ├── waymo
 │   │   │── ImageSets
@@ -65,10 +95,9 @@ OpenPCDet
 |   |   |── waymo_processed_data
 │   │   │   │── segment-xxxxxxxx/
 |   |   |   |── ...
-│   │   │── pcdet_gt_database_train_sampled_xx/
-│   │   │── pcdet_waymo_dbinfos_train_sampled_xx.pkl   
-├── pcdet
-├── tools
+├── see
+├── detector
+...
 ```
 * Install the official `waymo-open-dataset` by running the following command: 
 ```shell script
@@ -85,73 +114,3 @@ python -m pcdet.datasets.waymo.waymo_dataset --func create_waymo_infos \
 ```
 
 Note that you do not need to install `waymo-open-dataset` if you have already processed the data before and do not need to evaluate with official Waymo Metrics. 
-
-## Training & Testing
-
-
-### Test and evaluate the pretrained models
-* Test with a pretrained model: 
-```shell script
-python test.py --cfg_file ${CONFIG_FILE} --batch_size ${BATCH_SIZE} --ckpt ${CKPT}
-```
-
-* To test all the saved checkpoints of a specific training setting and draw the performance curve on the Tensorboard, add the `--eval_all` argument: 
-```shell script
-python test.py --cfg_file ${CONFIG_FILE} --batch_size ${BATCH_SIZE} --eval_all
-```
-
-* Notice that if you want to test on the setting with KITTI as **target domain**, 
-  please add `--set DATA_CONFIG_TAR.FOV_POINTS_ONLY True` to enable front view
-  point cloud only: 
-```shell script
-python test.py --cfg_file ${CONFIG_FILE} --batch_size ${BATCH_SIZE} --eval_all --set DATA_CONFIG_TAR.FOV_POINTS_ONLY True
-```
-
-* To test with multiple GPUs:
-```shell script
-sh scripts/dist_test.sh ${NUM_GPUS} \
-    --cfg_file ${CONFIG_FILE} --batch_size ${BATCH_SIZE}
-
-# or
-
-sh scripts/slurm_test_mgpu.sh ${PARTITION} ${NUM_GPUS} \ 
-    --cfg_file ${CONFIG_FILE} --batch_size ${BATCH_SIZE}
-```
-
-
-### Train a model
-You could optionally add extra command line parameters `--batch_size ${BATCH_SIZE}` and `--epochs ${EPOCHS}` to specify your preferred parameters. 
-  
-
-* Train with multiple GPUs or multiple machines
-```shell script
-sh scripts/dist_train.sh ${NUM_GPUS} --cfg_file ${CONFIG_FILE}
-
-# or 
-
-sh scripts/slurm_train.sh ${PARTITION} ${JOB_NAME} ${NUM_GPUS} --cfg_file ${CONFIG_FILE}
-```
-
-* Train with a single GPU:
-```shell script
-python train.py --cfg_file ${CONFIG_FILE}
-```
-
-### Train the Pre-trained 
-Take Source Only model with SECOND-IoU on Waymo -> KITTI  as an example:
-```shell script
-sh scripts/dist_train.sh ${NUM_GPUS} --cfg_file cfgs/da-waymo-kitti_models/secondiou/secondiou_old_anchor.yaml \
-    --batch_size ${BATCH_SIZE}
-```
-Notice that you need to select the **best model** as your Pre-train model, 
-because the performance of adapted model is really unstable when target domain is KITTI.
-
-
-### Self-training Process
-You need to set the `--pretrained_model ${PRETRAINED_MODEL}` when finish the
-following self-training process.
-```shell script
-sh scripts/dist_train.sh ${NUM_GPUS} --cfg_file cfgs/da-waymo-kitti_models/secondiou_st3d/secondiou_st3d.yaml \
-    --batch_size ${BATCH_SIZE} --pretrained_model ${PRETRAINED_MODEL}
-```
-Notice that you also need to focus the performance of the **best model**.
