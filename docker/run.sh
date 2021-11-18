@@ -1,7 +1,7 @@
 #!/bin/bash
 
-DATA_PATH="/mnt/big-data/darren/data"
-CODE_PATH="/mnt/big-data/darren/code/SEE-MTDA"
+DATA_PATH="/user/data"
+CODE_PATH="/user/SEE-MTDA"
 
 while getopts ":i:g:" flag
 do
