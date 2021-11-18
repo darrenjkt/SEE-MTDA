@@ -1,7 +1,7 @@
 #!/bin/bash
 
-DATA_PATH="/user/data"
-CODE_PATH="/user/SEE-MTDA"
+DATA_PATH="/anonymoustofu/data"
+CODE_PATH="/anonymoustofu/SEE-MTDA"
 
 while getopts ":i:g:" flag
 do
