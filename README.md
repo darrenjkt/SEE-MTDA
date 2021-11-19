@@ -4,7 +4,7 @@ Code release for the paper **See Eye to Eye: A Lidar-Agnostic 3D Detection Frame
 
 ![pipeline](./docs/pipeline.png)
 
-This codebase would not be possible without [mmdetection](https://github.com/open-mmlab/mmdetection) and [OpenPCDet v0.3.0](https://github.com/open-mmlab/OpenPCDet/tree/v0.3.0). We acknowledge the works of the following repos in our project: 
+This project builds upon the progress of other outstanding codebases in the computer vision community. We acknowledge the works of the following repos in our project: 
 - Our instance segmentation code uses [mmdetection](https://github.com/open-mmlab/mmdetection).
 - Our detector code is based on [OpenPCDet v0.3.0](https://github.com/open-mmlab/OpenPCDet/tree/v0.3.0) with DA configurations adopted from [ST3D](https://github.com/CVMI-Lab/ST3D). 
 
