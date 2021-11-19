@@ -62,7 +62,7 @@ To run train/test the detector, run the following docker image with our provided
 ```
 bash docker/run.sh -i detector
 ```
-a) **Training**: see the following example. Replace the cfg file with any of the other cfg files in the `tools/cfgs` folder. 
+a) **Training**: see the following example. Replace the cfg file with any of the other cfg files in the `tools/cfgs` folder. Number of epochs, batch sizes and other training related configurations can be found in the cfg file. 
 ```
 cd detector/tools
 python train.py --cfg_file cfgs/source-waymo/secondiou/see/secondiou_ros_custom1000_GM-ORH005.yaml
@@ -72,6 +72,6 @@ b) **Testing**: download the models from the links above and modify the cfg and 
 ```
 cd detector/tools
 python test.py --cfg_file /SEE-MTDA/detector/output/source-waymo/secondiou/see/secondiou_ros_custom1000_GM-ORH005/default/secondiou_ros_custom1000_GM-ORH005_eval-baraja100.yaml \
---ckpt /SEE-MTDA/detector/output/SEE-models/w-k_secondiou_see_6552.pth \
+--ckpt /SEE-MTDA/model_zoo/waymo_secondiou_see_6552.pth \
 --batch_size 1
 ```
