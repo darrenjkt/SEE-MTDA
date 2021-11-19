@@ -18,6 +18,12 @@ do
         esac
 done
 
+# -i options are "see" and "detector". 
+if [ "$image" != "see" ] && [ "$image" != "detector" ]; then
+        echo "Invalid docker image. Please specify see or detector" >&2
+        exit 1
+fi
+
 # Setting GPUs.
 # Accepts e.g. -g 0 for single gpu or -g 0,1,2 for multiple gpus
 if [ "$gpus" == "" ]; then
