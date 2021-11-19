@@ -4,7 +4,9 @@ Code release for the paper **See Eye to Eye: A Lidar-Agnostic 3D Detection Frame
 
 ![pipeline](./docs/pipeline.png)
 
-Our code is based on [OpenPCDet v0.3.0](https://github.com/open-mmlab/OpenPCDet/tree/v0.3.0) with DA configurations adopted from [ST3D](https://github.com/CVMI-Lab/ST3D). 
+This project builds upon the progress of other outstanding codebases in the computer vision community. We acknowledge the works of the following codebases in our project: 
+- Our instance segmentation code uses [mmdetection](https://github.com/open-mmlab/mmdetection).
+- Our detector code is based on [OpenPCDet v0.3.0](https://github.com/open-mmlab/OpenPCDet/tree/v0.3.0) with DA configurations adopted from [ST3D](https://github.com/CVMI-Lab/ST3D). 
 
 ## Model Zoo
 Please place all downloaded models into the `model_zoo` folder. See `model_zoo/README.md` for more details. 
@@ -34,38 +36,52 @@ This repo is structured in 2 parts: see and detector. For each part, we have pro
 - `docker pull anonymoustofu/see-mtda:see-v1.0`
 - `docker pull anonymoustofu/see-mtda:detector-v1.0`
 
-We have provided a `docker/run.sh` to launch the necessary docker images as well for each part. Please edit the folder names for mounting local volumes into the docker image. We currently do not provide other installation methods but refer to `docker/see/Dockerfile` or `docker/detector/Dockerfile` for more information about installation requirements. 
+We have provided a `docker/run.sh` to launch the necessary docker images as well for each part. Please edit the folder names for mounting local volumes into the docker image. We currently do not provide other installation methods. If you'd like to install natively, please refer to `docker/see/Dockerfile` or `docker/detector/Dockerfile` for more information about installation requirements. 
 
 ## Dataset Preparation
 Please refer to `docs/DATASET_PREPARATION.md` instructions on downloading and preparing datasets. 
 
 ## Usage
+In this section, we provide instructions specifically for the [Baraja Spectrum-Scan™](https://drive.google.com/file/d/16_azaVGiMVycGH799FX2RyRIWHrslU0R/view?usp=sharing) Dataset as an example of adoption to a novel industry lidar. Please modify the configuration files as necessary to train/test for different datasets.
 
-#### 1. Image instance segmentation
-Get instance masks for all images. 
+### 1. SEE
+In this phase, we isolate the objects, create meshes and sample from them. Firstly, run the docker image as follows:
+```
+# Run docker image for SEE
+bash docker/run.sh -i see
+
+# Enter docker container. Use `docker ps` to find the newly created container from the above image.
+docker exec -it ${CONTAINER_NAME} /bin/bash
+```
+a) **Instance Segmentation**: Get instance masks for all images. If you are using the baraja dataset, we've provided the masks in the download link. Feel free to skip this part.
+```
+bash see/scripts/prepare_baraja_masks.sh
+```
+b) **Transform to Canonical Domain**: Once we have the masks, we can isolate the objects and transform them into the canonical domain.
 ```
 cd see
-bash prepare_baraja_masks.sh
+python surface_completion.py --cfg_file sc/cfgs/BAR-DM-ORH005.yaml
 ```
 
-#### 2. SEE Framework
-Here we transform our objects into the canonical domain i.e. we isolate the objects, create meshes and sample from them. 
+### 2. Point Cloud Detector 
+To run train/test the detector, run the following docker image with our provided script. If you'd like to specify gpus to use in the docker container, you can do so with e.g. `-g 0` or `-g 0,1,2`:
 ```
-cd see
-python surface_completion.py --cfg_file cfgs/BAR-DM-ORH005.yaml
-```
+# Run docker image for Point Cloud Detector
+bash docker/run.sh -i detector
 
-#### 3. Point Cloud Detector 
-For training, see the following example. Replace the cfg file with any of the other cfg files in the `tools/cfgs` folder. 
+# Enter docker container. Use `docker ps` to find the newly created container from the above image.
+docker exec -it ${CONTAINER_NAME} /bin/bash
+```
+a) **Training**: see the following example. Replace the cfg file with any of the other cfg files in the `tools/cfgs` folder. Number of epochs, batch sizes and other training related configurations can be found in the cfg file. 
 ```
 cd detector/tools
 python train.py --cfg_file cfgs/source-waymo/secondiou/see/secondiou_ros_custom1000_GM-ORH005.yaml
 ```
 
-For testing, download the models from the links above and modify the cfg and ckpt paths below. For the cfg files, please link to the yaml files in the output folder instead of the ones in the `tools/cfg` folder. 
+b) **Testing**: download the models from the links above and modify the cfg and ckpt paths below. For the cfg files, please link to the yaml files in the output folder instead of the ones in the `tools/cfg` folder. 
 ```
 cd detector/tools
 python test.py --cfg_file /SEE-MTDA/detector/output/source-waymo/secondiou/see/secondiou_ros_custom1000_GM-ORH005/default/secondiou_ros_custom1000_GM-ORH005_eval-baraja100.yaml \
---ckpt /SEE-MTDA/detector/output/SEE-models/w-k_secondiou_see_6552.pth \
+--ckpt /SEE-MTDA/model_zoo/waymo_secondiou_see_6552.pth \
 --batch_size 1
 ```
