@@ -20,7 +20,7 @@ done
 
 # -i options are "see" and "detector". 
 if [ "$image" != "see" ] && [ "$image" != "detector" ]; then
-        echo "Invalid docker image. Please specify see or detector" >&2
+        echo "Invalid docker image. Please specify: see or detector" >&2
         exit 1
 fi
 
