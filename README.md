@@ -45,10 +45,10 @@ Please refer to `docs/DATASET_PREPARATION.md` instructions on downloading and pr
 In this section, we provide instructions specifically for the [Baraja Spectrum-Scan™](https://drive.google.com/file/d/16_azaVGiMVycGH799FX2RyRIWHrslU0R/view?usp=sharing) Dataset as an example of adoption to a novel industry lidar. Please modify the configuration files as necessary to train/test for different datasets.
 
 ### 1. SEE
-In this phase, we isolate the objects, create meshes and sample from them. Firstly, run the docker image as follows:
+In this phase, we isolate the objects, create meshes and sample from them. Firstly, run the docker image as follows. For instance segmentation, a single GPU is sufficient.
 ```
 # Run docker image for SEE
-bash docker/run.sh -i see
+bash docker/run.sh -i see -g 0
 
 # Enter docker container. Use `docker ps` to find the newly created container from the above image.
 docker exec -it ${CONTAINER_NAME} /bin/bash
@@ -64,10 +64,10 @@ python surface_completion.py --cfg_file sc/cfgs/BAR-DM-ORH005.yaml
 ```
 
 ### 2. Point Cloud Detector 
-To run train/test the detector, run the following docker image with our provided script. If you'd like to specify gpus to use in the docker container, you can do so with e.g. `-g 0` or `-g 0,1,2`:
+To run train/test the detector, run the following docker image with our provided script. If you'd like to specify gpus to use in the docker container, you can do so with e.g. `-g 0` or `-g 0,1,2`. For testing, a single gpu is sufficient. 
 ```
 # Run docker image for Point Cloud Detector
-bash docker/run.sh -i detector
+bash docker/run.sh -i detector -g 0
 
 # Enter docker container. Use `docker ps` to find the newly created container from the above image.
 docker exec -it ${CONTAINER_NAME} /bin/bash
