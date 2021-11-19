@@ -4,7 +4,9 @@ Code release for the paper **See Eye to Eye: A Lidar-Agnostic 3D Detection Frame
 
 ![pipeline](./docs/pipeline.png)
 
-Our code is based on [OpenPCDet v0.3.0](https://github.com/open-mmlab/OpenPCDet/tree/v0.3.0) with DA configurations adopted from [ST3D](https://github.com/CVMI-Lab/ST3D). 
+This codebase would not be possible without [mmdetection](https://github.com/open-mmlab/mmdetection) and [OpenPCDet v0.3.0](https://github.com/open-mmlab/OpenPCDet/tree/v0.3.0). We acknowledge the works of the following repos in our project: 
+- Our instance segmentation code uses [mmdetection](https://github.com/open-mmlab/mmdetection).
+- Our detector code is based on [OpenPCDet v0.3.0](https://github.com/open-mmlab/OpenPCDet/tree/v0.3.0) with DA configurations adopted from [ST3D](https://github.com/CVMI-Lab/ST3D). 
 
 ## Model Zoo
 Please place all downloaded models into the `model_zoo` folder. See `model_zoo/README.md` for more details. 
@@ -45,7 +47,7 @@ In this section, we provide instructions specifically for the [Baraja Spectrum-S
 ### 1. SEE
 In this phase, we isolate the objects, create meshes and sample from them. Firstly, run the docker image as follows:
 ```
-# Run docker image
+# Run docker image for SEE
 bash docker/run.sh -i see
 
 # Enter docker container. Use `docker ps` to find the newly created container from the above image.
@@ -64,6 +66,7 @@ python surface_completion.py --cfg_file sc/cfgs/BAR-DM-ORH005.yaml
 ### 2. Point Cloud Detector 
 To run train/test the detector, run the following docker image with our provided script. If you'd like to specify gpus to use in the docker container, you can do so with e.g. `-g 0` or `-g 0,1,2`:
 ```
+# Run docker image for Point Cloud Detector
 bash docker/run.sh -i detector
 
 # Enter docker container. Use `docker ps` to find the newly created container from the above image.
