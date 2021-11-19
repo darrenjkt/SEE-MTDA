@@ -34,7 +34,7 @@ This repo is structured in 2 parts: see and detector. For each part, we have pro
 - `docker pull anonymoustofu/see-mtda:see-v1.0`
 - `docker pull anonymoustofu/see-mtda:detector-v1.0`
 
-We have provided a `docker/run.sh` to launch the necessary docker images as well for each part. Please edit the folder names for mounting local volumes into the docker image. We currently do not provide other installation methods but refer to `docker/see/Dockerfile` or `docker/detector/Dockerfile` for more information about installation requirements. 
+We have provided a `docker/run.sh` to launch the necessary docker images as well for each part. Please edit the folder names for mounting local volumes into the docker image. We currently do not provide other installation methods. If you'd like to install natively, please refer to `docker/see/Dockerfile` or `docker/detector/Dockerfile` for more information about installation requirements. 
 
 ## Dataset Preparation
 Please refer to `docs/DATASET_PREPARATION.md` instructions on downloading and preparing datasets. 
