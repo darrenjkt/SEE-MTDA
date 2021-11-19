@@ -45,7 +45,11 @@ In this section, we provide instructions specifically for the [Baraja Spectrum-S
 ### 1. SEE
 In this phase, we isolate the objects, create meshes and sample from them. Firstly, run the docker image as follows:
 ```
+# Run docker image
 bash docker/run.sh -i see
+
+# Enter docker container. Use `docker ps` to find the newly created container from the above image.
+docker exec -it ${CONTAINER_NAME} /bin/bash
 ```
 a) **Instance Segmentation**: Get instance masks for all images. If you are using the baraja dataset, we've provided the masks in the download link. Feel free to skip this part.
 ```
@@ -61,6 +65,9 @@ python surface_completion.py --cfg_file sc/cfgs/BAR-DM-ORH005.yaml
 To run train/test the detector, run the following docker image with our provided script. If you'd like to specify gpus to use in the docker container, you can do so with e.g. `-g 0` or `-g 0,1,2`:
 ```
 bash docker/run.sh -i detector
+
+# Enter docker container. Use `docker ps` to find the newly created container from the above image.
+docker exec -it ${CONTAINER_NAME} /bin/bash
 ```
 a) **Training**: see the following example. Replace the cfg file with any of the other cfg files in the `tools/cfgs` folder. Number of epochs, batch sizes and other training related configurations can be found in the cfg file. 
 ```
