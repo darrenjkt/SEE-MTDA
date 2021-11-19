@@ -40,6 +40,8 @@ We have provided a `docker/run.sh` to launch the necessary docker images as well
 Please refer to `docs/DATASET_PREPARATION.md` instructions on downloading and preparing datasets. 
 
 ## Usage
+In this section, we provide instructions specifically for the Baraja Spectrum-Scan™ dataset as an example of adoption to a novel industry lidar. Please modify the configuration files as necessary to train/test for different datasets.
+
 ### 1. SEE
 In this phase, we isolate the objects, create meshes and sample from them. Firstly, run the docker image as follows:
 ```
@@ -47,17 +49,16 @@ bash docker/run.sh -i see
 ```
 a) **Instance Segmentation**: Get instance masks for all images. If you are using the baraja dataset, we've provided the masks in the download link. Feel free to skip this part.
 ```
-cd see
-bash prepare_baraja_masks.sh
+bash see/scripts/prepare_baraja_masks.sh
 ```
 b) **Transform to Canonical Domain**: Once we have the masks, we can isolate the objects and transform them into the canonical domain.
 ```
 cd see
-python surface_completion.py --cfg_file cfgs/BAR-DM-ORH005.yaml
+python surface_completion.py --cfg_file sc/cfgs/BAR-DM-ORH005.yaml
 ```
 
 ### 2. Point Cloud Detector 
-To run train/test the detector, run the following docker image with our provided script:
+To run train/test the detector, run the following docker image with our provided script. If you'd like to specify gpus to use in the docker container, you can do so with e.g. `-g 0` or `-g 0,1,2`:
 ```
 bash docker/run.sh -i detector
 ```
