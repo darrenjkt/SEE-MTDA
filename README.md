@@ -40,7 +40,7 @@ We have provided a `docker/run.sh` to launch the necessary docker images as well
 Please refer to `docs/DATASET_PREPARATION.md` instructions on downloading and preparing datasets. 
 
 ## Usage
-In this section, we provide instructions specifically for the Baraja Spectrum-Scan™ dataset as an example of adoption to a novel industry lidar. Please modify the configuration files as necessary to train/test for different datasets.
+In this section, we provide instructions specifically for the [Baraja Spectrum-Scan™](https://drive.google.com/file/d/16_azaVGiMVycGH799FX2RyRIWHrslU0R/view?usp=sharing) Dataset as an example of adoption to a novel industry lidar. Please modify the configuration files as necessary to train/test for different datasets.
 
 ### 1. SEE
 In this phase, we isolate the objects, create meshes and sample from them. Firstly, run the docker image as follows:
