@@ -10,21 +10,9 @@ All the codes are tested in the following environment:
 
 
 ### Install `pcdet v0.3`
-NOTE: Please re-install `pcdet v0.3` by running `python setup.py develop` even if you have already installed previous version.
+If the OpenPCDet detector does not work, try reinstalling within the docker container using the following steps. The `setup.py` file will install the pcdet library.
 
-a. Clone this repository.
 ```shell
-git clone https://github.com/CVMI-Lab/ST3D.git
-```
-
-b. Install the dependent libraries as follows:
-
-* Install the dependent python libraries: 
-```
 pip install -r requirements.txt 
-```
-
-c. Install this `pcdet` library by running the following command:
-```shell
 python setup.py develop
 ```
