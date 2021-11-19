@@ -45,12 +45,12 @@ In this phase, we isolate the objects, create meshes and sample from them. First
 ```
 bash docker/run.sh -i see
 ```
-Get instance masks for all images. 
+a) **Instance Segmentation**: Get instance masks for all images. If you are using the baraja dataset, we've provided the masks in the download link. Feel free to skip this part.
 ```
 cd see
 bash prepare_baraja_masks.sh
 ```
-Once we have the masks, we can isolate the objects and transform them into the canonical domain.
+b) **Transform to Canonical Domain**: Once we have the masks, we can isolate the objects and transform them into the canonical domain.
 ```
 cd see
 python surface_completion.py --cfg_file cfgs/BAR-DM-ORH005.yaml
@@ -61,13 +61,13 @@ To run train/test the detector, run the following docker image with our provided
 ```
 bash docker/run.sh -i detector
 ```
-For training, see the following example. Replace the cfg file with any of the other cfg files in the `tools/cfgs` folder. 
+a) **Training**: see the following example. Replace the cfg file with any of the other cfg files in the `tools/cfgs` folder. 
 ```
 cd detector/tools
 python train.py --cfg_file cfgs/source-waymo/secondiou/see/secondiou_ros_custom1000_GM-ORH005.yaml
 ```
 
-For testing, download the models from the links above and modify the cfg and ckpt paths below. For the cfg files, please link to the yaml files in the output folder instead of the ones in the `tools/cfg` folder. 
+b) **testing**: download the models from the links above and modify the cfg and ckpt paths below. For the cfg files, please link to the yaml files in the output folder instead of the ones in the `tools/cfg` folder. 
 ```
 cd detector/tools
 python test.py --cfg_file /SEE-MTDA/detector/output/source-waymo/secondiou/see/secondiou_ros_custom1000_GM-ORH005/default/secondiou_ros_custom1000_GM-ORH005_eval-baraja100.yaml \
