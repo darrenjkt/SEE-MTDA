@@ -19,9 +19,10 @@ do
 done
 
 # Setting GPUs.
-# Accepts e.g. "0", "0,1,2" (if not specific, we will just use all gpus)
+# Accepts e.g. -g 0 for single gpu or -g 0,1,2 for multiple gpus
 if [ "$gpus" == "" ]; then
-        GPU_ID="all"     
+        echo "Please choose which GPUs to use (e.g. -g 0 or -g 0,1,2)" >&2
+        exit 1  
 else
         GPU_ID=$gpus  
 fi
