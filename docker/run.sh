@@ -1,7 +1,8 @@
 #!/bin/bash
 
+# Edit these paths. The volume mounting below assumes your datasets are e.g. data/Baraja, data/KITTI etc.
 DATA_PATH="/anonymoustofu/data"
-CODE_PATH="/anonymoustofu/code/SEE-MTDA"
+CODE_PATH="/anonymoustofu/SEE-MTDA"
 
 # -i options are "see" and "detector". 
 while getopts ":i:g:" flag
@@ -41,7 +42,10 @@ VOLUMES="       --volume=$DATA_PATH/kitti/3d_object_detection:/SEE-MTDA/data/kit
                 --volume=$DATA_PATH/nuscenes:/SEE-MTDA/data/nuscenes
                 --volume=$DATA_PATH/waymo:/SEE-MTDA/data/waymo
                 --volume=$DATA_PATH/baraja:/SEE-MTDA/data/baraja
-                --volume=$CODE_PATH:/SEE-MTDA"
+                --volume=$CODE_PATH/see:/SEE-MTDA/see
+                --volume=$CODE_PATH/detector/tools:/SEE-MTDA/detector/tools
+                --volume=$CODE_PATH/detector/output:/SEE-MTDA/detector/output
+                --volume=$CODE_PATH/model_zoo:/SEE-MTDA/model_zoo"
 
 # Setup visualization for point cloud demos
 VISUAL="        --env=DISPLAY

@@ -1,9 +1,9 @@
-DATA_PATH: '/meshcloud/data/kitti'
+DATA_PATH: '/SEE-MTDA/data/kitti'
 
 DATASET: 
     NAME: 'kitti'
     CLASSES: ['Car']
-    POINT_CLOUD_RANGE: [0, -40, -2, 50, 40, 4]
+    POINT_CLOUD_RANGE: [-70, -70, -2, 70, 70, 4]
     DET2D_MASK: False
     UPDATE_GT_DATABASE: False
 

@@ -1,15 +1,11 @@
-# Base image is from scrin/dev-spconv:latest but one of the apt packages are discontinued
-# I entered the container, deleted the line with the pkg from /etc/apt/sources.list 
-# and saved it as the following below
-FROM darrenjkt/spconv:scrin-dev-ubuntu20.04
+# TODO: modify anonymoustofu base image
+FROM anonymoustofu/spconv:scrin-dev-ubuntu20.04
 
-# Install ST3D
+# Install SEE-MTDA/detector
 WORKDIR /
-RUN git clone https://github.com/CVMI-Lab/ST3D.git
-WORKDIR /ST3D
+RUN git clone https://github.com/anonymoustofu/SEE-MTDA.git
+WORKDIR /SEE-MTDA/detector
 RUN pip install -r requirements.txt 
-
-# The TORCH_CUDA_ARCH_LIST="6.1 7.5" is specifically for 1080Ti and 2080Ti setup. Though I don't think I need it. Keep it here in case.
 RUN python setup.py develop
 
 RUN python3 -m pip install pip==21.0.1

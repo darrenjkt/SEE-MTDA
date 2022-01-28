@@ -1,5 +1,4 @@
 # Dataset Preparation
-In SEE-MTDA, we use a subset of the nuScenes and Waymo data. For nuScenes, we sorted the scenes by number of cars in the scene and selected the top 100 scenes, leading to 4025 frames. For Waymo, we selected the 100th frame from each sequence, leading to 1000 frames. SEE-MTDA should work equally as well, if not better, when more data is included. 
 
 ### Baraja Spectrum-Scan™ Dataset
 Please download the [Baraja Spectrum-Scan™ Dataset](https://drive.google.com/file/d/16_azaVGiMVycGH799FX2RyRIWHrslU0R/view?usp=sharing) and organise the downloaded files as follows:
@@ -45,9 +44,10 @@ SEE-MTDA
 ```python 
 python -m pcdet.datasets.kitti.kitti_dataset create_kitti_infos tools/cfgs/dataset_configs/kitti_dataset.yaml
 ```
-Or download from our pre-generated infos [here](some_googledrive_link).
+Or download from our pre-generated infos [here](https://drive.google.com/drive/folders/1BanTsv8zWqmL7W1C_QXpultB0b01tnh3?usp=sharing).
 
 ### NuScenes Dataset
+
 * Please download the official [NuScenes 3D object detection dataset](https://www.nuscenes.org/download) and 
 organize the downloaded files as follows: 
 ```
@@ -78,12 +78,11 @@ python -m pcdet.datasets.nuscenes.nuscenes_dataset --func create_nuscenes_infos 
     --cfg_file tools/cfgs/dataset_configs/nuscenes_dataset.yaml \
     --version v1.0-trainval
 ```
+In SEE-MTDA, we use a subset of the nuScenes. We sorted the scenes by number of cars in the scene and selected the top 100 scenes, leading to 4025 frames. We modified the generated infos file from above to reflect this subset. 
 
 ### Waymo Open Dataset
-* Please download the official [Waymo Open Dataset](https://waymo.com/open/download/), 
-including the training data `training_0000.tar~training_0031.tar` and the validation 
-data `validation_0000.tar~validation_0007.tar`.
-* Unzip all the above `xxxx.tar` files to the directory of `data/waymo/raw_data` as follows (You could get 798 *train* tfrecord and 202 *val* tfrecord ):  
+* Please download the official [Waymo Open Dataset](https://waymo.com/open/download/). We only need the training data for Waymo.
+* Unzip all the above `xxxx.tar` files to the directory of `data/waymo/raw_data` as follows:  
 ```
 SEE-MTDA
 ├── data
@@ -102,8 +101,7 @@ SEE-MTDA
 * Install the official `waymo-open-dataset` by running the following command: 
 ```shell script
 pip3 install --upgrade pip
-# tf 2.0.0
-pip3 install waymo-open-dataset-tf-2-0-0==1.2.0 --user
+pip3 install waymo-open-dataset-tf-2-2-0 --user
 ```
 
 * Extract point cloud data from tfrecord and generate data infos by running the following command (it takes several hours, 
@@ -112,5 +110,4 @@ and you could refer to `data/waymo/waymo_processed_data` to see how many records
 python -m pcdet.datasets.waymo.waymo_dataset --func create_waymo_infos \
     --cfg_file tools/cfgs/dataset_configs/waymo_dataset.yaml
 ```
-
-Note that you do not need to install `waymo-open-dataset` if you have already processed the data before and do not need to evaluate with official Waymo Metrics. 
+In SEE-MTDA, we use a subset of the Waymo where we selected the 100th frame from each sequence, leading to 1000 frames. We modified the waymo_processed_data and infos accordingly. Note that you do not need to install `waymo-open-dataset` if you have already processed the data before and do not need to evaluate with official Waymo Metrics. 

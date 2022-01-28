@@ -1,4 +1,4 @@
-DATA_PATH: '/meshcloud/data/waymo/custom_1000'
+DATA_PATH: '/SEE-MTDA/data/waymo/custom_1000'
 
 DATASET: 
     NAME: 'waymo'
