@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Edit these paths. The volume mounting below assumes your datasets are e.g. data/Baraja, data/KITTI etc.
-DATA_PATH="/anonymoustofu/data"
-CODE_PATH="/anonymoustofu/SEE-MTDA"
+DATA_PATH="/media/darren/Samsung_T5"
+CODE_PATH="/home/darren/Nextcloud/professional/code/projects/SEE-MTDA"
 
 # -i options are "see" and "detector". 
 while getopts ":i:g:" flag

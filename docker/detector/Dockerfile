@@ -1,5 +1,7 @@
-# TODO: modify anonymoustofu base image
-FROM anonymoustofu/spconv:scrin-dev-ubuntu20.04
+# Base image is from scrin/dev-spconv:latest but one of the apt packages are discontinued
+# I entered the container, deleted the line with the pkg from /etc/apt/sources.list 
+# and saved it as the following below
+FROM darrenjkt/spconv:scrin-dev-ubuntu20.04
 
 # Install SEE-MTDA/detector
 WORKDIR /
