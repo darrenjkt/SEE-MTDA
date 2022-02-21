@@ -1,9 +1,9 @@
 # TODO: modify anonymoustofu base image
-FROM anonymoustofu/spconv:scrin-dev-ubuntu20.04
+FROM darrenjkt/spconv:scrin-dev-ubuntu20.04
 
 # Install SEE-MTDA/detector
 WORKDIR /
-RUN git clone https://github.com/anonymoustofu/SEE-MTDA.git
+RUN git clone https://github.com/darrenjkt/SEE-MTDA.git
 WORKDIR /SEE-MTDA/detector
 RUN pip install -r requirements.txt 
 RUN python setup.py develop
