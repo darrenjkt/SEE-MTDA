@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Edit these paths. The volume mounting below assumes your datasets are e.g. data/Baraja, data/KITTI etc.
-DATA_PATH="/anonymoustofu/data"
-CODE_PATH="/anonymoustofu/SEE-MTDA"
+DATA_PATH="/myuser/data"
+CODE_PATH="/myuser/SEE-MTDA"
 
 # -i options are "see" and "detector". 
 while getopts ":i:g:" flag
@@ -56,7 +56,7 @@ VISUAL="        --env=DISPLAY
 xhost +local:docker
 
 echo "Running the docker image for see-mtda:${image} [GPUS: ${GPU_ID}]"
-docker_image="anonymoustofu/see-mtda:${image}-v1.0"
+docker_image="darrenjkt/see-mtda:${image}-v1.0"
 
 docker  run -d -it --rm \
 $VOLUMES \
