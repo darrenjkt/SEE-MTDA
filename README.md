@@ -11,7 +11,7 @@ This project builds upon the progress of other outstanding codebases in the comp
 - Our detector code is based on [OpenPCDet v0.3.0](https://github.com/open-mmlab/OpenPCDet/tree/v0.3.0) with DA configurations adopted from [ST3D](https://github.com/CVMI-Lab/ST3D). 
 
 ## Model Zoo
-Please place all downloaded models into the `model_zoo` folder. See the model zoo [readme](https://github.com/darrenjkt/SEE-MTDA/blob/readme-edits/model_zoo/README.md) for more details. All models were trained with a single 2080Ti for approximately 30-40hrs with our nuScenes and Waymo subsets. 
+Please place all downloaded models into the `model_zoo` folder. See the model zoo [readme](https://github.com/darrenjkt/SEE-MTDA/blob/main/model_zoo/README.md) for more details. All models were trained with a single 2080Ti for approximately 30-40hrs with our nuScenes and Waymo subsets. 
 
 ### Instance Segmentation Models
 Pre-trained instance segmentation models can be obtained from the model zoo of [mmdetection](https://github.com/open-mmlab/mmdetection). Our paper uses 
@@ -89,5 +89,5 @@ python test.py --cfg_file /SEE-MTDA/detector/output/source-waymo/secondiou/see/s
 --ckpt /SEE-MTDA/model_zoo/waymo_secondiou_see_6552.pth \
 --batch_size 1
 ```
-The location of further testing configuration files for the different tasks can be found [here](https://github.com/anonymoustofu/SEE-MTDA/blob/main/docs/TESTING_CONFIGURATIONS.md). These should give similar results as our paper. Please modify the cfg file path and ckpt model in the command above accordingly. 
+The location of further testing configuration files for the different tasks can be found [here](https://github.com/darrenjkt/SEE-MTDA/blob/main/docs/TESTING_CONFIGURATIONS.md). These should give similar results as our paper. Please modify the cfg file path and ckpt model in the command above accordingly. 
 
