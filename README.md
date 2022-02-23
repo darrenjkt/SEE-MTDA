@@ -57,7 +57,7 @@ bash docker/run.sh -i see -g 0
 # Enter docker container. Use `docker ps` to find the name of the newly created container from the above command.
 docker exec -it ${CONTAINER_NAME} /bin/bash
 ```
-**a) Instance Segmentation**: Get instance masks for all images. If you are using the baraja dataset, we've provided the masks in the download link. Feel free to skip this part. We also provide a script for generating KITTI masks. 
+**a) Instance Segmentation**: Get instance masks for all images using the HTC model ([link](https://download.openmmlab.com/mmdetection/v2.0/htc/htc_x101_64x4d_fpn_dconv_c3-c5_mstrain_400_1400_16x1_20e_coco/htc_x101_64x4d_fpn_dconv_c3-c5_mstrain_400_1400_16x1_20e_coco_20200312-946fd751.pth)). If you are using the baraja dataset, we've provided the masks in the download link. Feel free to skip this part. We also provide a script for generating KITTI masks. 
 ```
 bash see/scripts/prepare_baraja_masks.sh
 ```
