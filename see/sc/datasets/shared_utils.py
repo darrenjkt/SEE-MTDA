@@ -6,7 +6,31 @@ import numpy as np
 import matplotlib.pyplot as plt
 from shapely import geometry
 
-def get_pts_in_mask(dataset, instances, imgfov_pts_2d, imgfov_pc_lidar, imgfov_pc_cam, shrink_percentage=0):
+def populate_gtboxes(sample_infos, dataset_name, classes, add_ground_lift=False):
+    if dataset_name == 'nuscenes':
+        zip_infos = zip(sample_infos['gt_boxes'], sample_infos['gt_names'], sample_infos['num_lidar_pts'])
+    elif dataset_name in ['kitti', 'waymo','baraja']:
+        anno = sample_infos['annos']
+        annos_name = [name for name in anno['name']]
+        zip_infos = zip(anno['gt_boxes_lidar'], annos_name, anno['num_points_in_gt'])
+    else: 
+        print(f"{dataset_name} is an unsupported dataset")
+        return None
+
+    pcd_gtboxes = {}        
+    pcd_gtboxes['gt_boxes'], pcd_gtboxes['num_lidar_pts'], pcd_gtboxes['xyzlwhry_gt_boxes'] = [], [], []
+    for idx, gt_anno in enumerate(zip_infos):
+        bbox_corners, num_pts, xyzlwhry_bbox = get_o3dbox(gt_anno, classes=classes) 
+        if bbox_corners != None:
+            if add_ground_lift:
+                bbox_corners.center = bbox_corners.center + [0,0,0.2] # Add 20cm to box centroid z-axis to get rid of the ground plane
+            pcd_gtboxes['gt_boxes'].append(bbox_corners)
+            pcd_gtboxes['num_lidar_pts'].append(num_pts)
+            pcd_gtboxes['xyzlwhry_gt_boxes'].append(xyzlwhry_bbox)
+
+    return pcd_gtboxes   
+
+def get_pts_in_mask(dataset, instances, imgfov, shrink_percentage=0, use_bbox=False, labelled_pcd=False):
     """
     Return the points that are in each instance mask with category id.
     
@@ -15,26 +39,51 @@ def get_pts_in_mask(dataset, instances, imgfov_pts_2d, imgfov_pc_lidar, imgfov_p
     :imgfov_pts_2d: List of (u,v) pixel coordinates that are in the image fov
     :imgfov_pc_lidar: List of (x,y,z) coordinates in lidar frame within image fov
     :imgfov_pc_cam: List of (x,y,z) coordinates in camera frame within image fov. For KITTI this is the rectified frame.
-    
-    TODO: I'm not a fan of requiring the COCO object to be passed in. I only need it for converting from seg polygon to mask for now
+    :use_bbox: Get points in bbox instead of in mask
+
+    TODO: Not a fan of requiring the COCO object to be passed in. I only need it for converting from seg polygon to mask for now
     """
-    list_instance_pts_uv, list_instance_pc_cam_xyz, list_instance_pc_lidar_xyzls = [], [], []
+    imgfov_pts_2d, imgfov_pc_lidar, imgfov_pc_cam = imgfov['pts_img'], imgfov['pc_lidar'], imgfov['pc_cam']
+    list_instance_pts_uv, list_instance_pc_cam_xyz, list_instance_pc_lidar_xyzls, list_labelled_pcd = [], [], [], []
+
+    if labelled_pcd:
+        imgfov_labelled_pc = imgfov['pc_labelled']
+        
     for instance_orig in instances:
         try:
             instance = instance_orig.copy()
             if shrink_percentage != 0:
                 instance['segmentation'] = shrink_instance_masks(instance['segmentation'], shrink_percentage=shrink_percentage)
-            mask = dataset.annToMask(instance)
+            
+            seg_mask = dataset.annToMask(instance)
+            if use_bbox:
+                bbox = np.array(instance['bbox'])
+                bbox[2:4] = bbox[0:2] + bbox[2:4]
+                boxmask = np.zeros(seg_mask.shape, dtype=np.uint8)
+                boxmask[int(bbox[1]):int(bbox[3]), int(bbox[0]):int(bbox[2])] = True
+                mask = boxmask
+            else:
+                mask = seg_mask                
+
         except Exception as e:
             # Some instances don't have a mask
             print(f'Frame: {instance["image_id"]} - Instance: {instance["id"]} Error')
             print(f'Exception: {e}')
             continue
 
-        mask_idx = np.array(mask[imgfov_pts_2d[:,1],imgfov_pts_2d[:,0]], dtype=np.bool)
         
+
+        # imgfov_pts_2d is an array of pixels u,v shape (N,2) 
+        # This line queries the u,v value in the mask array of shape (imgH,imgW) and return the value 0 or 1 at the queried u,v index
+        # This will return an array of (N,2) with 0,1 depending on the value in the mask
+        mask_idx = np.array(mask[imgfov_pts_2d[:,1],imgfov_pts_2d[:,0]], dtype=np.bool)
+
         instance_pts_uv = imgfov_pts_2d[mask_idx,:]
         instance_pc_lidar = imgfov_pc_lidar[mask_idx,:]
+
+        if labelled_pcd:
+            instance_labelled_pcd = imgfov_labelled_pc[mask_idx,:]
+            list_labelled_pcd.append(instance_labelled_pcd)
         
         if imgfov_pc_cam is not None:
             instance_pc_cam = imgfov_pc_cam[mask_idx,:] 
@@ -52,7 +101,8 @@ def get_pts_in_mask(dataset, instances, imgfov_pts_2d, imgfov_pc_lidar, imgfov_p
     
     instance_pts = {"img_uv": list_instance_pts_uv,
                     "cam_xyz":list_instance_pc_cam_xyz,
-                    "lidar_xyzls": list_instance_pc_lidar_xyzls }
+                    "lidar_xyzls": list_instance_pc_lidar_xyzls,
+                    "labelled_pcd": list_labelled_pcd }
     return instance_pts
 
 def draw_lidar_on_image(projected_points, img, instances=None, 

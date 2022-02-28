@@ -112,9 +112,37 @@ class KittiObjects:
 
         return np.array(img)
 
-    def get_pointcloud(self, idx):        
+    def get_pointcloud(self, idx, append_labels=False, add_ground_lift=False):        
         lidar_file = self.root_dir / 'training' / f'velodyne/{idx:06}.bin'
-        return np.fromfile(lidar_file, dtype=np.float32).reshape((-1,4))[:,:3]
+        xyz_pts = np.fromfile(lidar_file, dtype=np.float32).reshape((-1,4))[:,:3]
+
+        if append_labels:
+            # Get labels
+            sample_infos = self.get_infos(idx)
+            pcd_gtboxes = shared_utils.populate_gtboxes(sample_infos, "kitti", self.classes, add_ground_lift=add_ground_lift)
+
+            ## (X,Y,Z,OBJ_ID,CLASS)
+            # Obj ID is [0,N] for objs, and -1 for stuff
+            # Class is 1 for car, 0 for others
+            o3dpcd = shared_utils.convert_to_o3dpcd(xyz_pts)
+            obj_pcds = [o3dpcd.crop(gtbox) for gtbox in pcd_gtboxes['gt_boxes']]
+            obj_pts = np.concatenate([np.asarray(obj.points) for obj in obj_pcds])
+            dists = [o3dpcd.compute_point_cloud_distance(obj) for obj in obj_pcds]
+            cropped_inds = np.concatenate([np.where(np.asarray(d) < 0.01)[0] for d in dists])
+            pcd_without_objects = np.asarray(o3dpcd.select_by_index(cropped_inds, invert=True).points)
+
+            
+            obj_np = [np.array(obj.points) for obj in obj_pcds]
+            obj_np_ids = np.vstack([np.hstack([obj, np.ones((len(obj),1))*(o_id+1)]) for o_id, obj in enumerate(obj_np)])
+            obj_np_ids_carlabel = np.hstack([obj_np_ids, np.ones((len(obj_np_ids), 1))])
+            pcd_without_objects_id = np.hstack([pcd_without_objects, -1*np.ones((len(pcd_without_objects), 1))])
+            pcd_without_objects_label = np.hstack([pcd_without_objects_id, np.zeros((len(pcd_without_objects), 1))])
+            labelled_pcd = np.vstack([obj_np_ids_carlabel, pcd_without_objects_label])
+
+            return labelled_pcd
+        else:
+            return xyz_pts
+
 
     def get_calibration(self, idx):
         calib_file = self.root_dir / 'training' / f'calib/{idx:06}.txt'
@@ -149,9 +177,12 @@ class KittiObjects:
         return imgfov
         
 
-    def get_mask_instance_clouds(self, idx, min_dist=1.0, shrink_percentage=None):
+    def get_mask_instance_clouds(self, idx, append_labels=False, min_dist=1.0, shrink_percentage=None, use_bbox=False):
         """
         Returns the individual clouds for each mask instance. 
+
+        :append_labels: Returns a instance pointcloud with track ids and class labels for each car
+        :use_bbox: Instead of getting points within the mask, it'll get points within the bbox
         
         Return: list of (N,4) np arrays (XYZL), each corresponding to one object instance (XYZ points) with a label (L)
         """
@@ -164,7 +195,7 @@ class KittiObjects:
         i_clouds = []
         for camera_channel in self.camera_channels:
             
-            pc_velo = self.get_pointcloud(idx)
+            pc_velo = self.get_pointcloud(idx, append_labels=append_labels)
 
             # We only limit the point cloud range when getting instance points. 
             # Once we got the instances, we concat it with the whole range pcd
@@ -175,15 +206,21 @@ class KittiObjects:
 
             # Project to image
             imgfov = self.map_pointcloud_to_image(pc_velo[:,:3], calib, img, min_dist=min_dist)        
+            if append_labels:
+                imgfov['pc_labelled'] = pc_velo[imgfov['fov_inds'],:]
+
             instances = self.get_camera_instances(idx, channel=camera_channel)
             instance_pts = shared_utils.get_pts_in_mask(self.masks[camera_channel], 
                                                         instances, 
-                                                        imgfov['pts_img'], 
-                                                        imgfov['pc_lidar'], 
-                                                        imgfov['pc_cam'],
-                                                        shrink_percentage=shrink_percentage)
+                                                        imgfov,
+                                                        shrink_percentage=shrink_percentage, 
+                                                        use_bbox=use_bbox,
+                                                        labelled_pcd=append_labels)
 
-            filtered_icloud = [x for x in instance_pts['lidar_xyzls'] if len(x) != 0]
+            if append_labels:
+                filtered_icloud = [x for x in instance_pts['labelled_pcd'] if len(x) != 0]    
+            else:
+                filtered_icloud = [x for x in instance_pts['lidar_xyzls'] if len(x) != 0]
             i_clouds.extend(filtered_icloud)
         
         return i_clouds   

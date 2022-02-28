@@ -2,7 +2,7 @@ import open3d as o3d
 import numpy as np
 import time
 import os
-from sc.datasets.shared_utils import convert_to_o3dpcd, get_o3dbox
+from sc.datasets.shared_utils import convert_to_o3dpcd, get_o3dbox, populate_gtboxes
 import pprint
 from pathlib import Path
 import glob
@@ -77,28 +77,7 @@ class Mesher:
         """
         sample_infos = self.data_obj.get_infos(idx)
         o3dpcd = convert_to_o3dpcd(self.data_obj.get_pointcloud(idx))            
-        
-        if self.data_obj.dataset_name == 'nuscenes':
-            zip_infos = zip(sample_infos['gt_boxes'], sample_infos['gt_names'], sample_infos['num_lidar_pts'])
-        elif self.data_obj.dataset_name in ['kitti', 'waymo','baraja']:
-            anno = sample_infos['annos']
-            annos_name = [name for name in anno['name']]
-            zip_infos = zip(anno['gt_boxes_lidar'], annos_name, anno['num_points_in_gt'])
-        else: 
-            print(f"{self.data_obj.dataset_name} is an unsupported dataset")
-            return None
-            
-        pcd_gtboxes = {}        
-        pcd_gtboxes['gt_boxes'], pcd_gtboxes['num_lidar_pts'], pcd_gtboxes['xyzlwhry_gt_boxes'] = [], [], []
-        for gt_anno in zip_infos:
-            bbox_corners, num_pts, xyzlwhry_bbox = get_o3dbox(gt_anno, classes=self.classes) 
-            if bbox_corners != None:
-                if add_ground_lift:
-                    bbox_corners.center = bbox_corners.center + [0,0,0.2] # Add 20cm to box centroid z-axis to get rid of the ground plane
-                pcd_gtboxes['gt_boxes'].append(bbox_corners)
-                pcd_gtboxes['num_lidar_pts'].append(num_pts)
-                pcd_gtboxes['xyzlwhry_gt_boxes'].append(xyzlwhry_bbox)
-
+        pcd_gtboxes = populate_gtboxes(sample_infos, self.data_obj.dataset_name, self.classes, add_ground_lift=add_ground_lift)        
         pcd_gtboxes['pcd'] = o3dpcd            
 
         return pcd_gtboxes

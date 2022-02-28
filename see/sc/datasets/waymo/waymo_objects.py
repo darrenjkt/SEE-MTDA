@@ -164,6 +164,7 @@ class WaymoObjects:
         
         imgfov = {"pc_lidar": np.asarray(pc_lidar),
                   "pts_img": np.floor(projected_points_all_from_raw_data).astype(int),
+                  "pc_cam": None,
                   "fov_inds": mask}
         return imgfov
     
@@ -171,7 +172,7 @@ class WaymoObjects:
         image = self.get_image_from_frame(frame, channel=camera_channel)
         imgfov = self.map_pointcloud_to_image(frame, camera_channel=camera_channel)
         instances = self.get_camera_instances_from_frame(frame, camera_channel)
-        instance_pts = shared_utils.get_pts_in_mask(self.masks[camera_channel], instances, imgfov['pts_img'], imgfov['pc_lidar'], None)
+        instance_pts = shared_utils.get_pts_in_mask(self.masks[camera_channel], instances, imgfov)
         filtered_icloud = [x for x in instance_pts['lidar_xyzls'] if len(x) != 0]
         return filtered_icloud
     
