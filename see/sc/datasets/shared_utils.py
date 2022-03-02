@@ -108,7 +108,7 @@ def get_pts_in_mask(dataset, instances, imgfov, shrink_percentage=0, use_bbox=Fa
 def draw_lidar_on_image(projected_points, img, instances=None, 
                         clip_distance=1.0, point_size=5, alpha=0.8, 
                         color_scheme='jet', map_range=25.0,
-                        shrink_percentage=0):
+                        shrink_percentage=0, display=True):
     ''' 
     Function that takes in the transformed points and draws it on the image.
     This function is called by all the "show_" functions.    
@@ -126,17 +126,23 @@ def draw_lidar_on_image(projected_points, img, instances=None,
                     for seg in segs]
             for seg in segs: 
                 cv2.drawContours(img, seg, -1, (0,255,0), 2)
-    
+            bbox = np.array(instance['bbox'], dtype=np.uint64)
+            bbox[2:4] = bbox[0:2] + bbox[2:4]
+            cv2.rectangle(img, (bbox[0], bbox[1]), (bbox[2], bbox[3]), (255,0,0), 2)
+            
     xs, ys, colors = [], [], []
     for point in projected_points:
         xs.append(point[0])  # width, col
         ys.append(point[1])  # height, row
         colors.append(rgba(point[2], alpha=alpha, color_scheme=color_scheme, map_range=map_range))
-
-    plt.figure(figsize=(15,10))
-    plt.imshow(img)
-    plt.scatter(xs, ys, c=colors, s=point_size, edgecolors="none", alpha=alpha)   
-    plt.show() 
+    
+    if display:
+        plt.figure(figsize=(15,10))
+        plt.imshow(img)
+        plt.scatter(xs, ys, c=colors, s=point_size, edgecolors="none", alpha=alpha)   
+        plt.show() 
+        
+    return img
     
 
 def visualise_instance_clouds(instance_clouds, original_cloud=None):
