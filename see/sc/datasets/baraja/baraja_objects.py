@@ -142,7 +142,7 @@ class BarajaObjects:
         return imgfov
         
 
-    def get_mask_instance_clouds(self, idx, min_dist=1.0, shrink_percentage=None):
+    def get_mask_instance_clouds(self, idx, use_bbox=False, min_dist=1.0, shrink_percentage=None):
         """
         Returns the individual clouds for each mask instance. 
         
@@ -168,10 +168,10 @@ class BarajaObjects:
             instances = self.get_camera_instances(idx, channel=camera_channel)
             instance_pts = shared_utils.get_pts_in_mask(self.masks[camera_channel], 
                                                         instances, 
-                                                        imgfov['pts_img'], 
-                                                        imgfov['pc_lidar'], 
-                                                        imgfov['pc_cam'],
-                                                        shrink_percentage=shrink_percentage)
+                                                        imgfov,
+                                                        shrink_percentage=shrink_percentage,
+                                                        use_bbox=use_bbox,
+                                                        labelled_pcd=False)
 
             filtered_icloud = [x for x in instance_pts['lidar_xyzls'] if len(x) != 0]
             i_clouds.extend(filtered_icloud)

@@ -42,6 +42,8 @@ VOLUMES="       --volume=$DATA_PATH/kitti/3d_object_detection:/SEE-MTDA/data/kit
                 --volume=$DATA_PATH/nuscenes:/SEE-MTDA/data/nuscenes
                 --volume=$DATA_PATH/waymo:/SEE-MTDA/data/waymo
                 --volume=$DATA_PATH/baraja:/SEE-MTDA/data/baraja
+                --volume=$DATA_PATH/shapenet:/SEE-MTDA/data/shapenet
+                --volume=$DATA_PATH/agora:/SEE-MTDA/data/agora
                 --volume=$CODE_PATH/see:/SEE-MTDA/see
                 --volume=$CODE_PATH/detector/tools:/SEE-MTDA/detector/tools
                 --volume=$CODE_PATH/detector/output:/SEE-MTDA/detector/output

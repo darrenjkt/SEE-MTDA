@@ -212,7 +212,15 @@ class NuscenesObjects:
     
     def get_camera_instances(self, idx, channel):
         sample_record = self.sample_records[idx]
-        ann_ids = self.masks[channel].getAnnIds(imgIds=[sample_record['data'][channel]], catIds=[class2idx[c] for c in self.classes])
+
+        # v1.0-mini mask format
+        # imgfile = self.nusc.get('sample_data', sample_record['data'][channel])['filename']
+        # image_id = os.path.basename(imgfile).split('.')[0]
+        
+        # t4025 custom mask format
+        image_id = sample_record['data'][channel] 
+        
+        ann_ids = self.masks[channel].getAnnIds(imgIds=[image_id], catIds=[class2idx[c] for c in self.classes])
         instances = self.masks[channel].loadAnns(ann_ids)
         instances = sorted(instances, key=lambda x: x['area'], reverse=True)
         return instances
@@ -276,17 +284,24 @@ class NuscenesObjects:
                   "fov_inds": fov_inds }
         return imgfov
     
-    def get_mask_instance_clouds(self, idx, min_dist=1.0):
+    def get_mask_instance_clouds(self, idx, camera_channels=None, min_dist=1.0, use_bbox=False):
         """
         Returns the pointclouds of the individual objects, bounded by the 
         segmentation mask
         """
-        start = time.time()
-        if type(self.camera_channels) is not list:
-            self.camera_channels = [self.camera_channels]
+        start = time.time()        
+        
+        if camera_channels is None:
+            camera_channels = self.camera_channels
+            print(f'Cameras not specified. Using self.camera_channels = {self.camera_channels}')
+
+        if type(camera_channels) is not list:
+            camera_channels = [camera_channels]
+        else:
+            print(f'Returning instances for all {len(camera_channels)} cameras')
 
         i_clouds = []
-        for camera_channel in self.camera_channels:
+        for camera_channel in camera_channels:
             tic = time.time()
             camera_token = self.get_camera_token_from_idx(idx, channel=camera_channel)
             lidar_token = self.get_lidar_token_from_idx(idx)
@@ -295,7 +310,10 @@ class NuscenesObjects:
             imgfov = self.map_pointcloud_to_image(idx, camera_channel, self.nsweeps, min_dist=min_dist)
 
             instances = self.get_camera_instances(idx, channel=camera_channel)
-            instance_pts = shared_utils.get_pts_in_mask(self.masks[camera_channel], instances, imgfov)
+            instance_pts = shared_utils.get_pts_in_mask(self.masks[camera_channel], 
+                                                        instances, 
+                                                        imgfov,
+                                                        use_bbox=use_bbox)
 
             filtered_icloud = [x for x in instance_pts['lidar_xyzls'] if len(x) != 0]
             i_clouds.extend(filtered_icloud)

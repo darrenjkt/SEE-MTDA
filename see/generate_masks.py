@@ -102,7 +102,7 @@ if __name__ == "__main__":
 
         # Read image and create image_infos
         img = mmcv.imread(imgname)
-        image_id = int(os.path.basename(imgname).split('.')[0])
+        image_id = os.path.basename(imgname).split('.')[0]
         image_info = create_image_info(image_id=image_id, 
                                        file_name=os.path.basename(imgname), 
                                        image_size=img.shape)
@@ -117,7 +117,8 @@ if __name__ == "__main__":
         for iidx, segm in enumerate(segm_json_result):
 
             category_info = {'id': segm["category_id"], 'is_crowd': 0}
-            instance_id = f'1{image_id:0{len(str(num_images))}}{iidx:0{len(str(num_predicted))}}'
+            # instance_id = f'1{image_id:0{len(str(num_images))}}{iidx:0{len(str(num_predicted))}}'
+            instance_id = f'1{image_id}{iidx}' # For nusc (maybe just enuemrating might work?)
 
             seg_mask = segm['segmentation']
             binary_mask_encoded = mask.encode(np.asfortranarray(seg_mask.astype(np.uint8)))
