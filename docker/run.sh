@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Edit these paths. The volume mounting below assumes your datasets are e.g. data/Baraja, data/KITTI etc.
-DATA_PATH="/mnt/big-data/darren/data"
-CODE_PATH="/mnt/big-data/darren/code/SEE-MTDA"
+DATA_PATH="/media/darren/dcsky/datasets"
+CODE_PATH="/home/darren/Nextcloud/professional/code/projects/SEE-MTDA"
 
 # -i options are "see" and "detector". 
 while getopts ":i:g:" flag
@@ -41,9 +41,6 @@ ENVS="  --env=NVIDIA_VISIBLE_DEVICES=$GPU_ID
 VOLUMES="       --volume=$DATA_PATH/kitti/3d_object_detection:/SEE-MTDA/data/kitti
                 --volume=$DATA_PATH/nuscenes:/SEE-MTDA/data/nuscenes
                 --volume=$DATA_PATH/waymo:/SEE-MTDA/data/waymo
-                --volume=$DATA_PATH/baraja:/SEE-MTDA/data/baraja
-                --volume=$DATA_PATH/shapenet:/SEE-MTDA/data/shapenet
-                --volume=$DATA_PATH/agora:/SEE-MTDA/data/agora
                 --volume=$CODE_PATH/see:/SEE-MTDA/see
                 --volume=$CODE_PATH/detector/tools:/SEE-MTDA/detector/tools
                 --volume=$CODE_PATH/detector/output:/SEE-MTDA/detector/output
