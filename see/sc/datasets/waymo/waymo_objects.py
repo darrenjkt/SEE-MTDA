@@ -27,18 +27,13 @@ idx2lidar = {v+1:k for v, k in enumerate(LIDAR_CHANNELS)}
 idx2camera = {v+1:k for v, k in enumerate(CAMERA_CHANNELS)}
 
 class WaymoObjects:
-    # Note: TFRecords is a streaming reader and has no random access.
-    # I.e. we can't index it but rather are forced to iterate through it
-    # If GT-MESH, we'll use the processed_waymo_data npy pointcloud files
-    # If DET-MESH, we'll iterate once through the tfrecords, save all images
-    # then use the saved images with npy point cloud to get masks
-    
+
     def __init__(self, root_dir, dataset_cfg, extra_tag):
         
         self.root_dir = Path(root_dir)
         self.dataset_cfg = dataset_cfg        
         self.extra_tag = extra_tag       
-        self.mask_dir = self.root_dir / 'masks' / dataset_cfg.DET2D_MODEL if dataset_cfg.DET2D_MASK else None
+        self.mask_dir = self.root_dir / 'image_lidar_projections' / 'masks' / dataset_cfg.DET2D_MODEL if dataset_cfg.DET2D_MASK else None
         self.camera_channels = dataset_cfg.CAMERA_CHANNELS if dataset_cfg.DET2D_MASK else []
         self.masks = self.__load_masks() if dataset_cfg.DET2D_MASK else None
         self.idx2tokens = self.__load_tokens()
@@ -116,77 +111,70 @@ class WaymoObjects:
         points_all = points_all[NLZ_flag == -1]
         points_all[:, 3] = np.tanh(points_all[:,3])
         return points_all[:,:3]
-
-    def get_record_and_frame(self, idx, channel):
-        # This is not ideal; TFRecord takes a long time to iterate through
-        # We should not need to index the TFRecord for the processing. This 
-        # is more for testing purposes
-        record_frame_num = self.idx2tokens[channel][idx].split('+')
-        record_fname = self.root_dir / f'segment-{record_frame_num[0]}_with_camera_labels.tfrecord'
-        
-        try:
-            record = tf.data.TFRecordDataset(str(record_fname), compression_type='')
-        except Exception as e:
-            print(e)
-            return None
-        
-        # This iteration takes a long time
-        for f_idx, data in enumerate(record):
-            if f_idx == idx:     
-                frame = open_dataset.Frame()
-                frame.ParseFromString(bytearray(data.numpy()))
-                return record, frame        
-        return None
     
-    def map_pointcloud_to_image(self, frame, camera_channel):
-        """
-        Project lidar to image frame and keep only those in image FOV. 
-        This was taken from Waymo tutorial directly
-        """
-        points, cp_points = self.get_pointcloud_from_frame(frame)
-        camera_idx = CAMERA_CHANNELS.index(camera_channel)
-        image_record = frame.images[camera_idx]
-        cp_points_all_concat = np.concatenate([cp_points, points], axis=-1)
-        cp_points_all_concat_tensor = tf.constant(cp_points_all_concat)
+    def get_image(self, idx, camera_channel, brightness=1):
+        infos = self.get_infos(idx)
+        sequence_name = infos['point_cloud']['lidar_sequence']
+        sample_idx = infos['point_cloud']['sample_idx']
 
-        # The distance between lidar points and vehicle frame origin.
-        points_all_tensor = tf.norm(points, axis=-1, keepdims=True)
-        cp_points_all_tensor = tf.constant(cp_points, dtype=tf.int32)
+        img_path = self.root_dir / 'image_lidar_projections' / 'image' / camera_channel / f'{sequence_name}_{sample_idx:04}.png'
+        img = Image.open(img_path).convert("RGB")
 
-        mask = tf.equal(cp_points_all_tensor[..., 0], image_record.name)
+        # change brightness if desired. 1 is to keep as original
+        if brightness != 1:
+            enhancer = ImageEnhance.Brightness(img)
+            img = enhancer.enhance(brightness)
 
-        cp_points_all_tensor = tf.cast(tf.gather_nd(
-            cp_points_all_tensor, tf.where(mask)), dtype=tf.float32)
-        points_all_tensor = tf.gather_nd(points_all_tensor, tf.where(mask))
-        pc_lidar = tf.cast(tf.gather_nd(points, tf.where(mask)), dtype=tf.float32)
-        projected_points_all_from_raw_data = tf.concat(
-            [cp_points_all_tensor[..., 1:3], points_all_tensor], axis=-1).numpy()
-        
-        imgfov = {"pc_lidar": np.asarray(pc_lidar),
-                  "pts_img": np.floor(projected_points_all_from_raw_data).astype(int),
+        return np.array(img)
+
+    def map_pointcloud_to_image(self, idx, camera_channel):
+        infos = self.get_infos(idx)
+        sequence_name = infos['point_cloud']['lidar_sequence']
+        sample_idx = infos['point_cloud']['sample_idx']
+
+        imgpc_path = self.root_dir / 'image_lidar_projections' / 'image_pc' / camera_channel / f'{sequence_name}_{sample_idx:04}.npy'
+        pts_img = np.load(imgpc_path)
+        pc_lidar = self.get_pointcloud(idx)
+
+        imgfov = {"pc_lidar": pc_lidar,
+                  "pts_img": pts_img,
                   "pc_cam": None,
-                  "fov_inds": mask}
+                  "fov_inds": None}
         return imgfov
     
-    def get_mask_instance_clouds(self, frame, camera_channel):
-        image = self.get_image_from_frame(frame, channel=camera_channel)
-        imgfov = self.map_pointcloud_to_image(frame, camera_channel=camera_channel)
-        instances = self.get_camera_instances_from_frame(frame, camera_channel)
-        instance_pts = shared_utils.get_pts_in_mask(self.masks[camera_channel], instances, imgfov)
+    def get_camera_instances(self, idx, camera_channel):
+        infos = self.get_infos(idx)
+        sequence_name = infos['point_cloud']['lidar_sequence']
+        sample_idx = infos['point_cloud']['sample_idx']
+        image_id = f'{sequence_name}_{sample_idx:04}'
+
+        ann_ids = self.masks[camera_channel].getAnnIds(imgIds=[image_id])
+        instances = self.masks[camera_channel].loadAnns(ann_ids)
+        instances = sorted(instances, key=lambda x: x['area'], reverse=True)
+        return instances
+
+    def get_mask_instance_clouds(self, idx, camera_channel, use_bbox=True):
+        image = self.get_image(idx, camera_channel=camera_channel)
+        imgfov = self.map_pointcloud_to_image(idx, camera_channel=camera_channel)
+        instances = self.get_camera_instances(idx, camera_channel)
+        instance_pts = shared_utils.get_pts_in_mask(self.masks[camera_channel], 
+                                                    instances, 
+                                                    imgfov, 
+                                                    use_bbox=use_bbox)
         filtered_icloud = [x for x in instance_pts['lidar_xyzls'] if len(x) != 0]
         return filtered_icloud
     
-    def render_pointcloud_in_image(self, frame, camera_channel, mask=False, min_dist=1.0, point_size=5, brightness=1):
+    def render_pointcloud_in_image(self, idx, camera_channel, mask=False, use_bbox=False, min_dist=1.0, point_size=5, brightness=1):
         
-        image = self.get_image_from_frame(frame, channel=camera_channel)
-        imgfov = self.map_pointcloud_to_image(frame, camera_channel=camera_channel)
+        image = self.get_image(idx, camera_channel=camera_channel)
+        imgfov = self.map_pointcloud_to_image(idx, camera_channel=camera_channel)
 
         if mask == True:
-            instances = self.get_camera_instances_from_frame(frame, camera_channel)
+            instances = self.get_camera_instances(idx, camera_channel)
             instance_pts = shared_utils.get_pts_in_mask(self.masks[camera_channel], 
                                                         instances, 
                                                         imgfov,
-                                                        None)
+                                                        use_bbox=use_bbox)
             try:
                 # For waymo we already concatenated the depth
                 all_instance_uvd = np.vstack(instance_pts['img_uv'])
@@ -198,32 +186,3 @@ class WaymoObjects:
             shared_utils.draw_lidar_on_image(imgfov['pts_img'], image, instances=None, clip_distance=min_dist, point_size=point_size)
     
 
-    def get_camera_instances_from_frame(self, frame, channel):
-        image_token = f'{frame.context.name}+{channel}+{frame.timestamp_micros}'
-        ann_ids = self.masks[channel].getAnnIds(imgIds=[image_token])
-        instances = self.masks[channel].loadAnns(ann_ids)
-        instances = sorted(instances, key=lambda x: x['area'], reverse=True)
-        return instances
-    
-    def get_image_from_frame(self, frame, channel, brightness=1):
-        camera_images = {idx2camera[v.name]:v for k,v in enumerate(frame.images)}
-        image = np.asarray(tf.image.decode_jpeg(camera_images[channel].image, dct_method="INTEGER_ACCURATE"))
-        
-        if brightness != 1:
-            pil_image = Image.fromarray(np.uint8(image))
-            enhancer = ImageEnhance.Brightness(pil_image)
-            pil_image = enhancer.enhance(brightness)
-            return np.array(pil_image)
-        else:
-            return image
-        
-    def get_pointcloud_from_frame(self, frame):
-        # Pointclouds are stored as range images so we need to convert
-        (range_images, camera_projections,
-         range_image_top_pose) = frame_utils.parse_range_image_and_camera_projection(frame)
-        points, cp_points = frame_utils.convert_range_image_to_point_cloud( frame,
-                                                                            range_images,
-                                                                            camera_projections,
-                                                                            range_image_top_pose)
-        # Join all lidars into one point cloud
-        return np.concatenate(points, axis=0), np.concatenate(cp_points, axis=0)

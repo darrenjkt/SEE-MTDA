@@ -94,7 +94,8 @@ if __name__ == "__main__":
     img_list = sorted(glob.glob(args.data_dir + "/*"))
     print(f'Found {len(img_list)} images in {args.data_dir}')
     model = init_detector(args.config, args.checkpoint, device='cuda:0')
-    
+    instance_id = 0
+
     for idx, imgname in enumerate(img_list):        
         tic = time.time()
         num_images = len(img_list)        
@@ -117,9 +118,10 @@ if __name__ == "__main__":
         for iidx, segm in enumerate(segm_json_result):
 
             category_info = {'id': segm["category_id"], 'is_crowd': 0}
-            # instance_id = f'1{image_id:0{len(str(num_images))}}{iidx:0{len(str(num_predicted))}}'
-            instance_id = f'1{image_id}{iidx}' # For nusc (maybe just enuemrating might work?)
-
+            # instance_id = f'1{image_id:0{len(str(num_images))}}{iidx:0{len(str(num_predicted))}}' # kit
+            # instance_id = f'1{image_id}{iidx}' # nusc
+            instance_id = instance_id + 1
+            
             seg_mask = segm['segmentation']
             binary_mask_encoded = mask.encode(np.asfortranarray(seg_mask.astype(np.uint8)))
             area = mask.area(binary_mask_encoded)        

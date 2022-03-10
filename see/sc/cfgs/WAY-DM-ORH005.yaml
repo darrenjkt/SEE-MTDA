@@ -5,7 +5,7 @@ DATASET:
     CLASSES: ['Vehicle']
     POINT_CLOUD_RANGE: [-70, -70, -2, 70, 70, 4]
     UPDATE_GT_DATABASE: False
-    DET2D_MASK: False
+    DET2D_MASK: True
     DET2D_MODEL: 'htc'
     CAMERA_CHANNELS: ['FRONT']
 
