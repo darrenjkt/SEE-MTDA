@@ -42,7 +42,7 @@ class WaymoObjects:
         self.camera_channels = dataset_cfg.CAMERA_CHANNELS if dataset_cfg.DET2D_MASK else []
         self.masks = self.__load_masks() if dataset_cfg.DET2D_MASK else None
         self.idx2tokens = self.__load_tokens()
-        self.record_files = glob.glob(str(self.root_dir) + "raw_data/*.tfrecord")
+        self.record_files = glob.glob(str(self.root_dir.parent / "raw_data/*.tfrecord"))
         self.infos = self.__load_infos()
         self.classes = dataset_cfg.CLASSES
         self.dataset_name = dataset_cfg.NAME
@@ -126,8 +126,8 @@ class WaymoObjects:
         
         try:
             record = tf.data.TFRecordDataset(str(record_fname), compression_type='')
-        except:
-            print('Unable to retrieve record, possibly due to lack of GPU memory')
+        except Exception as e:
+            print(e)
             return None
         
         # This iteration takes a long time
@@ -183,7 +183,10 @@ class WaymoObjects:
 
         if mask == True:
             instances = self.get_camera_instances_from_frame(frame, camera_channel)
-            instance_pts = shared_utils.get_pts_in_mask(self.masks[camera_channel], instances, imgfov['pts_img'], imgfov['pc_lidar'], None)
+            instance_pts = shared_utils.get_pts_in_mask(self.masks[camera_channel], 
+                                                        instances, 
+                                                        imgfov,
+                                                        None)
             try:
                 # For waymo we already concatenated the depth
                 all_instance_uvd = np.vstack(instance_pts['img_uv'])
