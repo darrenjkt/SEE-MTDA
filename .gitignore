@@ -2,3 +2,5 @@
 *.pth
 __pycache__
 model_zoo
+*.out
+
