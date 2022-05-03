@@ -11,7 +11,8 @@ This project builds upon the progress of other outstanding codebases in the comp
 - Our detector code is based on [OpenPCDet v0.3.0](https://github.com/open-mmlab/OpenPCDet/tree/v0.3.0) with DA configurations adopted from [ST3D](https://github.com/CVMI-Lab/ST3D). 
 
 In the figure below, source-Only denotes the approach where there is no domain adaptation. For the 2nd and 3rd columns, the same trained model is used for SEE. From below, we demonstrate that SEE-trained detectors give tighter bounding boxes and less false positives. 
-![qualitative_github](https://user-images.githubusercontent.com/39115809/166346049-41a73f56-6b05-41cf-8351-11dfa0bcd4ca.png)
+![qualitative_github](https://user-images.githubusercontent.com/39115809/166346896-8bc15c88-f142-4a32-9b59-0186289e602b.png)
+
 
 ## Model Zoo
 Please place all downloaded models into the `model_zoo` folder. See the model zoo [readme](https://github.com/darrenjkt/SEE-MTDA/blob/main/model_zoo/README.md) for more details. All models were trained with a single 2080Ti for approximately 30-40hrs with our nuScenes and Waymo subsets. 
