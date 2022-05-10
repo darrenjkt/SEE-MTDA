@@ -2,8 +2,7 @@ DATA_PATH: '/SEE-MTDA/data/nuscenes/v1.0-mini'
 
 DATASET: 
     NAME: 'nuscenes'
-    CLASSES: ['car']
-    POINT_CLOUD_RANGE: [-24, -24, -2, 24, 24, 4]
+    CLASSES: ['car']    
     LIDAR_NSWEEPS: 2
     CUSTOM: False
     DET2D_MASK: True
@@ -11,7 +10,7 @@ DATASET:
     CAMERA_CHANNELS: ['CAM_BACK','CAM_BACK_LEFT','CAM_BACK_RIGHT','CAM_FRONT','CAM_FRONT_LEFT','CAM_FRONT_RIGHT']
 
 MESHER: 
-    NAME: gt_mesh
+    NAME: det_mesh
     MIN_LIDAR_PTS_TO_MESH: 50    
     VRES: 1.25
 

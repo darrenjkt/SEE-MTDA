@@ -37,7 +37,7 @@ DATA_CONFIG_TAR:
     FOV_POINTS_ONLY: False
     CLASS_NAMES: ['Car']
     SHIFT_COOR: [0.0, 0.0, 1.6]
-    FILTER_MIN_POINTS_IN_GT: 50
+    FILTER_MIN_POINTS_IN_GT: 0
     INFO_PATH: {
         'train': [infos_meshed_KIT-DM-ORH005/kitti_infos_train.pkl],
         'test': [infos_meshed_KIT-DM-ORH005/kitti_infos_val.pkl],

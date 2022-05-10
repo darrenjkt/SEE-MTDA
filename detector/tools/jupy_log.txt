@@ -1,0 +1,546 @@
+[2022-04-28 02:54:29,968  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 02:54:30,249  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 03:05:31,843  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 03:05:32,119  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 03:08:07,409  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 03:08:07,752  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 03:11:09,135  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 03:11:09,514  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 03:49:23,678  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 03:49:23,678  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 03:49:23,968  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 03:49:23,968  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 03:51:01,217  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 03:51:01,217  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 03:51:01,217  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 03:51:01,460  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 03:51:01,460  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 03:51:01,460  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 03:59:35,804  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 03:59:35,804  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 03:59:35,804  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 03:59:35,804  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 03:59:38,162  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 03:59:38,162  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 03:59:38,162  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 03:59:38,162  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 05:44:08,837  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 05:44:09,135  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 06:50:24,735  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 06:50:25,035  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 06:51:17,265  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 06:51:17,485  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 06:51:45,970  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 06:51:46,181  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 06:51:48,838  detector3d_template.py 325  INFO]  ==> Loading parameters from checkpoint /SEE-MTDA/model_zoo/waymo_secondiou_see_6552.pth to GPU
+[2022-04-28 06:51:48,972  detector3d_template.py 331  INFO]  ==> Checkpoint trained from version: pcdet+0.3.0+7b3ad3a
+[2022-04-28 06:51:49,125  detector3d_template.py 350  INFO]  ==> Done (loaded 189/189)
+[2022-04-28 06:52:55,657  detector3d_template.py 325  INFO]  ==> Loading parameters from checkpoint /SEE-MTDA/model_zoo/waymo_secondiou_see_6552.pth to GPU
+[2022-04-28 06:52:55,768  detector3d_template.py 331  INFO]  ==> Checkpoint trained from version: pcdet+0.3.0+7b3ad3a
+[2022-04-28 06:52:55,929  detector3d_template.py 350  INFO]  ==> Done (loaded 189/189)
+[2022-04-28 07:00:19,556  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 07:00:19,556  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 07:00:19,789  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 07:00:19,789  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 07:00:25,125  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 07:00:25,125  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 07:00:25,351  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 07:00:25,351  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 07:00:25,482  detector3d_template.py 325  INFO]  ==> Loading parameters from checkpoint /SEE-MTDA/model_zoo/waymo_secondiou_see_6552.pth to GPU
+[2022-04-28 07:00:25,482  detector3d_template.py 325  INFO]  ==> Loading parameters from checkpoint /SEE-MTDA/model_zoo/waymo_secondiou_see_6552.pth to GPU
+[2022-04-28 07:00:25,590  detector3d_template.py 331  INFO]  ==> Checkpoint trained from version: pcdet+0.3.0+7b3ad3a
+[2022-04-28 07:00:25,590  detector3d_template.py 331  INFO]  ==> Checkpoint trained from version: pcdet+0.3.0+7b3ad3a
+[2022-04-28 07:00:25,762  detector3d_template.py 350  INFO]  ==> Done (loaded 189/189)
+[2022-04-28 07:00:25,762  detector3d_template.py 350  INFO]  ==> Done (loaded 189/189)
+[2022-04-28 07:05:41,772  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 07:05:41,772  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 07:05:41,772  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 07:05:42,033  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 07:05:42,033  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 07:05:42,033  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 07:05:55,988  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 07:05:55,988  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 07:05:55,988  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 07:05:56,302  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 07:05:56,302  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 07:05:56,302  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 07:05:57,123  detector3d_template.py 325  INFO]  ==> Loading parameters from checkpoint /SEE-MTDA/model_zoo/waymo_secondiou_see_6552.pth to GPU
+[2022-04-28 07:05:57,123  detector3d_template.py 325  INFO]  ==> Loading parameters from checkpoint /SEE-MTDA/model_zoo/waymo_secondiou_see_6552.pth to GPU
+[2022-04-28 07:05:57,123  detector3d_template.py 325  INFO]  ==> Loading parameters from checkpoint /SEE-MTDA/model_zoo/waymo_secondiou_see_6552.pth to GPU
+[2022-04-28 07:05:57,233  detector3d_template.py 331  INFO]  ==> Checkpoint trained from version: pcdet+0.3.0+7b3ad3a
+[2022-04-28 07:05:57,233  detector3d_template.py 331  INFO]  ==> Checkpoint trained from version: pcdet+0.3.0+7b3ad3a
+[2022-04-28 07:05:57,233  detector3d_template.py 331  INFO]  ==> Checkpoint trained from version: pcdet+0.3.0+7b3ad3a
+[2022-04-28 07:05:57,395  detector3d_template.py 350  INFO]  ==> Done (loaded 189/189)
+[2022-04-28 07:05:57,395  detector3d_template.py 350  INFO]  ==> Done (loaded 189/189)
+[2022-04-28 07:05:57,395  detector3d_template.py 350  INFO]  ==> Done (loaded 189/189)
+[2022-04-28 07:07:23,480  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 07:07:23,750  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 07:07:28,936  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 07:07:29,253  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 07:07:31,700  detector3d_template.py 325  INFO]  ==> Loading parameters from checkpoint /SEE-MTDA/model_zoo/waymo_secondiou_see_6552.pth to GPU
+[2022-04-28 07:07:31,817  detector3d_template.py 331  INFO]  ==> Checkpoint trained from version: pcdet+0.3.0+7b3ad3a
+[2022-04-28 07:07:31,972  detector3d_template.py 350  INFO]  ==> Done (loaded 189/189)
+[2022-04-28 07:09:04,063  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 07:09:04,063  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 07:09:04,307  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 07:09:04,307  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 07:09:17,663  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 07:09:17,663  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 07:09:17,905  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 07:09:17,905  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 07:09:18,096  detector3d_template.py 325  INFO]  ==> Loading parameters from checkpoint /SEE-MTDA/model_zoo/waymo_secondiou_see_6552.pth to GPU
+[2022-04-28 07:09:18,096  detector3d_template.py 325  INFO]  ==> Loading parameters from checkpoint /SEE-MTDA/model_zoo/waymo_secondiou_see_6552.pth to GPU
+[2022-04-28 07:09:18,211  detector3d_template.py 331  INFO]  ==> Checkpoint trained from version: pcdet+0.3.0+7b3ad3a
+[2022-04-28 07:09:18,211  detector3d_template.py 331  INFO]  ==> Checkpoint trained from version: pcdet+0.3.0+7b3ad3a
+[2022-04-28 07:09:18,377  detector3d_template.py 350  INFO]  ==> Done (loaded 189/189)
+[2022-04-28 07:09:18,377  detector3d_template.py 350  INFO]  ==> Done (loaded 189/189)
+[2022-04-28 07:14:53,302  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 07:14:53,302  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 07:14:53,302  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 07:14:53,556  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 07:14:53,556  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 07:14:53,556  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 07:21:42,881  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 07:21:42,881  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 07:21:42,881  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 07:21:42,881  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 07:21:43,120  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 07:21:43,120  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 07:21:43,120  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 07:21:43,120  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 07:21:52,037  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 07:21:52,037  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 07:21:52,037  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 07:21:52,037  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 07:21:52,271  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 07:21:52,271  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 07:21:52,271  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 07:21:52,271  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 07:21:52,451  detector3d_template.py 325  INFO]  ==> Loading parameters from checkpoint /SEE-MTDA/model_zoo/waymo_secondiou_see_6552.pth to GPU
+[2022-04-28 07:21:52,451  detector3d_template.py 325  INFO]  ==> Loading parameters from checkpoint /SEE-MTDA/model_zoo/waymo_secondiou_see_6552.pth to GPU
+[2022-04-28 07:21:52,451  detector3d_template.py 325  INFO]  ==> Loading parameters from checkpoint /SEE-MTDA/model_zoo/waymo_secondiou_see_6552.pth to GPU
+[2022-04-28 07:21:52,451  detector3d_template.py 325  INFO]  ==> Loading parameters from checkpoint /SEE-MTDA/model_zoo/waymo_secondiou_see_6552.pth to GPU
+[2022-04-28 07:21:52,571  detector3d_template.py 331  INFO]  ==> Checkpoint trained from version: pcdet+0.3.0+7b3ad3a
+[2022-04-28 07:21:52,571  detector3d_template.py 331  INFO]  ==> Checkpoint trained from version: pcdet+0.3.0+7b3ad3a
+[2022-04-28 07:21:52,571  detector3d_template.py 331  INFO]  ==> Checkpoint trained from version: pcdet+0.3.0+7b3ad3a
+[2022-04-28 07:21:52,571  detector3d_template.py 331  INFO]  ==> Checkpoint trained from version: pcdet+0.3.0+7b3ad3a
+[2022-04-28 07:21:52,758  detector3d_template.py 350  INFO]  ==> Done (loaded 189/189)
+[2022-04-28 07:21:52,758  detector3d_template.py 350  INFO]  ==> Done (loaded 189/189)
+[2022-04-28 07:21:52,758  detector3d_template.py 350  INFO]  ==> Done (loaded 189/189)
+[2022-04-28 07:21:52,758  detector3d_template.py 350  INFO]  ==> Done (loaded 189/189)
+[2022-04-28 07:24:19,510  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 07:24:19,510  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 07:24:19,510  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 07:24:19,510  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 07:24:19,510  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 07:24:19,847  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 07:24:19,847  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 07:24:19,847  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 07:24:19,847  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 07:24:19,847  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 07:24:30,806  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 07:24:30,806  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 07:24:30,806  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 07:24:30,806  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 07:24:30,806  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 07:24:31,051  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 07:24:31,051  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 07:24:31,051  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 07:24:31,051  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 07:24:31,051  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 07:24:31,235  detector3d_template.py 325  INFO]  ==> Loading parameters from checkpoint /SEE-MTDA/model_zoo/waymo_secondiou_see_6552.pth to GPU
+[2022-04-28 07:24:31,235  detector3d_template.py 325  INFO]  ==> Loading parameters from checkpoint /SEE-MTDA/model_zoo/waymo_secondiou_see_6552.pth to GPU
+[2022-04-28 07:24:31,235  detector3d_template.py 325  INFO]  ==> Loading parameters from checkpoint /SEE-MTDA/model_zoo/waymo_secondiou_see_6552.pth to GPU
+[2022-04-28 07:24:31,235  detector3d_template.py 325  INFO]  ==> Loading parameters from checkpoint /SEE-MTDA/model_zoo/waymo_secondiou_see_6552.pth to GPU
+[2022-04-28 07:24:31,235  detector3d_template.py 325  INFO]  ==> Loading parameters from checkpoint /SEE-MTDA/model_zoo/waymo_secondiou_see_6552.pth to GPU
+[2022-04-28 07:24:31,352  detector3d_template.py 331  INFO]  ==> Checkpoint trained from version: pcdet+0.3.0+7b3ad3a
+[2022-04-28 07:24:31,352  detector3d_template.py 331  INFO]  ==> Checkpoint trained from version: pcdet+0.3.0+7b3ad3a
+[2022-04-28 07:24:31,352  detector3d_template.py 331  INFO]  ==> Checkpoint trained from version: pcdet+0.3.0+7b3ad3a
+[2022-04-28 07:24:31,352  detector3d_template.py 331  INFO]  ==> Checkpoint trained from version: pcdet+0.3.0+7b3ad3a
+[2022-04-28 07:24:31,352  detector3d_template.py 331  INFO]  ==> Checkpoint trained from version: pcdet+0.3.0+7b3ad3a
+[2022-04-28 07:24:31,532  detector3d_template.py 350  INFO]  ==> Done (loaded 189/189)
+[2022-04-28 07:24:31,532  detector3d_template.py 350  INFO]  ==> Done (loaded 189/189)
+[2022-04-28 07:24:31,532  detector3d_template.py 350  INFO]  ==> Done (loaded 189/189)
+[2022-04-28 07:24:31,532  detector3d_template.py 350  INFO]  ==> Done (loaded 189/189)
+[2022-04-28 07:24:31,532  detector3d_template.py 350  INFO]  ==> Done (loaded 189/189)
+[2022-04-28 07:24:42,507  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 07:24:42,507  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 07:24:42,507  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 07:24:42,507  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 07:24:42,507  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 07:24:42,507  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 07:24:42,778  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 07:24:42,778  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 07:24:42,778  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 07:24:42,778  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 07:24:42,778  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 07:24:42,778  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 07:24:49,177  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 07:24:49,177  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 07:24:49,177  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 07:24:49,177  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 07:24:49,177  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 07:24:49,177  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 07:24:49,436  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 07:24:49,436  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 07:24:49,436  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 07:24:49,436  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 07:24:49,436  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 07:24:49,436  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 07:24:49,646  detector3d_template.py 325  INFO]  ==> Loading parameters from checkpoint /SEE-MTDA/model_zoo/waymo_secondiou_see_6552.pth to GPU
+[2022-04-28 07:24:49,646  detector3d_template.py 325  INFO]  ==> Loading parameters from checkpoint /SEE-MTDA/model_zoo/waymo_secondiou_see_6552.pth to GPU
+[2022-04-28 07:24:49,646  detector3d_template.py 325  INFO]  ==> Loading parameters from checkpoint /SEE-MTDA/model_zoo/waymo_secondiou_see_6552.pth to GPU
+[2022-04-28 07:24:49,646  detector3d_template.py 325  INFO]  ==> Loading parameters from checkpoint /SEE-MTDA/model_zoo/waymo_secondiou_see_6552.pth to GPU
+[2022-04-28 07:24:49,646  detector3d_template.py 325  INFO]  ==> Loading parameters from checkpoint /SEE-MTDA/model_zoo/waymo_secondiou_see_6552.pth to GPU
+[2022-04-28 07:24:49,646  detector3d_template.py 325  INFO]  ==> Loading parameters from checkpoint /SEE-MTDA/model_zoo/waymo_secondiou_see_6552.pth to GPU
+[2022-04-28 07:24:49,768  detector3d_template.py 331  INFO]  ==> Checkpoint trained from version: pcdet+0.3.0+7b3ad3a
+[2022-04-28 07:24:49,768  detector3d_template.py 331  INFO]  ==> Checkpoint trained from version: pcdet+0.3.0+7b3ad3a
+[2022-04-28 07:24:49,768  detector3d_template.py 331  INFO]  ==> Checkpoint trained from version: pcdet+0.3.0+7b3ad3a
+[2022-04-28 07:24:49,768  detector3d_template.py 331  INFO]  ==> Checkpoint trained from version: pcdet+0.3.0+7b3ad3a
+[2022-04-28 07:24:49,768  detector3d_template.py 331  INFO]  ==> Checkpoint trained from version: pcdet+0.3.0+7b3ad3a
+[2022-04-28 07:24:49,768  detector3d_template.py 331  INFO]  ==> Checkpoint trained from version: pcdet+0.3.0+7b3ad3a
+[2022-04-28 07:24:49,943  detector3d_template.py 350  INFO]  ==> Done (loaded 189/189)
+[2022-04-28 07:24:49,943  detector3d_template.py 350  INFO]  ==> Done (loaded 189/189)
+[2022-04-28 07:24:49,943  detector3d_template.py 350  INFO]  ==> Done (loaded 189/189)
+[2022-04-28 07:24:49,943  detector3d_template.py 350  INFO]  ==> Done (loaded 189/189)
+[2022-04-28 07:24:49,943  detector3d_template.py 350  INFO]  ==> Done (loaded 189/189)
+[2022-04-28 07:24:49,943  detector3d_template.py 350  INFO]  ==> Done (loaded 189/189)
+[2022-04-28 07:57:16,720  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 07:57:17,002  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 07:57:17,775  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 07:57:17,775  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 07:57:18,084  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 07:57:18,084  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 07:57:25,810  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 07:57:25,810  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 07:57:26,012  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 07:57:26,012  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 07:57:30,018  detector3d_template.py 325  INFO]  ==> Loading parameters from checkpoint /SEE-MTDA/model_zoo/waymo_secondiou_see_6552.pth to GPU
+[2022-04-28 07:57:30,018  detector3d_template.py 325  INFO]  ==> Loading parameters from checkpoint /SEE-MTDA/model_zoo/waymo_secondiou_see_6552.pth to GPU
+[2022-04-28 07:57:30,411  detector3d_template.py 331  INFO]  ==> Checkpoint trained from version: pcdet+0.3.0+7b3ad3a
+[2022-04-28 07:57:30,411  detector3d_template.py 331  INFO]  ==> Checkpoint trained from version: pcdet+0.3.0+7b3ad3a
+[2022-04-28 07:57:30,582  detector3d_template.py 350  INFO]  ==> Done (loaded 189/189)
+[2022-04-28 07:57:30,582  detector3d_template.py 350  INFO]  ==> Done (loaded 189/189)
+[2022-04-28 08:03:57,731  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 08:03:58,036  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 08:04:01,334  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 08:04:01,619  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 08:04:05,175  detector3d_template.py 325  INFO]  ==> Loading parameters from checkpoint /SEE-MTDA/model_zoo/waymo_secondiou_see_6552.pth to GPU
+[2022-04-28 08:04:05,292  detector3d_template.py 331  INFO]  ==> Checkpoint trained from version: pcdet+0.3.0+7b3ad3a
+[2022-04-28 08:04:05,447  detector3d_template.py 350  INFO]  ==> Done (loaded 189/189)
+[2022-04-28 08:06:45,473  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 08:06:45,747  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 08:06:45,904  detector3d_template.py 325  INFO]  ==> Loading parameters from checkpoint /SEE-MTDA/model_zoo/waymo_secondiou_see_6552.pth to GPU
+[2022-04-28 08:06:46,256  detector3d_template.py 331  INFO]  ==> Checkpoint trained from version: pcdet+0.3.0+7b3ad3a
+[2022-04-28 08:06:46,428  detector3d_template.py 350  INFO]  ==> Done (loaded 189/189)
+[2022-04-28 08:10:27,892  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 08:10:28,136  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 08:11:38,230  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 08:11:38,489  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 08:11:40,953  detector3d_template.py 325  INFO]  ==> Loading parameters from checkpoint /SEE-MTDA/model_zoo/waymo_secondiou_see_6552.pth to GPU
+[2022-04-28 08:11:41,080  detector3d_template.py 331  INFO]  ==> Checkpoint trained from version: pcdet+0.3.0+7b3ad3a
+[2022-04-28 08:11:41,273  detector3d_template.py 350  INFO]  ==> Done (loaded 189/189)
+[2022-04-28 08:14:20,537  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-04-28 08:14:20,537  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-04-28 08:14:20,537  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-04-28 08:14:20,539  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 0
+[2022-04-28 08:14:20,539  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 0
+[2022-04-28 08:14:20,539  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 0
+[2022-04-28 08:14:41,042  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-04-28 08:14:41,042  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-04-28 08:14:41,042  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-04-28 08:14:41,044  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 0
+[2022-04-28 08:14:41,044  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 0
+[2022-04-28 08:14:41,044  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 0
+[2022-04-28 08:14:42,742  detector3d_template.py 325  INFO]  ==> Loading parameters from checkpoint /SEE-MTDA/model_zoo/waymo_secondiou_baseline_1192.pth to GPU
+[2022-04-28 08:14:42,742  detector3d_template.py 325  INFO]  ==> Loading parameters from checkpoint /SEE-MTDA/model_zoo/waymo_secondiou_baseline_1192.pth to GPU
+[2022-04-28 08:14:42,742  detector3d_template.py 325  INFO]  ==> Loading parameters from checkpoint /SEE-MTDA/model_zoo/waymo_secondiou_baseline_1192.pth to GPU
+[2022-04-28 08:14:44,327  detector3d_template.py 331  INFO]  ==> Checkpoint trained from version: pcdet+0.3.0+7b3ad3a
+[2022-04-28 08:14:44,327  detector3d_template.py 331  INFO]  ==> Checkpoint trained from version: pcdet+0.3.0+7b3ad3a
+[2022-04-28 08:14:44,327  detector3d_template.py 331  INFO]  ==> Checkpoint trained from version: pcdet+0.3.0+7b3ad3a
+[2022-04-28 08:14:44,492  detector3d_template.py 350  INFO]  ==> Done (loaded 189/189)
+[2022-04-28 08:14:44,492  detector3d_template.py 350  INFO]  ==> Done (loaded 189/189)
+[2022-04-28 08:14:44,492  detector3d_template.py 350  INFO]  ==> Done (loaded 189/189)
+[2022-04-28 08:15:38,310  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-04-28 08:15:38,575  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 4025
+[2022-04-28 08:15:49,098  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-04-28 08:15:49,098  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-04-28 08:15:49,403  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 4025
+[2022-04-28 08:15:49,403  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 4025
+[2022-04-28 08:15:53,601  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-04-28 08:15:53,601  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-04-28 08:15:53,811  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 4025
+[2022-04-28 08:15:53,811  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 4025
+[2022-04-28 08:15:56,199  detector3d_template.py 325  INFO]  ==> Loading parameters from checkpoint /SEE-MTDA/model_zoo/waymo_secondiou_baseline_1192.pth to GPU
+[2022-04-28 08:15:56,199  detector3d_template.py 325  INFO]  ==> Loading parameters from checkpoint /SEE-MTDA/model_zoo/waymo_secondiou_baseline_1192.pth to GPU
+[2022-04-28 08:15:56,318  detector3d_template.py 331  INFO]  ==> Checkpoint trained from version: pcdet+0.3.0+7b3ad3a
+[2022-04-28 08:15:56,318  detector3d_template.py 331  INFO]  ==> Checkpoint trained from version: pcdet+0.3.0+7b3ad3a
+[2022-04-28 08:15:56,466  detector3d_template.py 350  INFO]  ==> Done (loaded 189/189)
+[2022-04-28 08:15:56,466  detector3d_template.py 350  INFO]  ==> Done (loaded 189/189)
+[2022-05-01 02:02:38,863  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-05-01 02:02:39,139  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 3980
+[2022-05-01 02:36:18,586  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-05-01 02:36:18,787  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 3980
+[2022-05-01 02:36:20,818  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-05-01 02:36:21,019  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 3980
+[2022-05-01 02:36:27,132  detector3d_template.py 325  INFO]  ==> Loading parameters from checkpoint /SEE-MTDA/model_zoo/waymo_secondiou_see_6552.pth to GPU
+[2022-05-01 02:36:27,251  detector3d_template.py 331  INFO]  ==> Checkpoint trained from version: pcdet+0.3.0+7b3ad3a
+[2022-05-01 02:36:27,403  detector3d_template.py 350  INFO]  ==> Done (loaded 189/189)
+[2022-05-01 02:39:12,646  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-05-01 02:39:12,646  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-05-01 02:39:12,858  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 3980
+[2022-05-01 02:39:12,858  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 3980
+[2022-05-01 02:39:19,466  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-05-01 02:39:19,466  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-05-01 02:39:19,663  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 3980
+[2022-05-01 02:39:19,663  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 3980
+[2022-05-01 02:39:19,852  detector3d_template.py 325  INFO]  ==> Loading parameters from checkpoint /SEE-MTDA/model_zoo/waymo_secondiou_see_6552.pth to GPU
+[2022-05-01 02:39:19,852  detector3d_template.py 325  INFO]  ==> Loading parameters from checkpoint /SEE-MTDA/model_zoo/waymo_secondiou_see_6552.pth to GPU
+[2022-05-01 02:39:19,964  detector3d_template.py 331  INFO]  ==> Checkpoint trained from version: pcdet+0.3.0+7b3ad3a
+[2022-05-01 02:39:19,964  detector3d_template.py 331  INFO]  ==> Checkpoint trained from version: pcdet+0.3.0+7b3ad3a
+[2022-05-01 02:39:20,135  detector3d_template.py 350  INFO]  ==> Done (loaded 189/189)
+[2022-05-01 02:39:20,135  detector3d_template.py 350  INFO]  ==> Done (loaded 189/189)
+[2022-05-01 02:40:40,657  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-05-01 02:40:40,657  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-05-01 02:40:40,657  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-05-01 02:40:40,979  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 3980
+[2022-05-01 02:40:40,979  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 3980
+[2022-05-01 02:40:40,979  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 3980
+[2022-05-01 02:43:28,543  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-05-01 02:43:28,543  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-05-01 02:43:28,543  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-05-01 02:43:28,543  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-05-01 02:43:29,164  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 3980
+[2022-05-01 02:43:29,164  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 3980
+[2022-05-01 02:43:29,164  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 3980
+[2022-05-01 02:43:29,164  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 3980
+[2022-05-01 03:10:47,024  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 03:10:47,024  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 03:10:47,024  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 03:10:47,024  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 03:10:47,024  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 03:10:47,427  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 4025
+[2022-05-01 03:10:47,427  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 4025
+[2022-05-01 03:10:47,427  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 4025
+[2022-05-01 03:10:47,427  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 4025
+[2022-05-01 03:10:47,427  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 4025
+[2022-05-01 03:11:21,308  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 03:11:21,815  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 3980
+[2022-05-01 03:13:26,539  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-05-01 03:13:26,539  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-05-01 03:13:27,015  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 3980
+[2022-05-01 03:13:27,015  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 3980
+[2022-05-01 03:14:19,977  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-05-01 03:14:19,977  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-05-01 03:14:19,977  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-05-01 03:14:19,982  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 0
+[2022-05-01 03:14:19,982  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 0
+[2022-05-01 03:14:19,982  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 0
+[2022-05-01 03:19:53,069  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-05-01 03:19:53,069  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-05-01 03:19:53,069  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-05-01 03:19:53,069  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-05-01 03:19:53,395  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 3980
+[2022-05-01 03:19:53,395  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 3980
+[2022-05-01 03:19:53,395  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 3980
+[2022-05-01 03:19:53,395  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 3980
+[2022-05-01 03:20:29,480  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 03:20:29,480  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 03:20:29,480  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 03:20:29,480  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 03:20:29,480  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 03:20:29,813  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 3980
+[2022-05-01 03:20:29,813  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 3980
+[2022-05-01 03:20:29,813  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 3980
+[2022-05-01 03:20:29,813  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 3980
+[2022-05-01 03:20:29,813  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 3980
+[2022-05-01 03:20:47,076  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 03:20:47,076  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 03:20:47,076  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 03:20:47,076  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 03:20:47,076  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 03:20:47,076  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 03:20:47,374  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 4025
+[2022-05-01 03:20:47,374  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 4025
+[2022-05-01 03:20:47,374  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 4025
+[2022-05-01 03:20:47,374  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 4025
+[2022-05-01 03:20:47,374  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 4025
+[2022-05-01 03:20:47,374  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 4025
+[2022-05-01 03:21:11,997  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 03:21:11,997  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 03:21:11,997  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 03:21:11,997  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 03:21:11,997  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 03:21:11,997  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 03:21:11,997  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 03:21:12,370  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 3980
+[2022-05-01 03:21:12,370  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 3980
+[2022-05-01 03:21:12,370  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 3980
+[2022-05-01 03:21:12,370  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 3980
+[2022-05-01 03:21:12,370  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 3980
+[2022-05-01 03:21:12,370  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 3980
+[2022-05-01 03:21:12,370  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 3980
+[2022-05-01 03:21:32,152  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-05-01 03:21:32,152  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-05-01 03:21:32,152  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-05-01 03:21:32,152  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-05-01 03:21:32,152  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-05-01 03:21:32,152  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-05-01 03:21:32,152  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-05-01 03:21:32,152  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-05-01 03:21:32,455  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 3980
+[2022-05-01 03:21:32,455  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 3980
+[2022-05-01 03:21:32,455  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 3980
+[2022-05-01 03:21:32,455  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 3980
+[2022-05-01 03:21:32,455  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 3980
+[2022-05-01 03:21:32,455  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 3980
+[2022-05-01 03:21:32,455  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 3980
+[2022-05-01 03:21:32,455  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 3980
+[2022-05-01 03:22:38,059  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 03:22:38,059  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 03:22:38,059  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 03:22:38,059  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 03:22:38,059  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 03:22:38,059  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 03:22:38,059  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 03:22:38,059  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 03:22:38,059  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 03:22:38,386  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 3980
+[2022-05-01 03:22:38,386  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 3980
+[2022-05-01 03:22:38,386  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 3980
+[2022-05-01 03:22:38,386  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 3980
+[2022-05-01 03:22:38,386  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 3980
+[2022-05-01 03:22:38,386  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 3980
+[2022-05-01 03:22:38,386  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 3980
+[2022-05-01 03:22:38,386  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 3980
+[2022-05-01 03:22:38,386  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 3980
+[2022-05-01 03:23:02,492  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 03:23:02,492  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 03:23:02,492  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 03:23:02,492  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 03:23:02,492  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 03:23:02,492  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 03:23:02,492  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 03:23:02,492  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 03:23:02,492  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 03:23:02,492  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 03:23:02,971  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 3980
+[2022-05-01 03:23:02,971  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 3980
+[2022-05-01 03:23:02,971  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 3980
+[2022-05-01 03:23:02,971  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 3980
+[2022-05-01 03:23:02,971  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 3980
+[2022-05-01 03:23:02,971  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 3980
+[2022-05-01 03:23:02,971  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 3980
+[2022-05-01 03:23:02,971  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 3980
+[2022-05-01 03:23:02,971  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 3980
+[2022-05-01 03:23:02,971  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 3980
+[2022-05-01 03:23:16,477  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 03:23:16,477  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 03:23:16,477  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 03:23:16,477  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 03:23:16,477  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 03:23:16,477  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 03:23:16,477  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 03:23:16,477  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 03:23:16,477  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 03:23:16,477  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 03:23:16,477  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 03:23:16,827  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 3980
+[2022-05-01 03:23:16,827  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 3980
+[2022-05-01 03:23:16,827  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 3980
+[2022-05-01 03:23:16,827  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 3980
+[2022-05-01 03:23:16,827  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 3980
+[2022-05-01 03:23:16,827  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 3980
+[2022-05-01 03:23:16,827  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 3980
+[2022-05-01 03:23:16,827  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 3980
+[2022-05-01 03:23:16,827  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 3980
+[2022-05-01 03:23:16,827  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 3980
+[2022-05-01 03:23:16,827  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 3980
+[2022-05-01 16:33:30,483  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 16:33:30,489  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 0
+[2022-05-01 16:34:00,714  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 16:34:00,943  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 3980
+[2022-05-01 17:19:39,733  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 17:19:39,949  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 3980
+[2022-05-01 17:20:07,192  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 17:20:07,192  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 17:20:07,441  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 3980
+[2022-05-01 17:20:07,441  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 3980
+[2022-05-01 17:20:40,714  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 17:20:40,714  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 17:20:40,714  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 17:20:40,904  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 3980
+[2022-05-01 17:20:40,904  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 3980
+[2022-05-01 17:20:40,904  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 3980
+[2022-05-01 17:21:02,648  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 17:21:02,648  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 17:21:02,648  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 17:21:02,648  nuscenes_dataset.py 26  INFO]  Loading NuScenes dataset
+[2022-05-01 17:21:02,840  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 3980
+[2022-05-01 17:21:02,840  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 3980
+[2022-05-01 17:21:02,840  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 3980
+[2022-05-01 17:21:02,840  nuscenes_dataset.py 38  INFO]  Total samples for NuScenes dataset: 3980
+[2022-05-01 17:49:41,611  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-05-01 17:49:41,611  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-05-01 17:49:41,611  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-05-01 17:49:41,611  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-05-01 17:49:41,611  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-05-01 17:49:41,801  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 3980
+[2022-05-01 17:49:41,801  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 3980
+[2022-05-01 17:49:41,801  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 3980
+[2022-05-01 17:49:41,801  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 3980
+[2022-05-01 17:49:41,801  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 3980
+[2022-05-01 17:56:41,355  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-05-01 17:56:41,602  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 3980
+[2022-05-01 17:56:54,637  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-05-01 17:56:54,909  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 3980
+[2022-05-01 17:56:56,911  detector3d_template.py 325  INFO]  ==> Loading parameters from checkpoint /SEE-MTDA/model_zoo/waymo_secondiou_see_6552.pth to GPU
+[2022-05-01 17:56:57,005  detector3d_template.py 331  INFO]  ==> Checkpoint trained from version: pcdet+0.3.0+7b3ad3a
+[2022-05-01 17:56:57,152  detector3d_template.py 350  INFO]  ==> Done (loaded 189/189)
+[2022-05-01 17:57:17,791  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-05-01 17:57:17,791  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-05-01 17:57:18,009  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 3980
+[2022-05-01 17:57:18,009  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 3980
+[2022-05-01 17:57:24,839  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-05-01 17:57:24,839  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-05-01 17:57:25,049  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 3980
+[2022-05-01 17:57:25,049  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 3980
+[2022-05-01 17:57:25,239  detector3d_template.py 325  INFO]  ==> Loading parameters from checkpoint /SEE-MTDA/model_zoo/waymo_secondiou_see_6552.pth to GPU
+[2022-05-01 17:57:25,239  detector3d_template.py 325  INFO]  ==> Loading parameters from checkpoint /SEE-MTDA/model_zoo/waymo_secondiou_see_6552.pth to GPU
+[2022-05-01 17:57:25,332  detector3d_template.py 331  INFO]  ==> Checkpoint trained from version: pcdet+0.3.0+7b3ad3a
+[2022-05-01 17:57:25,332  detector3d_template.py 331  INFO]  ==> Checkpoint trained from version: pcdet+0.3.0+7b3ad3a
+[2022-05-01 17:57:25,491  detector3d_template.py 350  INFO]  ==> Done (loaded 189/189)
+[2022-05-01 17:57:25,491  detector3d_template.py 350  INFO]  ==> Done (loaded 189/189)
+[2022-05-10 08:19:26,313  meshed_kitti_dataset.py 37  INFO]  Loading MeshedKittiDataset dataset
+[2022-05-10 08:19:26,573  meshed_kitti_dataset.py 51  INFO]  Total samples for MeshedKittiDataset dataset: 3769
+[2022-05-10 08:19:51,993  meshed_kitti_dataset.py 37  INFO]  Loading MeshedKittiDataset dataset
+[2022-05-10 08:19:51,993  meshed_kitti_dataset.py 37  INFO]  Loading MeshedKittiDataset dataset
+[2022-05-10 08:19:52,103  meshed_kitti_dataset.py 51  INFO]  Total samples for MeshedKittiDataset dataset: 3769
+[2022-05-10 08:19:52,103  meshed_kitti_dataset.py 51  INFO]  Total samples for MeshedKittiDataset dataset: 3769
+[2022-05-10 08:21:11,468  meshed_waymo_dataset.py 45  INFO]  Loading Waymo dataset
+[2022-05-10 08:21:11,468  meshed_waymo_dataset.py 45  INFO]  Loading Waymo dataset
+[2022-05-10 08:21:11,468  meshed_waymo_dataset.py 45  INFO]  Loading Waymo dataset
+[2022-05-10 08:21:11,468  meshed_waymo_dataset.py 45  INFO]  Loading Waymo dataset
+[2022-05-10 08:21:12,499  meshed_waymo_dataset.py 60  INFO]  Total skipped info 0
+[2022-05-10 08:21:12,499  meshed_waymo_dataset.py 60  INFO]  Total skipped info 0
+[2022-05-10 08:21:12,499  meshed_waymo_dataset.py 60  INFO]  Total skipped info 0
+[2022-05-10 08:21:12,499  meshed_waymo_dataset.py 60  INFO]  Total skipped info 0
+[2022-05-10 08:21:12,502  meshed_waymo_dataset.py 61  INFO]  Total samples for Waymo dataset: 1000
+[2022-05-10 08:21:12,502  meshed_waymo_dataset.py 61  INFO]  Total samples for Waymo dataset: 1000
+[2022-05-10 08:21:12,502  meshed_waymo_dataset.py 61  INFO]  Total samples for Waymo dataset: 1000
+[2022-05-10 08:21:12,502  meshed_waymo_dataset.py 61  INFO]  Total samples for Waymo dataset: 1000
+[2022-05-10 08:24:46,741  meshed_waymo_dataset.py 45  INFO]  Loading Waymo dataset
+[2022-05-10 08:24:46,814  meshed_waymo_dataset.py 60  INFO]  Total skipped info 0
+[2022-05-10 08:24:46,815  meshed_waymo_dataset.py 61  INFO]  Total samples for Waymo dataset: 1000
+[2022-05-10 09:28:27,056  meshed_waymo_dataset.py 45  INFO]  Loading Waymo dataset
+[2022-05-10 09:28:27,056  meshed_waymo_dataset.py 45  INFO]  Loading Waymo dataset
+[2022-05-10 09:28:32,684  meshed_waymo_dataset.py 60  INFO]  Total skipped info 0
+[2022-05-10 09:28:32,684  meshed_waymo_dataset.py 60  INFO]  Total skipped info 0
+[2022-05-10 09:28:32,689  meshed_waymo_dataset.py 61  INFO]  Total samples for Waymo dataset: 1000
+[2022-05-10 09:28:32,689  meshed_waymo_dataset.py 61  INFO]  Total samples for Waymo dataset: 1000
+[2022-05-10 09:28:36,060  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-05-10 09:28:36,060  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-05-10 09:28:36,060  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-05-10 09:28:37,769  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 3980
+[2022-05-10 09:28:37,769  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 3980
+[2022-05-10 09:28:37,769  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 3980

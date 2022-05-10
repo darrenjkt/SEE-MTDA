@@ -1,8 +1,11 @@
 #!/bin/bash
 
 # Edit these paths. The volume mounting below assumes your datasets are e.g. data/Baraja, data/KITTI etc.
-DATA_PATH="/media/darren/dcsky/datasets"
-CODE_PATH="/home/darren/Nextcloud/professional/code/projects/SEE-MTDA"
+# DATA_PATH="/media/darren/dcsky/datasets"
+# CODE_PATH="/home/darren/Nextcloud/professional/code/projects/SEE-MTDA"
+
+DATA_PATH="/mnt/big-data/darren/data"
+CODE_PATH="/mnt/big-data/darren/code/SEE-MTDA"
 
 # -i options are "see" and "detector". 
 while getopts ":i:g:" flag
@@ -38,10 +41,14 @@ ENVS="  --env=NVIDIA_VISIBLE_DEVICES=$GPU_ID
         --env=NVIDIA_DRIVER_CAPABILITIES=all"
 
 # Modify these paths as necessary to mount the data
+# Passing in /pcdet might require running python setup.py develop
+# every time you switch gpus...
 VOLUMES="       --volume=$DATA_PATH/kitti/3d_object_detection:/SEE-MTDA/data/kitti
                 --volume=$DATA_PATH/nuscenes:/SEE-MTDA/data/nuscenes
                 --volume=$DATA_PATH/waymo:/SEE-MTDA/data/waymo
+                --volume=$DATA_PATH/shapenet:/SEE-MTDA/data/shapenet
                 --volume=$CODE_PATH/see:/SEE-MTDA/see
+                --volume=$CODE_PATH/detector/pcdet:/SEE-MTDA/detector/pcdet
                 --volume=$CODE_PATH/detector/tools:/SEE-MTDA/detector/tools
                 --volume=$CODE_PATH/detector/output:/SEE-MTDA/detector/output
                 --volume=$CODE_PATH/model_zoo:/SEE-MTDA/model_zoo"
@@ -56,7 +63,6 @@ xhost +local:docker
 
 echo "Running the docker image for see-mtda:${image} [GPUS: ${GPU_ID}]"
 docker_image="darrenjkt/see-mtda:${image}-v1.0"
-# docker_image="darrenjkt/openpcdet:v0.3.0"
 
 docker  run -d -it --rm \
 $VOLUMES \

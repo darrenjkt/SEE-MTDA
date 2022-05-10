@@ -1,0 +1,8 @@
+[2022-04-28 02:54:22,181  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 02:54:22,181  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 02:54:22,548  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 02:54:22,548  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 02:54:29,968  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 02:54:29,968  meshed_nuscenes_dataset.py 27  INFO]  Loading MeshedNuScenes dataset
+[2022-04-28 02:54:30,249  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025
+[2022-04-28 02:54:30,249  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 4025

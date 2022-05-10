@@ -193,7 +193,7 @@ def main():
         logger.info('{:16} {}'.format(key, val))
     log_config_to_file(cfg, logger=logger)
 
-    ckpt_dir = args.ckpt_dir if args.ckpt_dir is not None else output_dir / 'ckpt'
+    ckpt_dir = args.ckpt_dir if args.ckpt_dir is not None else output_dir / args.eval_tag / 'ckpt'
 
     if cfg.get('DATA_CONFIG_TAR', None):
         test_set, test_loader, sampler = build_dataloader(

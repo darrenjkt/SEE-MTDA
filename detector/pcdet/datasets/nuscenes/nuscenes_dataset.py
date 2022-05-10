@@ -420,13 +420,22 @@ def create_nuscenes_info(version, data_path, save_path, max_sweeps=10):
     from nuscenes.nuscenes import NuScenes
     from nuscenes.utils import splits
     from . import nuscenes_utils
-    data_path = data_path / version
-    save_path = save_path / version
 
-    assert version in ['v1.0-trainval', 'v1.0-test', 'v1.0-mini']
-    if version == 'v1.0-trainval':
-        train_scenes = splits.train
-        val_scenes = splits.val
+    # Modify this if intending to use on non-custom dataset
+    data_path = data_path / 'custom_t4025-v3980'
+    save_path = save_path / 'custom_t4025-v3980' / 'infos_openpcdetv0.3.0'
+
+    # assert version in ['v1.0-trainval', 'v1.0-test', 'v1.0-mini']
+    if version == 'v1.0-trainval' or dataset_cfg.get('CUSTOM', False):
+        if dataset_cfg.get('CUSTOM', False):
+            ftrain = open(str(data_path / 'custom_train_split.txt'), 'r').read()
+            fval = open(str(data_path / 'custom_val_split.txt'), 'r').read()
+            train_scenes = ftrain.split('\n')
+            val_scenes = fval.split('\n')
+            print(f'Custom trainval split')
+        else:
+            train_scenes = splits.train
+            val_scenes = splits.val
     elif version == 'v1.0-test':
         train_scenes = splits.test
         val_scenes = []
@@ -476,19 +485,25 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     if args.func == 'create_nuscenes_infos':
-        dataset_cfg = EasyDict(yaml.load(open(args.cfg_file)))
-        ROOT_DIR = (Path(__file__).resolve().parent / '../../../').resolve()
-        dataset_cfg.VERSION = args.version
+        print(f'Loading from {args.cfg_file}')
+        dataset_cfg = EasyDict(yaml.safe_load(open(args.cfg_file)))
+        # ROOT_DIR = (Path(__file__).resolve().parent / '../../../').resolve()
+        # if dataset_cfg.get('CUSTOM', False):
+        #     dataset_cfg.VERSION = 'custom_t4025-v3980'
+        # else:
+        #     dataset_cfg.VERSION = args.version
+
+        # Very hack job of adding the custom folder
         create_nuscenes_info(
             version=dataset_cfg.VERSION,
-            data_path=ROOT_DIR / 'data' / 'nuscenes',
-            save_path=ROOT_DIR / 'data' / 'nuscenes',
+            data_path=Path('/SEE-MTDA/data/nuscenes'),
+            save_path=Path('/SEE-MTDA/data/nuscenes'),
             max_sweeps=dataset_cfg.MAX_SWEEPS,
         )
 
-        nuscenes_dataset = NuScenesDataset(
-            dataset_cfg=dataset_cfg, class_names=None,
-            root_path=ROOT_DIR / 'data' / 'nuscenes',
-            logger=common_utils.create_logger(), training=True
-        )
-        nuscenes_dataset.create_groundtruth_database(max_sweeps=dataset_cfg.MAX_SWEEPS)
+        # nuscenes_dataset = NuScenesDataset(
+        #     dataset_cfg=dataset_cfg, class_names=None,
+        #     root_path=ROOT_DIR / 'data' / 'nuscenes',
+        #     logger=common_utils.create_logger(), training=True
+        # )
+        # nuscenes_dataset.create_groundtruth_database(max_sweeps=dataset_cfg.MAX_SWEEPS)

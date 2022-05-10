@@ -13,28 +13,46 @@ import open3d as o3d
 from easydict import EasyDict
 from sc.mesher.mesher import Mesher
 import shutil
+import time
+import pickle
 
 def mesh_process_gt(sample_idx):    
     
     setproctitle.setproctitle(f'Mesh-GT[{mesher.data_obj.dataset_name[:3].upper()}]:{sample_idx}/{mesher.data_obj.__len__()}')
-    
+    t0 = time.time()
+
     pcd_gtboxes = mesher.get_pcd_gtboxes(sample_idx)
     list_mesh_instances = mesher.mesh_gt_pts(pcd_gtboxes, sample_idx)
     add_seg_labels = mesher.mesher_cfg.get('ADD_SEG_LABELS', False)
     final_pcd = mesher.replace_pts_with_mesh_pts(pcd_gtboxes['pcd'], list_mesh_instances, label_points=add_seg_labels, point_dist_thresh=mesher.mesher_cfg.REPLACE_OBJECT_WITH_MESH.POINT_DISTANCE_THRESH)
+    
+    time_taken_frame = time.time() - t0
+    if len(list_mesh_instances) != 0:
+        time_taken_car = time_taken_frame/len(list_mesh_instances)
+    else:
+        time_taken_car = None
+
     mesher.save_pcd(final_pcd, sample_idx, labelled_pcd=add_seg_labels)
 
 def mesh_process_det(sample_idx):    
     
     setproctitle.setproctitle(f'Mesh-DET[{mesher.data_obj.dataset_name[:3].upper()}]:{sample_idx}/{mesher.data_obj.__len__()}')
-    
+    t0 = time.time()
     i_cloud = mesher.data_obj.get_mask_instance_clouds(sample_idx)
     list_mesh_instances = mesher.mesh_det_pts(i_cloud, sample_idx)
     
     add_seg_labels = mesher.mesher_cfg.get('ADD_SEG_LABELS', False)
     original_pcd = convert_to_o3dpcd(mesher.data_obj.get_pointcloud(sample_idx))
     final_pcd = mesher.replace_pts_with_mesh_pts(original_pcd, list_mesh_instances, label_points=add_seg_labels, point_dist_thresh=mesher.mesher_cfg.REPLACE_OBJECT_WITH_MESH.POINT_DISTANCE_THRESH)        
+    
+    time_taken_frame = time.time() - t0
+    if len(list_mesh_instances) != 0:
+        time_taken_car = time_taken_frame/len(list_mesh_instances)
+    else:
+        time_taken_car = None
+
     mesher.save_pcd(final_pcd, sample_idx, labelled_pcd=add_seg_labels)
+    return time_taken_frame, time_taken_car
 
 def mesh_process_ext(sample_idx):
     """ 
@@ -42,13 +60,26 @@ def mesh_process_ext(sample_idx):
     """
     setproctitle.setproctitle(f'Mesh-EXT[{mesher.data_obj.dataset_name[:3].upper()}]:{sample_idx}/{mesher.data_obj.__len__()}')
     
+    t0 = time.time()
     pcd_gtboxes = mesher.get_pcd_gtboxes(sample_idx)
-    completed_pcd_paths = set(glob.glob(f'{mesher.data_obj.root_dir}/EXT_{mesher.data_obj.extra_tag}/results/completions/*.pcd'))
+    completed_pcd_paths = set(glob.glob(f'{mesher.data_obj.root_dir}/exported/vc/test/completed-{mesher.mesher_cfg.EXPORT_NAME}/*.pcd'))
+    completed_meta_paths = [pcd_paths.replace('completed-', 'metadata-').replace('.pcd', '.pkl') for pcd_paths in list(completed_pcd_paths)]
+
     frame_objs = set([pcd_path for pcd_path in completed_pcd_paths if f'frame-{sample_idx}_' in pcd_path])    
-    list_mesh_instances = [o3d.io.read_point_cloud(obj_path) for obj_path in frame_objs]    
+    frame_meta = set([meta_path for meta_path in completed_meta_paths if f'frame-{sample_idx}_' in meta_path])
+    iou_3ds = [pickle.load(open(pkl_file, 'rb'))['IOU_3D'].item() for pkl_file in frame_meta]
+    list_mesh_instances = [o3d.io.read_point_cloud(obj_path) for idx, obj_path in enumerate(frame_objs) if iou_3ds[idx] > mesher.mesher_cfg.IOU_THRESH]    
+
+    time_taken_frame = time.time() - t0
+    if len(list_mesh_instances) != 0:
+        time_taken_car = time_taken_frame/len(list_mesh_instances)
+    else:
+        time_taken_car = None
 
     final_pcd = mesher.replace_pts_with_mesh_pts(pcd_gtboxes['pcd'], list_mesh_instances, label_points=False)
     mesher.save_pcd(final_pcd, sample_idx, labelled_pcd=False)
+
+    return time_taken_frame, time_taken_car
     
 
 def run(cfg):
@@ -71,16 +102,27 @@ def run(cfg):
     
     t1 = time.time()
     sample_indices = range(0, mesher.data_obj.__len__())
+    # sample_indices = range(0, 1000)
 
     # Baraja only ()
     # indices_file = mesher.data_obj.root_dir / 'ImageSets' / 'test.txt'
     # assert indices_file.exists(), f"No file found at {indices_file}"
-    # sample_indices = [int(x.strip()) for x in open(indices_file).readlines()] if indices_file.exists() else range(0, mesher.data_obj.__len__())
-    
+    # sample_indices = [int(x.strip()) for x in open(indices_file).readlines()] if indices_file.exists() else range(0, mesher.data_obj.__len__())    
+
+    avg_time_p = []
     print(f'\nParallel processing: Generating {os.cpu_count()} processes')
     with ProcessPool(os.cpu_count()) as p:
-        save_fnames = list(tqdm(p.imap(mesh_process, sample_indices), total=mesher.data_obj.__len__()))
+        time_taken = list(tqdm(p.imap(mesh_process, sample_indices), total=mesher.data_obj.__len__()))
+        avg_time_p.append(time_taken)
     
+    avg_time = avg_time_p[0]
+    avg_frame = [i[0] for i in avg_time]
+    frame_mean = sum(avg_frame)/len(avg_frame)
+    avg_car = [i[1] for i in avg_time if i[1] is not None]
+    car_mean = sum(avg_car)/len(avg_car)
+    print(f'Average time per frame = {frame_mean}s')
+    print(f'Average time per car = {car_mean}s')
+
     # Update infos with the meshed paths
     mesher.data_obj.update_infos(mesher.save_dir)
 

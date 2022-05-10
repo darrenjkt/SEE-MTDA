@@ -1,0 +1,17 @@
+DATA_PATH: '/SEE-MTDA/data/nuscenes/custom_t4025-v3980'
+
+DATASET: 
+    NAME: 'nuscenes'
+    CLASSES: ['car']
+    LIDAR_NSWEEPS: 2
+    CUSTOM: True
+    DET2D_MASK: False
+
+MESHER: 
+    NAME: ext_mesh
+    MIN_LIDAR_PTS_TO_MESH: 5    
+    REPLACE_OBJECT_WITH_MESH:
+        POINT_DISTANCE_THRESH: 0.1
+
+    EXPORT_NAME: PCN-normscale-coarse
+    IOU_THRESH: 0.6

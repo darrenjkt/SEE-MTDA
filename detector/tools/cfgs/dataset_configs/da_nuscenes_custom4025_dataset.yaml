@@ -4,7 +4,7 @@ DATA_PATH: '../../data/nuscenes/custom_t4025-v3980'
 CUSTOM: True
 VERSION: 'v1.0-trainval'
 SET_NAN_VELOCITY_TO_ZEROS: True
-
+MAX_SWEEPS: 10
 
 DATA_SPLIT: {
     'train': train,

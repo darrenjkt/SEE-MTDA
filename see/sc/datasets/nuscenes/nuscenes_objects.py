@@ -11,6 +11,7 @@ from nuscenes.utils.data_classes import LidarPointCloud
 from nuscenes.utils.geometry_utils import view_points
 from pyquaternion import Quaternion
 import sc.datasets.shared_utils as shared_utils
+import open3d as o3d
 
 CAMERA_CHANNELS = ['CAM_FRONT', 'CAM_FRONT_RIGHT', 'CAM_BACK_RIGHT', 'CAM_BACK', 'CAM_BACK_LEFT', 'CAM_FRONT_LEFT']
 class2idx = {'pedestrian':0, 'car':2}
@@ -59,10 +60,12 @@ class NuscenesObjects:
         """
         print("Loading sample records...")
         if self.custom_dataset:
-            ftrain = open(str(self.root_dir / 'custom_train_split.txt'), 'r').read()
-            # fval = open(str(self.root_dir / 'custom_val_split.txt'), 'r').read()
+            ftrain = open(str(self.root_dir / 'custom_train_split.txt'), 'r').read()            
             scene_names = ftrain.split('\n')
-            # scene_names.extend(fval.split('\n'))
+
+            fval = open(str(self.root_dir / 'custom_val_split.txt'), 'r').read()
+            # scene_names = fval.split('\n')
+            scene_names.extend(fval.split('\n'))
             self.scenes = [nusc_scene for nusc_scene in self.nusc.scene if nusc_scene['name'] in scene_names]
         else: 
             self.scenes = self.nusc.scene
@@ -80,9 +83,9 @@ class NuscenesObjects:
         return sample_records
     
     def __load_infos(self):
-        with open(str(self.root_dir / 'infos_openpcdetv0.3.0' / 'nuscenes_infos_10sweeps_train.pkl'), 'rb') as trainpkl:
+        with open(str(self.root_dir / 'infos_openpcdetv0.3.0' / 'nuscenes_infos_2sweeps_train.pkl'), 'rb') as trainpkl:
             train_infos = pickle.load(trainpkl)
-        with open(str(self.root_dir / 'infos_openpcdetv0.3.0' / 'nuscenes_infos_10sweeps_val.pkl'), 'rb') as valpkl:
+        with open(str(self.root_dir / 'infos_openpcdetv0.3.0' / 'nuscenes_infos_2sweeps_val.pkl'), 'rb') as valpkl:
             val_infos = pickle.load(valpkl)
         return {'train': train_infos, 'val': val_infos}
     
@@ -116,19 +119,33 @@ class NuscenesObjects:
         rel_pcds = ['/'.join(pcd.split('/')[-3:]) for pcd in saved_files]
         tok_path = dict(zip(s_tok, rel_pcds))
         
-        for sample_token, path in tok_path.items():
+        for sample_token, path in tok_path.items():            
             
             tinfos_idx = self.find_info_idx(self.infos['train'], sample_token)
-            vinfos_idx = self.find_info_idx(self.infos['val'], sample_token)
+            vinfos_idx = self.find_info_idx(self.infos['val'], sample_token)            
 
+            subset = None
             if tinfos_idx != -1:
-                self.infos['train'][tinfos_idx]['meshed_lidar_path'] = path
+                subset = 'train'
+                info_idx = tinfos_idx                
             elif vinfos_idx != -1:
-                self.infos['val'][vinfos_idx]['meshed_lidar_path'] = path
+                subset = 'val'
+                info_idx = vinfos_idx
             else:
                 print(f"Sample token {sample_token} doesn't exist in infos, double check your code")
                 print(f"rel_pcd path is {path}")
-                
+
+            self.infos[subset][info_idx]['meshed_lidar_path'] = path
+            gt_boxes = self.infos[subset][info_idx]['gt_boxes']
+            opcd = o3d.io.read_point_cloud(str(self.root_dir / path))
+            o3dboxes = [shared_utils.boxpts_to_o3dbox(shared_utils.opd_to_boxpts(box)) for box in gt_boxes]
+            objs = [opcd.crop(o3dbox) for o3dbox in o3dboxes]    
+            num_pts = [len(obj.points) for obj in objs]
+            self.infos[subset][info_idx]['num_meshed_lidar_pts'] = np.array(num_pts)
+        
+        # TODO: Update this to add "num_meshed_lidar_pts" so we can filter by that for consistency
+        # For nuscenes, num_lidar_pts is only referring to 1 sweep. This affects the gt filtering 
+        # when more sweeps are used
         savepath = self.root_dir / f'infos_meshed_{self.extra_tag}'
         savepath.mkdir(parents=True, exist_ok=True)
         toutput = open(str(savepath / f'nuscenes_infos_{nsweeps}sweeps_train.pkl'), 'wb')
@@ -139,6 +156,8 @@ class NuscenesObjects:
         print(f"Saved updated train infos: {str(savepath / f'nuscenes_infos_{nsweeps}sweeps_train.pkl')}")
         print(f"Saved updated val infos: {str(savepath / f'nuscenes_infos_{nsweeps}sweeps_val.pkl')}")
         print(f'Complete: {len(saved_files)} processed')        
+
+
 
     def update_gt_database(self, save_gt_dir, nsweeps=0):
         print('Updating database infos for meshed objects...')
@@ -218,7 +237,8 @@ class NuscenesObjects:
         # image_id = os.path.basename(imgfile).split('.')[0]
         
         # t4025 custom mask format
-        image_id = sample_record['data'][channel] 
+        image_tok = sample_record['data'][channel]
+        image_id = Path(self.nusc.get_sample_data_path(image_tok)).stem
         
         ann_ids = self.masks[channel].getAnnIds(imgIds=[image_id], catIds=[class2idx[c] for c in self.classes])
         instances = self.masks[channel].loadAnns(ann_ids)
@@ -293,12 +313,9 @@ class NuscenesObjects:
         
         if camera_channels is None:
             camera_channels = self.camera_channels
-            print(f'Cameras not specified. Using self.camera_channels = {self.camera_channels}')
 
         if type(camera_channels) is not list:
             camera_channels = [camera_channels]
-        else:
-            print(f'Returning instances for all {len(camera_channels)} cameras')
 
         i_clouds = []
         for camera_channel in camera_channels:
@@ -330,8 +347,11 @@ class NuscenesObjects:
         imgfov = self.map_pointcloud_to_image(idx, camera_channel, nsweeps=nsweeps, min_dist=min_dist)
 
         if mask == True:
-            instances = self.get_camera_instances(idx, camera_channel)
-            instance_pts = shared_utils.get_pts_in_mask(self.masks[camera_channel], instances, imgfov['pts_img'], imgfov['pc_lidar'], imgfov['pc_cam'])
+            instances = self.get_camera_instances(idx, channel=camera_channel)
+            instance_pts = shared_utils.get_pts_in_mask(self.masks[camera_channel], 
+                                                        instances, 
+                                                        imgfov,
+                                                        use_bbox=False)
             
             try:
                 all_instance_uv = np.vstack(instance_pts['img_uv'])

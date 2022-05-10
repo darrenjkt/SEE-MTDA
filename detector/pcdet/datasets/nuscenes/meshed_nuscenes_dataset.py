@@ -155,7 +155,7 @@ class MeshedNuScenesDataset(DatasetTemplate):
 
         if 'gt_boxes' in info:
             if self.dataset_cfg.get('FILTER_MIN_POINTS_IN_GT', False):
-                mask = (info['num_lidar_pts'] > self.dataset_cfg.FILTER_MIN_POINTS_IN_GT - 1)
+                mask = (info['num_meshed_lidar_pts'] > self.dataset_cfg.FILTER_MIN_POINTS_IN_GT)
             else:
                 mask = None
 
@@ -201,11 +201,7 @@ class MeshedNuScenesDataset(DatasetTemplate):
 
         data_dict = self.prepare_data(data_dict=input_dict)
 
-        # save_getitem = self.root_path / f'getitem-{index}.pkl'
-        # with open(save_getitem, 'wb') as f:
-        #     print(f'saving: {save_getitem}')
-        #     pickle.dump(data_dict, f)
-        print('data_dict["gt_boxes"] = ', data_dict['gt_boxes'])
+        # Nuscenes is "car", not "Car". Note the capital C.
         return data_dict
 
     def generate_prediction_dicts(self, batch_dict, pred_dicts, class_names, output_path=None):

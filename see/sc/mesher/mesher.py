@@ -46,7 +46,9 @@ class Mesher:
         self.mesher_cfg = cfg.MESHER
         self.min_lidar_pts_to_mesh = cfg.MESHER.MIN_LIDAR_PTS_TO_MESH
         self.classes = self.data_obj.classes
-        self.target_phi_theta = self.load_target_sampling_patterns(cfg_path, cfg.MESHER.SAMPLING.REFERENCE_PATTERN_FOLDER) if cfg.MESHER.SAMPLING.NAME == 'virtual_lidar_sampling' else None
+
+        if self.mesher_cfg.get('SAMPLING', False):
+            self.target_phi_theta = self.load_target_sampling_patterns(cfg_path, cfg.MESHER.SAMPLING.REFERENCE_PATTERN_FOLDER) if cfg.MESHER.SAMPLING.NAME == 'virtual_lidar_sampling' else None
 
         if self.data_obj.dataset_name == 'nuscenes':
             self.save_dir = self.data_obj.root_dir / 'samples' / f'MESHED_LIDAR_TOP_{self.data_obj.nsweeps}SWEEPS_{Path(cfg_path).stem}'

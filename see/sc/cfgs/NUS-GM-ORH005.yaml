@@ -3,7 +3,6 @@ DATA_PATH: '/SEE-MTDA/data/nuscenes/custom_t4025-v3980'
 DATASET: 
     NAME: 'nuscenes'
     CLASSES: ['car']
-    POINT_CLOUD_RANGE: [-24, -24, -2, 24, 24, 4]
     LIDAR_NSWEEPS: 2
     CUSTOM: True
     DET2D_MASK: False

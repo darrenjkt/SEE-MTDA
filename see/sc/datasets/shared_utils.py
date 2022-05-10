@@ -341,3 +341,46 @@ def sph2cart(points):
     return np.concatenate((x[:,np.newaxis],y[:,np.newaxis],z[:,np.newaxis]), axis=1)
 
     
+def opd_to_boxpts(box):
+    """
+    Takes an array containing [x,y,z,l,w,h,r], and returns an [8, 3] matrix that 
+    represents the [x, y, z] for each 8 corners of the box.
+    
+    Note: Openpcdet __getitem__ gt_boxes are in the format [x,y,z,l,w,h,r,alpha]
+    where alpha is "observation angle of object, ranging [-pi..pi]"
+    """
+    # To return
+    corner_boxes = np.zeros((8, 3))
+
+    translation = box[0:3]
+    l, w, h = box[3], box[4], box[5] # waymo, nusc, kitti is all l,w,h after OpenPCDet processing
+    rotation = box[6]
+
+    # Create a bounding box outline
+    bounding_box = np.array([[l/2, w/2, h/2],
+                             [l/2, -w/2, h/2],
+                             [-l/2, w/2, h/2],
+                             [-l/2, -w/2, h/2],
+                             [l/2, w/2, -h/2],
+                             [l/2, -w/2, -h/2],
+                             [-l/2, w/2, -h/2],
+                             [-l/2, -w/2, -h/2]])
+
+    # Standard 3x3 rotation matrix around the Z axis
+    rotation_matrix = np.array([
+        [np.cos(rotation), np.sin(rotation), 0.0],
+        [-np.sin(rotation), np.cos(rotation), 0.0],
+        [0.0, 0.0, 1.0]])
+    vcbox = bounding_box @ rotation_matrix
+    vcbox += box[:3]
+    
+    return vcbox
+
+def boxpts_to_o3dbox(box_pts, colour=None):
+    boxpts = o3d.utility.Vector3dVector(box_pts)
+    o3dbox = o3d.geometry.OrientedBoundingBox().create_from_points(boxpts)
+    if colour is None:
+        colour = [1,0,0]
+        
+    o3dbox.color = np.array(colour)
+    return o3dbox

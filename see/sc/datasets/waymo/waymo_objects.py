@@ -101,16 +101,20 @@ class WaymoObjects:
         
         print(f"Saved updated infos: {str(savepath / 'waymo_infos_train.pkl')}")
 
-    def get_pointcloud(self, idx):
+    def get_pointcloud(self, idx, disable_nlz_flag=False, tanhnorm=False):
         infos = self.get_infos(idx)
         sequence_name = infos['point_cloud']['lidar_sequence']
         sample_idx = infos['point_cloud']['sample_idx']
         path = self.root_dir / 'waymo_processed_data' / sequence_name /f'{sample_idx:04}.npy'
         point_features = np.load(path)
         points_all, NLZ_flag = point_features[:,0:5], point_features[:, 5]
-        points_all = points_all[NLZ_flag == -1]
-        points_all[:, 3] = np.tanh(points_all[:,3])
+        if disable_nlz_flag:            
+            points_all = points_all[NLZ_flag == -1]            
+        if tanhnorm:
+            points_all[:, 3] = np.tanh(points_all[:,3])
+
         return points_all[:,:3]
+
     
     def get_image(self, idx, camera_channel, brightness=1):
         infos = self.get_infos(idx)
@@ -134,22 +138,25 @@ class WaymoObjects:
 
         imgpc_path = self.root_dir / 'image_lidar_projections' / 'image_pc' / camera_channel / f'{sequence_name}_{sample_idx:04}.npy'
         pts_img = np.load(imgpc_path)
-        pc_lidar = self.get_pointcloud(idx)
+        fovinds_path = self.root_dir / 'image_lidar_projections' / 'fov_inds' / camera_channel / f'{sequence_name}_{sample_idx:04}.npy'
+        fov_inds = np.load(fovinds_path)
+
+        pc_lidar = self.get_pointcloud(idx)[fov_inds,:]
 
         imgfov = {"pc_lidar": pc_lidar,
                   "pts_img": pts_img,
                   "pc_cam": None,
-                  "fov_inds": None}
+                  "fov_inds": fov_inds}
         return imgfov
     
-    def get_camera_instances(self, idx, camera_channel):
+    def get_camera_instances(self, idx, channel):
         infos = self.get_infos(idx)
         sequence_name = infos['point_cloud']['lidar_sequence']
         sample_idx = infos['point_cloud']['sample_idx']
         image_id = f'{sequence_name}_{sample_idx:04}'
 
-        ann_ids = self.masks[camera_channel].getAnnIds(imgIds=[image_id])
-        instances = self.masks[camera_channel].loadAnns(ann_ids)
+        ann_ids = self.masks[channel].getAnnIds(imgIds=[image_id])
+        instances = self.masks[channel].loadAnns(ann_ids)
         instances = sorted(instances, key=lambda x: x['area'], reverse=True)
         return instances
 
