@@ -544,3 +544,39 @@
 [2022-05-10 09:28:37,769  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 3980
 [2022-05-10 09:28:37,769  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 3980
 [2022-05-10 09:28:37,769  meshed_nuscenes_dataset.py 40  INFO]  Total samples for MeshedNuScenes dataset: 3980
+[2022-05-10 21:46:16,091  meshed_kitti_dataset.py 37  INFO]  Loading MeshedKittiDataset dataset
+[2022-05-10 21:46:16,091  meshed_kitti_dataset.py 37  INFO]  Loading MeshedKittiDataset dataset
+[2022-05-10 21:46:16,091  meshed_kitti_dataset.py 37  INFO]  Loading MeshedKittiDataset dataset
+[2022-05-10 21:46:16,091  meshed_kitti_dataset.py 37  INFO]  Loading MeshedKittiDataset dataset
+[2022-05-10 21:46:16,271  meshed_kitti_dataset.py 51  INFO]  Total samples for MeshedKittiDataset dataset: 3769
+[2022-05-10 21:46:16,271  meshed_kitti_dataset.py 51  INFO]  Total samples for MeshedKittiDataset dataset: 3769
+[2022-05-10 21:46:16,271  meshed_kitti_dataset.py 51  INFO]  Total samples for MeshedKittiDataset dataset: 3769
+[2022-05-10 21:46:16,271  meshed_kitti_dataset.py 51  INFO]  Total samples for MeshedKittiDataset dataset: 3769
+[2022-05-10 21:47:16,005  meshed_kitti_dataset.py 37  INFO]  Loading MeshedKittiDataset dataset
+[2022-05-10 21:47:16,005  meshed_kitti_dataset.py 37  INFO]  Loading MeshedKittiDataset dataset
+[2022-05-10 21:47:16,005  meshed_kitti_dataset.py 37  INFO]  Loading MeshedKittiDataset dataset
+[2022-05-10 21:47:16,005  meshed_kitti_dataset.py 37  INFO]  Loading MeshedKittiDataset dataset
+[2022-05-10 21:47:16,121  meshed_kitti_dataset.py 51  INFO]  Total samples for MeshedKittiDataset dataset: 3769
+[2022-05-10 21:47:16,121  meshed_kitti_dataset.py 51  INFO]  Total samples for MeshedKittiDataset dataset: 3769
+[2022-05-10 21:47:16,121  meshed_kitti_dataset.py 51  INFO]  Total samples for MeshedKittiDataset dataset: 3769
+[2022-05-10 21:47:16,121  meshed_kitti_dataset.py 51  INFO]  Total samples for MeshedKittiDataset dataset: 3769
+[2022-05-10 21:47:39,524  meshed_kitti_dataset.py 37  INFO]  Loading MeshedKittiDataset dataset
+[2022-05-10 21:47:39,524  meshed_kitti_dataset.py 37  INFO]  Loading MeshedKittiDataset dataset
+[2022-05-10 21:47:39,524  meshed_kitti_dataset.py 37  INFO]  Loading MeshedKittiDataset dataset
+[2022-05-10 21:47:39,524  meshed_kitti_dataset.py 37  INFO]  Loading MeshedKittiDataset dataset
+[2022-05-10 21:47:39,677  meshed_kitti_dataset.py 51  INFO]  Total samples for MeshedKittiDataset dataset: 3769
+[2022-05-10 21:47:39,677  meshed_kitti_dataset.py 51  INFO]  Total samples for MeshedKittiDataset dataset: 3769
+[2022-05-10 21:47:39,677  meshed_kitti_dataset.py 51  INFO]  Total samples for MeshedKittiDataset dataset: 3769
+[2022-05-10 21:47:39,677  meshed_kitti_dataset.py 51  INFO]  Total samples for MeshedKittiDataset dataset: 3769
+[2022-05-10 21:47:39,828  detector3d_template.py 325  INFO]  ==> Loading parameters from checkpoint /SEE-MTDA/detector/output/source-waymo/secondiou/see-v2/secondiou_ros_custom1000_PCN-norm-coarse/default/ckpt/checkpoint_epoch_82.pth to GPU
+[2022-05-10 21:47:39,828  detector3d_template.py 325  INFO]  ==> Loading parameters from checkpoint /SEE-MTDA/detector/output/source-waymo/secondiou/see-v2/secondiou_ros_custom1000_PCN-norm-coarse/default/ckpt/checkpoint_epoch_82.pth to GPU
+[2022-05-10 21:47:39,828  detector3d_template.py 325  INFO]  ==> Loading parameters from checkpoint /SEE-MTDA/detector/output/source-waymo/secondiou/see-v2/secondiou_ros_custom1000_PCN-norm-coarse/default/ckpt/checkpoint_epoch_82.pth to GPU
+[2022-05-10 21:47:39,828  detector3d_template.py 325  INFO]  ==> Loading parameters from checkpoint /SEE-MTDA/detector/output/source-waymo/secondiou/see-v2/secondiou_ros_custom1000_PCN-norm-coarse/default/ckpt/checkpoint_epoch_82.pth to GPU
+[2022-05-10 21:47:41,861  detector3d_template.py 331  INFO]  ==> Checkpoint trained from version: pcdet+0.3.0+0000000
+[2022-05-10 21:47:41,861  detector3d_template.py 331  INFO]  ==> Checkpoint trained from version: pcdet+0.3.0+0000000
+[2022-05-10 21:47:41,861  detector3d_template.py 331  INFO]  ==> Checkpoint trained from version: pcdet+0.3.0+0000000
+[2022-05-10 21:47:41,861  detector3d_template.py 331  INFO]  ==> Checkpoint trained from version: pcdet+0.3.0+0000000
+[2022-05-10 21:47:42,041  detector3d_template.py 350  INFO]  ==> Done (loaded 189/189)
+[2022-05-10 21:47:42,041  detector3d_template.py 350  INFO]  ==> Done (loaded 189/189)
+[2022-05-10 21:47:42,041  detector3d_template.py 350  INFO]  ==> Done (loaded 189/189)
+[2022-05-10 21:47:42,041  detector3d_template.py 350  INFO]  ==> Done (loaded 189/189)

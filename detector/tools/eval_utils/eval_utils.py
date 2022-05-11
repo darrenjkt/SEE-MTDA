@@ -122,6 +122,9 @@ def eval_one_epoch(cfg, model, dataloader, epoch_id, logger, dist_test=False, sa
     logger.info(result_str)
     ret_dict.update(result_dict)
 
+    with open(result_dir / 'ret_dict.pkl', 'wb') as f:
+        pickle.dump(ret_dict, f)
+
     # add avg predicted number of objects to tensorboard log
     ret_dict['eval_avg_pred_bboxes'] = total_pred_objects / max(1, len(det_annos))
 

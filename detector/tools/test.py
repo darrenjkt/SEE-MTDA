@@ -16,6 +16,7 @@ from pcdet.models import build_network
 from pcdet.utils import common_utils
 from pcdet.config import cfg, cfg_from_list, cfg_from_yaml_file, log_config_to_file
 from eval_utils import eval_utils
+from train_utils.train_utils import save_checkpoint
 
 
 def parse_config():
@@ -62,6 +63,13 @@ def parse_config():
 
 
 def eval_single_ckpt(model, test_loader, args, eval_output_dir, logger, epoch_id, dist_test=False):
+    
+    if 'ckpt-best' in args.ckpt:
+        best_dict = torch.load(args.ckpt)
+        best_car3d_moderateR40 = ['best_car3d_moderateR40']
+        best_epoch = best_dict['epoch']
+        print(f'Loading epoch {best_epoch} with car IOU3D moderate R40: {best_car3d_moderateR40}')
+
     # load checkpoint
     model.load_params_from_file(filename=args.ckpt, logger=logger, to_cpu=dist_test)
     model.cuda()
@@ -103,6 +111,15 @@ def repeat_eval_ckpt(model, test_loader, args, eval_output_dir, logger, ckpt_dir
     total_time = 0
     first_eval = True
 
+    ckpt_best = ckpt_dir / 'ckpt-best.pth'
+    if ckpt_best.exists():
+        best_dict = torch.load(ckpt_best)
+        best_car3d_moderateR40 = best_dict['best_car3d_moderateR40']
+        best_epoch = best_dict['epoch']
+        print(f'Best car IOU 3D moderate R40: {best_car3d_moderateR40}, epoch: {best_epoch}')
+    else: 
+        best_car3d_moderateR40 = 0
+
     while True:
         # check whether there is checkpoint which is not evaluated
         cur_epoch_id, cur_ckpt = get_no_evaluated_ckpt(ckpt_dir, ckpt_record_file, args)
@@ -123,6 +140,7 @@ def repeat_eval_ckpt(model, test_loader, args, eval_output_dir, logger, ckpt_dir
         total_time = 0
         first_eval = False
 
+        state_dict = torch.load(cur_ckpt)
         model.load_params_from_file(filename=cur_ckpt, logger=logger, to_cpu=dist_test)
         model.cuda()
 
@@ -132,6 +150,16 @@ def repeat_eval_ckpt(model, test_loader, args, eval_output_dir, logger, ckpt_dir
             cfg, model, test_loader, cur_epoch_id, logger, dist_test=dist_test,
             result_dir=cur_result_dir, save_to_file=args.save_to_file, args=args
         )
+
+        if tb_dict['Car_3d/moderate_R40'] > best_car3d_moderateR40:
+            best_car3d_moderateR40 = tb_dict['Car_3d/moderate_R40']
+
+            ckpt_name = ckpt_dir / 'ckpt-best'
+            save_dict = state_dict.copy()
+            save_dict['best_car3d_moderateR40'] = best_car3d_moderateR40
+            save_checkpoint(save_dict, filename=ckpt_name)
+            print(f'Saved {ckpt_name}')
+            print(f'Car IOU 3D moderate R40: {best_car3d_moderateR40} at epoch {cur_epoch_id}')
 
         if cfg.LOCAL_RANK == 0:
             for key, val in tb_dict.items():
