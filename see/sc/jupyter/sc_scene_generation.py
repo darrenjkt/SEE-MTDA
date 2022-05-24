@@ -341,7 +341,7 @@ def raycast_object(car, scene, npoints, min_fov=10, max_fov=60):
 
 def generate_dataset(data_dir, frames, models, dataset_name):
     min_pts = 10
-    max_pts = 6000
+    max_pts = 50000
     nviews = 40
     npoints_complete = 16384
 
