@@ -62,7 +62,7 @@ VISUAL="        --env=DISPLAY
 xhost +local:docker
 
 echo "Running the docker image for see-mtda:${image} [GPUS: ${GPU_ID}]"
-docker_image="darrenjkt/see-mtda:${image}-v1.0"
+docker_image="darrenjkt/see-mtda:${image}-v1.1"
 
 docker  run -d -it --rm \
 $VOLUMES \

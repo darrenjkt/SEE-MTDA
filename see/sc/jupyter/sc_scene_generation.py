@@ -6,7 +6,7 @@ from pathlib import Path
 import pickle
 import os
 import open3d as o3d # !pip3 install open3d==0.14.1 (has ray casting)
-import point_cloud_utils as pcu # !pip install pypcu
+import point_cloud_utils as pcu # !pip install point-cloud-utils
 import csv
 import numpy as np
 import glob
@@ -204,7 +204,7 @@ def get_tmeshes_with_box_labels(frame_cars, data_dir, sampled_db, unseen_list):
         return []
     
     scene_cars = []
-    for box_label in frame_cars['label']:
+    for idx, box_label in enumerate(frame_cars['label']):
 
         car = get_car_object(data_dir, sampled_db, unseen_list)
         centroid = box_label[:3]
@@ -221,7 +221,7 @@ def get_tmeshes_with_box_labels(frame_cars, data_dir, sampled_db, unseen_list):
                'mesh': tmesh.remove_unreferenced_vertices(), 
                'model_id': car['model_id'],
                'label': list(centroid) + list(car['dims']) + list([yaw]),
-               'waymo_num_pts': int(box_label[-1])} 
+               'waymo_num_pts': int(frame_cars['num_pts'][idx])} 
         scene_cars.append(ret)
     return scene_cars
 
@@ -321,10 +321,12 @@ def cast_rays_at_point(scene, point, fov_deg=100, aspect_ratio=2, height_px=640)
     return points.numpy()
     
     
-def raycast_object(car, scene, npoints):
+def raycast_object(car, scene, npoints, min_fov=10, max_fov=60):
     centre = car['label'][:3]    
     
-    fov_deg = np.random.normal(120, 30)
+    # We generate dense points here so that we have more freedom to subsample in training
+    fov_deg = np.random.normal(30, 30)
+    fov_deg = np.clip(fov_deg, min_fov, max_fov)
     ray_pts = cast_rays_at_point(scene, centre, fov_deg=fov_deg, aspect_ratio=2, height_px=640)
     o3dbox = boxpts_to_o3dbox(car['bbox'])
     
@@ -343,7 +345,7 @@ def generate_dataset(data_dir, frames, models, dataset_name):
     nviews = 40
     npoints_complete = 16384
 
-    save_dir = Path(f'/SEE-MTDA/data/shapenet/VC/WAYMO_nviews-{nviews}/{dataset_name}')
+    save_dir = Path(f'/SEE-MTDA/data/shapenet/VC/vc_dense-{nviews}/{dataset_name}')
     save_dir.mkdir(exist_ok=True, parents=True)
     total = nviews * len(models)
     currently_exported = 0
@@ -466,11 +468,9 @@ def main():
                 frame['sign']['num_pts'] = info['annos']['num_points_in_gt'][smask]
                 frame['sign']['num_obj'] = len(sign_label)
             frames.append(frame)
-
-    # generate_dataset(data_dir, frames, models[int(3413*0.8):int(3413*0.9)], dataset_name='val')
-    
-    generate_dataset(data_dir, frames, models[:int(len(models)*0.9)], dataset_name='train')
+        
     generate_dataset(data_dir, frames, models[int(len(models)*0.9):], dataset_name='val')
+    generate_dataset(data_dir, frames, models[:int(len(models)*0.9)], dataset_name='train')
     
 
 if __name__ == "__main__":
