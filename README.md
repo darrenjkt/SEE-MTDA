@@ -1,10 +1,13 @@
 # SEE-MTDA
 
+This is the official codebase for the RAL 2022 paper: "See Eye to Eye: A Lidar-Agnostic 3D Detection Framework for Unsupervised Multi-Target Domain Adaptation".
+
 Being a multi-target domain adaptation approach, we enable **any** novel SOTA detectors to become an **agnostic** model for different lidar sensors without requiring any form of training. The same model trained with SEE can support any kind of scan pattern. We provide download links for all the models that were used in the paper. 
 
 We aim to support novel SOTA detectors as they emerge in order to provide accessibility for those who do not have the training or manual labelling resources. We believe that this will be a great contribution to supporting novel and non-conventional lidars that differ from the popular lidars used in the research context.
 
 ![pipeline](./docs/pipeline.png)
+See this [video](https://www.youtube.com/watch?v=iw-AKNLUfNQ) for a quick explanation of our work.
 
 This project builds upon the progress of other outstanding codebases in the computer vision community. We acknowledge the works of the following codebases in our project: 
 - Our instance segmentation code uses [mmdetection](https://github.com/open-mmlab/mmdetection).
@@ -96,3 +99,14 @@ python test.py --cfg_file /SEE-MTDA/detector/output/source-waymo/secondiou/see/s
 ```
 The location of further testing configuration files for the different tasks can be found [here](https://github.com/darrenjkt/SEE-MTDA/blob/main/docs/TESTING_CONFIGURATIONS.md). These should give similar results as our paper. Please modify the cfg file path and ckpt model in the command above accordingly. 
 
+# Reference
+If you find our work useful in your research, please consider citing our [paper](https://arxiv.org/pdf/2111.09450.pdf):
+```
+@article{tsai2022see,
+  title={See Eye to Eye: A Lidar-Agnostic 3D Detection Framework for Unsupervised Multi-Target Domain Adaptation},
+  author={Tsai, Darren and Berrio, Julie Stephany and Shan, Mao and Worrall, Stewart and Nebot, Eduardo},
+  journal={IEEE Robotics and Automation Letters},
+  year={2022},
+  publisher={IEEE}
+}
+```
