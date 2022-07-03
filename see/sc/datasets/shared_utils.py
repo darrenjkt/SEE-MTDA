@@ -44,25 +44,26 @@ def get_pts_in_mask(dataset, instances, imgfov, shrink_percentage=0, use_bbox=Fa
     TODO: Not a fan of requiring the COCO object to be passed in. I only need it for converting from seg polygon to mask for now
     """
     imgfov_pts_2d, imgfov_pc_lidar, imgfov_pc_cam = imgfov['pts_img'], imgfov['pc_lidar'], imgfov['pc_cam']
-    list_instance_pts_uv, list_instance_pc_cam_xyz, list_instance_pc_lidar_xyzls, list_labelled_pcd = [], [], [], []
+    list_instance_pts_uv, list_instance_pc_cam_xyz, pointcloud, list_labelled_pcd = [], [], [], []
 
     if labelled_pcd:
         imgfov_labelled_pc = imgfov['pc_labelled']
         
     for instance_orig in instances:
         try:
-            instance = instance_orig.copy()
-            if shrink_percentage != 0:
-                instance['segmentation'] = shrink_instance_masks(instance['segmentation'], shrink_percentage=shrink_percentage)
+            instance = instance_orig.copy()                    
             
-            seg_mask = dataset.annToMask(instance)
             if use_bbox:
                 bbox = np.array(instance['bbox'])
                 bbox[2:4] = bbox[0:2] + bbox[2:4]
-                boxmask = np.zeros(seg_mask.shape, dtype=np.uint8)
+                boxmask = np.zeros(imgfov['img_shape'], dtype=np.uint8)
                 boxmask[int(bbox[1]):int(bbox[3]), int(bbox[0]):int(bbox[2])] = True
                 mask = boxmask
             else:
+                if shrink_percentage != 0:
+                    instance['segmentation'] = shrink_instance_masks(instance['segmentation'], shrink_percentage=shrink_percentage)
+
+                seg_mask = dataset.annToMask(instance)
                 mask = seg_mask                
 
         except Exception as e:
@@ -92,23 +93,26 @@ def get_pts_in_mask(dataset, instances, imgfov, shrink_percentage=0, use_bbox=Fa
         # We attach class label and segmentation mask len
         # If the object is split into more than 2 parts then
         # we can increase the clustering value
-        instance_pc_lidar_xyzls = np.hstack((instance_pc_lidar, \
+        if not use_bbox:
+            instance_pc_lidar_xyzls = np.hstack((instance_pc_lidar, \
                                             instance['category_id']*np.ones((instance_pc_lidar.shape[0],1)), \
-                                            instance['segmentation'].__len__()*np.ones((instance_pc_lidar.shape[0],1)) ))
-        
+                                            instance['segmentation'].__len__()*np.ones((instance_pc_lidar.shape[0],1)) ))        
+            pointcloud.append(instance_pc_lidar_xyzls)
+        else:
+            pointcloud.append(instance_pc_lidar)
+
         list_instance_pts_uv.append(instance_pts_uv)        
-        list_instance_pc_lidar_xyzls.append(instance_pc_lidar_xyzls)
     
     instance_pts = {"img_uv": list_instance_pts_uv,
                     "cam_xyz":list_instance_pc_cam_xyz,
-                    "lidar_xyzls": list_instance_pc_lidar_xyzls,
+                    "pointcloud": pointcloud,
                     "labelled_pcd": list_labelled_pcd }
     return instance_pts
 
 def draw_lidar_on_image(projected_points, img, instances=None, 
                         clip_distance=1.0, point_size=5, alpha=0.8, 
                         color_scheme='jet', map_range=25.0,
-                        shrink_percentage=0, display=True):
+                        shrink_percentage=0, display=True, instance_mask=False):
     ''' 
     Function that takes in the transformed points and draws it on the image.
     This function is called by all the "show_" functions.    
@@ -119,13 +123,15 @@ def draw_lidar_on_image(projected_points, img, instances=None,
     if instances is not None:
         for instance_orig in instances:
             instance = instance_orig.copy()
-            if shrink_percentage != 0:
-                instance['segmentation'] = shrink_instance_masks(instance['segmentation'], shrink_percentage=shrink_percentage)
-            segs = instance['segmentation']
-            segs = [np.array(seg, np.int32).reshape((1, -1, 2))
-                    for seg in segs]
-            for seg in segs: 
-                cv2.drawContours(img, seg, -1, (0,255,0), 2)
+            if instance_mask:
+                if shrink_percentage != 0:
+                    instance['segmentation'] = shrink_instance_masks(instance['segmentation'], shrink_percentage=shrink_percentage)
+                segs = instance['segmentation']
+                segs = [np.array(seg, np.int32).reshape((1, -1, 2))
+                        for seg in segs]
+                for seg in segs: 
+                    cv2.drawContours(img, seg, -1, (0,255,0), 2)
+                    
             bbox = np.array(instance['bbox'], dtype=np.uint64)
             bbox[2:4] = bbox[0:2] + bbox[2:4]
             cv2.rectangle(img, (bbox[0], bbox[1]), (bbox[2], bbox[3]), (255,0,0), 2)

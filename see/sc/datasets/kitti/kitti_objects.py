@@ -23,7 +23,7 @@ class KittiObjects:
         self.infos = self.__load_infos()
         self.classes = dataset_cfg.CLASSES
         self.dataset_name = dataset_cfg.NAME
-        self.shrink_mask_percentage = dataset_cfg.SHRINK_MASK_PERCENTAGE if dataset_cfg.DET2D_MASK else 0
+        self.shrink_mask_percentage = dataset_cfg.get('SHRINK_MASK_PERCENTAGE', 0)
         print(f"KittiObjects initialised!")
 
     def __len__(self):
@@ -152,9 +152,8 @@ class KittiObjects:
         """
         Returns all instances detected by the instance detection for the particular requested sequence
         """
-        ann_ids = self.masks[channel].getAnnIds(imgIds=idx, catIds=[class2idx[c] for c in self.classes])
+        ann_ids = self.masks[channel].getAnnIds(imgIds=[f'{idx:06d}'], catIds=[class2idx[c] for c in self.classes])
         instances = self.masks[channel].loadAnns(ann_ids)
-        instances = sorted(instances, key=lambda x: x['area'], reverse=True) 
         return instances
 
     def map_pointcloud_to_image(self, pc_velo, calib, image,min_dist=1.0):
@@ -209,6 +208,7 @@ class KittiObjects:
             if append_labels:
                 imgfov['pc_labelled'] = pc_velo[imgfov['fov_inds'],:]
 
+            imgfov['img_shape'] = img.shape[:2] # H, W
             instances = self.get_camera_instances(idx, channel=camera_channel)
             instance_pts = shared_utils.get_pts_in_mask(self.masks[camera_channel], 
                                                         instances, 
@@ -220,7 +220,7 @@ class KittiObjects:
             if append_labels:
                 filtered_icloud = [x for x in instance_pts['labelled_pcd'] if len(x) != 0]    
             else:
-                filtered_icloud = [x for x in instance_pts['lidar_xyzls'] if len(x) != 0]
+                filtered_icloud = [x for x in instance_pts['pointcloud'] if len(x) != 0]
             i_clouds.extend(filtered_icloud)
         
         return i_clouds   

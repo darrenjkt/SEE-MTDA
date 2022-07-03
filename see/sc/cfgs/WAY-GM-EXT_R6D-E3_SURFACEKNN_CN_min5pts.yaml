@@ -1,0 +1,15 @@
+DATA_PATH: '/SEE-MTDA/data/waymo/custom_1000'
+
+DATASET: 
+    NAME: 'waymo'
+    CLASSES: ['Vehicle']
+    POINT_CLOUD_RANGE: [-70, -70, -2, 70, 70, 4]
+    DET2D_MASK: False
+    UPDATE_GT_DATABASE: False
+
+MESHER: 
+    NAME: ext_mesh    
+    MIN_LIDAR_PTS_TO_MESH: 5
+    EXPORT_NAME: R6D-E3_SURFACEKNN_CN
+    REPLACE_OBJECT_WITH_MESH:
+        POINT_DISTANCE_THRESH: 0.1

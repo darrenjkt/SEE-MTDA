@@ -1,0 +1,16 @@
+DATA_PATH: '/SEE-MTDA/data/kitti'
+
+DATASET: 
+    NAME: 'kitti'
+    CLASSES: ['Car']
+    POINT_CLOUD_RANGE: [-70, -70, -2, 70, 70, 4]
+    DET2D_MASK: False
+    DET2D_MODEL: 'htc'
+    CAMERA_CHANNELS: ['image_2']
+
+MESHER: 
+    NAME: ext_mesh    
+    MIN_LIDAR_PTS_TO_MESH: 10
+    EXPORT_NAME: R6D_E3_surfaceknn_k40
+    REPLACE_OBJECT_WITH_MESH:
+        POINT_DISTANCE_THRESH: 0.1

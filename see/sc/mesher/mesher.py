@@ -136,8 +136,12 @@ class Mesher:
         i_cloud = [pcd for pcd in i_cloud if len(pcd) >= self.min_lidar_pts_to_mesh]
 
         for object_id, instance in enumerate(i_cloud):
-            pcd = convert_to_o3dpcd(instance[:,:3])
-            f_pcd = __CLUSTERING__[self.mesher_cfg.CLUSTERING.NAME](self.mesher_cfg, pcd)
+            if self.mesher_cfg.NAME in ["lseg_mesh"]:
+                f_pcd = convert_to_o3dpcd(instance[:,:3])
+            else:
+                pcd = convert_to_o3dpcd(instance[:,:3])
+                f_pcd = __CLUSTERING__[self.mesher_cfg.CLUSTERING.NAME](self.mesher_cfg, pcd)
+            
             if len(f_pcd.points) < self.min_lidar_pts_to_mesh:
                 continue
 
@@ -211,10 +215,12 @@ class Mesher:
             points.tofile(save_fname)
         else:
             # .pcd format from o3d only saves (N,3) shape
-            save_fname = save_fname + '.pcd'
-            os.makedirs(os.path.dirname(save_fname), exist_ok=True)
             save_pcd = o3d.geometry.PointCloud()
             save_pcd.points = o3d.utility.Vector3dVector(points)
+            num_pts = len(save_pcd.points)
+
+            save_fname = save_fname + '.pcd'
+            os.makedirs(os.path.dirname(save_fname), exist_ok=True)            
             try:
                 o3d.io.write_point_cloud(save_fname, save_pcd, write_ascii=False)
             except Exception as e:

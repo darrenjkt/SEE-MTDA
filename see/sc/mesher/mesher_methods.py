@@ -38,7 +38,7 @@ def vres_ring_based_sampling(mesh_cfg, mesh, num_pcd_pts, gt_box=None, reference
     Num inital points in a sense indicate how good the mesh quality is. If we upsample the 
     existing amount of points, we can in a sense mitigate the bad quality meshes.
     """
-    if mesh_cfg.NAME == 'det_mesh':
+    if mesh_cfg.NAME in ['det_mesh', 'lseg_mesh']:
         centroid_distance = np.linalg.norm(np.asarray(mesh.get_center()))        
     elif mesh_cfg.NAME == 'gt_mesh' and gt_box is not None:
         centroid_distance = np.linalg.norm(gt_box.get_center())

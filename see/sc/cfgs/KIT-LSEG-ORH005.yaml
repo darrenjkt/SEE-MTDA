@@ -1,0 +1,27 @@
+DATA_PATH: '/SEE-MTDA/data/kitti'
+
+DATASET: 
+    NAME: 'kitti'
+    CLASSES: ['Car']
+    POINT_CLOUD_RANGE: [-70, -70, -2, 70, 70, 4]
+    DET2D_MASK: False
+    DET2D_MODEL: 'htc'
+    CAMERA_CHANNELS: ['image_2']
+
+MESHER: 
+    NAME: lseg_mesh    
+    MIN_LIDAR_PTS_TO_MESH: 50
+    VRES: 0.4
+        
+    MESH_ALGORITHM: 
+        NAME: ball_pivoting
+        UPPER_RADIUS: 1.155
+        LOWER_RADIUS: 0.01
+        
+    SAMPLING: 
+        NAME: vres_ring_based_sampling
+        TYPE: 'poisson'
+        OPTIMAL_RING_HEIGHT: 0.05
+
+    REPLACE_OBJECT_WITH_MESH:
+        POINT_DISTANCE_THRESH: 0.1

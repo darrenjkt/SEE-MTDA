@@ -1,0 +1,9 @@
+[
+    {"id": 0, "name": "person", "supercategory": "person"}, 
+    {"id": 1, "name": "bicycle", "supercategory": "vehicle"}, 
+    {"id": 2, "name": "car", "supercategory": "vehicle"}, 
+    {"id": 3, "name": "motorcycle", "supercategory": "vehicle"}, 
+    {"id": 5, "name": "bus", "supercategory": "vehicle"},
+    {"id": 6, "name": "train", "supercategory": "vehicle"}, 
+    {"id": 7, "name": "truck", "supercategory": "vehicle"}
+]

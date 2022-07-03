@@ -8,10 +8,10 @@ DATA_CONFIG:
     FILTER_MIN_POINTS_IN_GT: 60
     MIN_POINTS_OF_GT: 60
     INFO_PATH: {
-        'train': [infos_meshed_NUS-GM-ORH005/nuscenes_infos_2sweeps_train.pkl],
-        'test': [infos_meshed_NUS-GM-ORH005/nuscenes_infos_2sweeps_val.pkl],
+        'train': [infos_meshednusc_GTBOX_MESH_MINPT60_MINUSCROPPED/nuscenes_infos_2sweeps_train.pkl],
+        'test': [infos_meshednusc_GTBOX_MESH_MINPT60_MINUSCROPPED/nuscenes_infos_2sweeps_val.pkl],
     }
-    POINT_CLOUD_RANGE: [-24, -24, -2, 24, 24, 4]
+    POINT_CLOUD_RANGE: [-44.8, -44.8, -2.0, 44.8, 44.8, 4.0]
     
     DATA_AUGMENTOR:
         DISABLE_AUG_LIST: ['normalize_object_size']
@@ -175,8 +175,8 @@ MODEL:
 
 
 OPTIMIZATION:
-    NUM_EPOCHS: 500
-    BATCH_SIZE_PER_GPU: 32
+    NUM_EPOCHS: 200
+    BATCH_SIZE_PER_GPU: 16
     OPTIMIZER: adam_onecycle
     LR: 0.003
     WEIGHT_DECAY: 0.01

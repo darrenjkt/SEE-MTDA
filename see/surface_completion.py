@@ -54,6 +54,27 @@ def mesh_process_det(sample_idx):
     mesher.save_pcd(final_pcd, sample_idx, labelled_pcd=add_seg_labels)
     return time_taken_frame, time_taken_car
 
+def mesh_process_lidarseg(sample_idx):    
+    
+    setproctitle.setproctitle(f'Mesh-LSEG[{mesher.data_obj.dataset_name[:3].upper()}]:{sample_idx}/{mesher.data_obj.__len__()}')
+    t0 = time.time()
+    icloud_paths = glob.glob(f'{mesher.data_obj.root_dir}/exported/lidar_seg_data_groundlift/points_in_bbox/icloud/*.pcd')
+    i_cloud = [np.asarray(o3d.io.read_point_cloud(path).points) for path in icloud_paths if  f'{sample_idx:06}_' in path]
+    list_mesh_instances = mesher.mesh_det_pts(i_cloud, sample_idx)
+    
+    add_seg_labels = mesher.mesher_cfg.get('ADD_SEG_LABELS', False)
+    original_pcd = convert_to_o3dpcd(mesher.data_obj.get_pointcloud(sample_idx))
+    final_pcd = mesher.replace_pts_with_mesh_pts(original_pcd, list_mesh_instances, label_points=add_seg_labels, point_dist_thresh=mesher.mesher_cfg.REPLACE_OBJECT_WITH_MESH.POINT_DISTANCE_THRESH)        
+    
+    time_taken_frame = time.time() - t0
+    if len(list_mesh_instances) != 0:
+        time_taken_car = time_taken_frame/len(list_mesh_instances)
+    else:
+        time_taken_car = None
+
+    mesher.save_pcd(final_pcd, sample_idx, labelled_pcd=add_seg_labels)
+    return time_taken_frame, time_taken_car
+
 def mesh_process_ext(sample_idx):
     """ 
     Loads in meshes of individual objects that were processed externally and joins them with the original cloud
@@ -61,14 +82,14 @@ def mesh_process_ext(sample_idx):
     setproctitle.setproctitle(f'Mesh-EXT[{mesher.data_obj.dataset_name[:3].upper()}]:{sample_idx}/{mesher.data_obj.__len__()}')
     
     t0 = time.time()
-    pcd_gtboxes = mesher.get_pcd_gtboxes(sample_idx)
+    original_pcd = convert_to_o3dpcd(mesher.data_obj.get_pointcloud(sample_idx))
     completed_pcd_paths = set(glob.glob(f'{mesher.data_obj.root_dir}/exported/vc/test/completed-{mesher.mesher_cfg.EXPORT_NAME}/*.pcd'))
     completed_meta_paths = [pcd_paths.replace('completed-', 'metadata-').replace('.pcd', '.pkl') for pcd_paths in list(completed_pcd_paths)]
 
     frame_objs = set([pcd_path for pcd_path in completed_pcd_paths if f'frame-{sample_idx}_' in pcd_path])    
     frame_meta = set([meta_path for meta_path in completed_meta_paths if f'frame-{sample_idx}_' in meta_path])
-    iou_3ds = [pickle.load(open(pkl_file, 'rb'))['IOU_3D'].item() for pkl_file in frame_meta]
-    list_mesh_instances = [o3d.io.read_point_cloud(obj_path) for idx, obj_path in enumerate(frame_objs) if iou_3ds[idx] > mesher.mesher_cfg.IOU_THRESH]    
+    num_pts = [pickle.load(open(pkl_file, 'rb'))['num_pts'] for pkl_file in frame_meta]
+    list_mesh_instances = [o3d.io.read_point_cloud(obj_path) for idx, obj_path in enumerate(frame_objs) if num_pts[idx] > mesher.mesher_cfg.MIN_LIDAR_PTS_TO_MESH]    
 
     time_taken_frame = time.time() - t0
     if len(list_mesh_instances) != 0:
@@ -76,7 +97,7 @@ def mesh_process_ext(sample_idx):
     else:
         time_taken_car = None
 
-    final_pcd = mesher.replace_pts_with_mesh_pts(pcd_gtboxes['pcd'], list_mesh_instances, label_points=False)
+    final_pcd = mesher.replace_pts_with_mesh_pts(original_pcd, list_mesh_instances, label_points=False)
     mesher.save_pcd(final_pcd, sample_idx, labelled_pcd=False)
 
     return time_taken_frame, time_taken_car
@@ -96,6 +117,9 @@ def run(cfg):
     elif cfg.MESHER.NAME in ['ext_mesh', 'det_ext_mesh']:
         print('surface_completion.py [run]: Loading in externally meshed objects')
         mesh_process = mesh_process_ext
+    elif cfg.MESHER.NAME == 'lseg_mesh':
+        print('surface_completion.py [run]: Loading in isolated clouds')
+        mesh_process = mesh_process_lidarseg
     else:        
         print('surface_completion.py [run]: Mesher method not supported')
         return None

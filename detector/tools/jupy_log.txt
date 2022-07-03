@@ -580,3 +580,54 @@
 [2022-05-10 21:47:42,041  detector3d_template.py 350  INFO]  ==> Done (loaded 189/189)
 [2022-05-10 21:47:42,041  detector3d_template.py 350  INFO]  ==> Done (loaded 189/189)
 [2022-05-10 21:47:42,041  detector3d_template.py 350  INFO]  ==> Done (loaded 189/189)
+[2022-05-27 08:31:04,224  meshed_kitti_dataset.py 37  INFO]  Loading MeshedKittiDataset dataset
+[2022-05-27 08:31:04,488  meshed_kitti_dataset.py 51  INFO]  Total samples for MeshedKittiDataset dataset: 3769
+[2022-05-27 08:32:36,507  meshed_kitti_dataset.py 37  INFO]  Loading MeshedKittiDataset dataset
+[2022-05-27 08:32:36,673  meshed_kitti_dataset.py 51  INFO]  Total samples for MeshedKittiDataset dataset: 3769
+[2022-05-27 08:35:31,212  meshed_kitti_dataset.py 37  INFO]  Loading MeshedKittiDataset dataset
+[2022-05-27 08:35:31,365  meshed_kitti_dataset.py 51  INFO]  Total samples for MeshedKittiDataset dataset: 3769
+[2022-05-27 08:35:44,607  detector3d_template.py 325  INFO]  ==> Loading parameters from checkpoint /SEE-MTDA/detector/output/source-waymo/secondiou/see-v2/secondiou_ros_custom1000_WAY-GM-EXT-R6D-E3-FPS-LSIM/default/ckpt/checkpoint_epoch_82.pth to GPU
+[2022-05-27 08:35:44,760  detector3d_template.py 331  INFO]  ==> Checkpoint trained from version: pcdet+0.3.0+0000000
+[2022-05-27 08:35:45,028  detector3d_template.py 350  INFO]  ==> Done (loaded 189/189)
+[2022-05-27 09:00:06,753  meshed_kitti_dataset.py 37  INFO]  Loading MeshedKittiDataset dataset
+[2022-05-27 09:00:06,753  meshed_kitti_dataset.py 37  INFO]  Loading MeshedKittiDataset dataset
+[2022-05-27 09:00:07,063  meshed_kitti_dataset.py 51  INFO]  Total samples for MeshedKittiDataset dataset: 3769
+[2022-05-27 09:00:07,063  meshed_kitti_dataset.py 51  INFO]  Total samples for MeshedKittiDataset dataset: 3769
+[2022-05-27 09:00:26,825  meshed_waymo_dataset.py 45  INFO]  Loading Waymo dataset
+[2022-05-27 09:00:26,825  meshed_waymo_dataset.py 45  INFO]  Loading Waymo dataset
+[2022-05-27 09:00:26,825  meshed_waymo_dataset.py 45  INFO]  Loading Waymo dataset
+[2022-05-27 09:00:27,621  meshed_waymo_dataset.py 60  INFO]  Total skipped info 0
+[2022-05-27 09:00:27,621  meshed_waymo_dataset.py 60  INFO]  Total skipped info 0
+[2022-05-27 09:00:27,621  meshed_waymo_dataset.py 60  INFO]  Total skipped info 0
+[2022-05-27 09:00:27,627  meshed_waymo_dataset.py 61  INFO]  Total samples for Waymo dataset: 1000
+[2022-05-27 09:00:27,627  meshed_waymo_dataset.py 61  INFO]  Total samples for Waymo dataset: 1000
+[2022-05-27 09:00:27,627  meshed_waymo_dataset.py 61  INFO]  Total samples for Waymo dataset: 1000
+[2022-05-27 09:00:40,650  meshed_waymo_dataset.py 45  INFO]  Loading Waymo dataset
+[2022-05-27 09:00:40,766  meshed_waymo_dataset.py 60  INFO]  Total skipped info 0
+[2022-05-27 09:00:40,767  meshed_waymo_dataset.py 61  INFO]  Total samples for Waymo dataset: 1000
+[2022-05-29 18:57:30,386  meshed_waymo_dataset.py 45  INFO]  Loading Waymo dataset
+[2022-05-29 18:57:31,115  meshed_waymo_dataset.py 60  INFO]  Total skipped info 0
+[2022-05-29 18:57:31,116  meshed_waymo_dataset.py 61  INFO]  Total samples for Waymo dataset: 1000
+[2022-06-19 22:43:03,417  meshed_waymo_dataset.py 45  INFO]  Loading Waymo dataset
+[2022-06-19 22:43:04,474  meshed_waymo_dataset.py 60  INFO]  Total skipped info 0
+[2022-06-19 22:43:04,478  meshed_waymo_dataset.py 61  INFO]  Total samples for Waymo dataset: 1000
+[2022-06-19 22:46:33,646  meshed_kitti_dataset.py 37  INFO]  Loading MeshedKittiDataset dataset
+[2022-06-19 22:46:33,775  meshed_kitti_dataset.py 51  INFO]  Total samples for MeshedKittiDataset dataset: 3769
+[2022-06-19 22:46:58,380  meshed_kitti_dataset.py 37  INFO]  Loading MeshedKittiDataset dataset
+[2022-06-19 22:46:58,482  meshed_kitti_dataset.py 51  INFO]  Total samples for MeshedKittiDataset dataset: 3769
+[2022-06-19 22:49:02,074  meshed_waymo_dataset.py 45  INFO]  Loading Waymo dataset
+[2022-06-19 22:49:02,074  meshed_waymo_dataset.py 45  INFO]  Loading Waymo dataset
+[2022-06-19 22:49:03,277  meshed_waymo_dataset.py 60  INFO]  Total skipped info 0
+[2022-06-19 22:49:03,277  meshed_waymo_dataset.py 60  INFO]  Total skipped info 0
+[2022-06-19 22:49:03,283  meshed_waymo_dataset.py 61  INFO]  Total samples for Waymo dataset: 1000
+[2022-06-19 22:49:03,283  meshed_waymo_dataset.py 61  INFO]  Total samples for Waymo dataset: 1000
+[2022-06-19 22:49:08,813  meshed_kitti_dataset.py 37  INFO]  Loading MeshedKittiDataset dataset
+[2022-06-19 22:49:08,813  meshed_kitti_dataset.py 37  INFO]  Loading MeshedKittiDataset dataset
+[2022-06-19 22:49:08,935  meshed_kitti_dataset.py 51  INFO]  Total samples for MeshedKittiDataset dataset: 3769
+[2022-06-19 22:49:08,935  meshed_kitti_dataset.py 51  INFO]  Total samples for MeshedKittiDataset dataset: 3769
+[2022-06-19 22:49:09,602  detector3d_template.py 325  INFO]  ==> Loading parameters from checkpoint /SEE-MTDA/detector/output/source-waymo/pvrcnn/see-v2/pvrcnn_ros_custom1000_WAY-GM-EXT-R6D-E3_SURFACEKNN_CN_150ep/default/ckpt/checkpoint_epoch_103.pth to GPU
+[2022-06-19 22:49:09,602  detector3d_template.py 325  INFO]  ==> Loading parameters from checkpoint /SEE-MTDA/detector/output/source-waymo/pvrcnn/see-v2/pvrcnn_ros_custom1000_WAY-GM-EXT-R6D-E3_SURFACEKNN_CN_150ep/default/ckpt/checkpoint_epoch_103.pth to GPU
+[2022-06-19 22:49:11,112  detector3d_template.py 331  INFO]  ==> Checkpoint trained from version: pcdet+0.3.0+0000000
+[2022-06-19 22:49:11,112  detector3d_template.py 331  INFO]  ==> Checkpoint trained from version: pcdet+0.3.0+0000000
+[2022-06-19 22:49:11,531  detector3d_template.py 350  INFO]  ==> Done (loaded 319/319)
+[2022-06-19 22:49:11,531  detector3d_template.py 350  INFO]  ==> Done (loaded 319/319)

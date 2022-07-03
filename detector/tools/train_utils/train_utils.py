@@ -79,8 +79,8 @@ def train_model(model, optimizer, train_loader, target_loader, model_func, lr_sc
                 source_sampler.set_epoch(cur_epoch)
 
             dataset_name = str(train_loader.dataset.__class__).split('.')[-3][0].upper()
-            model_name = model.model_cfg.NAME
-            setproctitle.setproctitle(f'[T] {dataset_name}-{model_name}: {cur_epoch}/{total_epochs}')
+            # model_name = model.model_cfg.NAME
+            # setproctitle.setproctitle(f'[T] {dataset_name}-{model_name}: {cur_epoch}/{total_epochs}')
 
             # train one epoch
             if lr_warmup_scheduler is not None and cur_epoch < optim_cfg.WARMUP_EPOCH:
