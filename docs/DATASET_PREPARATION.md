@@ -83,17 +83,5 @@ SEE-MTDA
 ├── see
 ├── detector
 ...
-```
-* Install the official `waymo-open-dataset` by running the following command: 
-```shell script
-pip3 install --upgrade pip
-pip3 install waymo-open-dataset-tf-2-2-0 --user
-```
 
-* Extract point cloud data from tfrecord and generate data infos by running the following command (it takes several hours, 
-and you could refer to `data/waymo/waymo_processed_data` to see how many records that have been processed): 
-```python 
-python -m pcdet.datasets.waymo.waymo_dataset --func create_waymo_infos \
-    --cfg_file tools/cfgs/dataset_configs/waymo_dataset.yaml
-```
 In SEE-MTDA, we use a subset of the Waymo where we selected the 100th frame from each sequence, leading to 1000 frames. We modified the waymo_processed_data and infos accordingly. Note that you do not need to install `waymo-open-dataset` if you have already processed the data before and do not need to evaluate with official Waymo Metrics. The official Waymo Open Dataset can be obtained at this [link](https://waymo.com/open/download/).
