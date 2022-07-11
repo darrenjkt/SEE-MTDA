@@ -48,20 +48,18 @@ Or download from our pre-generated infos [here](https://drive.google.com/drive/f
 
 ### NuScenes Dataset
 
-* Please download the official [NuScenes 3D object detection dataset](https://www.nuscenes.org/download) and 
+* Please download our [Nuscenes subset](https://unisyd-my.sharepoint.com/:u:/g/personal/julie_berrioperez_sydney_edu_au/Ea6MW4jPciVDttZx2iXVaOoBRZHnz1uAMMKiI2yATtbiHw?e=vflIjI) (39GB) and 
 organize the downloaded files as follows: 
 ```
 SEE-MTDA
 ├── data
 │   ├── nuscenes
-│   │   │── v1.0-trainval (or v1.0-mini if you use mini)
+│   │   │── v1.0-trainval
 │   │   │   │── samples
 │   │   │   │── sweeps
 │   │   │   │── maps
 │   │   │   │── v1.0-trainval  
-│   │   │   │── infos_openpcdetv0.3.0
-│   │   │   │   ├──nuscenes_infos_10sweeps_train.pkl
-│   │   │   │   ├──nuscenes_infos_10sweeps_val.pkl
+│   │   │   │── infos_meshed_NUS-GM-ORH005
 ├── see
 ├── detector
 ...
@@ -71,29 +69,17 @@ SEE-MTDA
 ```shell script
 pip install nuscenes-devkit==1.0.5
 ```
-
-* Generate the data infos by running the following command (it may take several hours): 
-```python 
-python -m pcdet.datasets.nuscenes.nuscenes_dataset --func create_nuscenes_infos \ 
-    --cfg_file tools/cfgs/dataset_configs/nuscenes_dataset.yaml \
-    --version v1.0-trainval
-```
-In SEE-MTDA, we use a subset of the nuScenes. We sorted the scenes by number of cars in the scene and selected the top 100 scenes, leading to 4025 frames. We modified the generated infos file from above to reflect this subset. 
+In SEE-MTDA, we use a subset of the nuScenes. We sorted the scenes by number of cars in the scene and selected the top 100 scenes, leading to 4025 frames. We modified the generated infos file from above to reflect this subset. The official dataset can be obtained from [here](https://www.nuscenes.org/download).
 
 ### Waymo Open Dataset
-* Please download the official [Waymo Open Dataset](https://waymo.com/open/download/). We only need the training data for Waymo.
-* Unzip all the above `xxxx.tar` files to the directory of `data/waymo/raw_data` as follows:  
+* Please download our [Waymo subset](https://unisyd-my.sharepoint.com/:u:/g/personal/julie_berrioperez_sydney_edu_au/EUseiL7sd-tLt3DwzcLq0YUB1rhlam-PORdgjIbOc9zBMA?e=EuJ4I9) (3.9GB)Z and organize the downloaded files as follows: 
 ```
 SEE-MTDA
 ├── data
 │   ├── waymo
-│   │   │── ImageSets
-│   │   │── raw_data
-│   │   │   │── segment-xxxxxxxx.tfrecord
-|   |   |   |── ...
-|   |   |── waymo_processed_data
-│   │   │   │── segment-xxxxxxxx/
-|   |   |   |── ...
+│   │   │── infos_openpcdetv0.3.0
+│   │   │── waymo_meshed_WAY-GM-ORH005
+│   │   ...
 ├── see
 ├── detector
 ...
@@ -110,4 +96,4 @@ and you could refer to `data/waymo/waymo_processed_data` to see how many records
 python -m pcdet.datasets.waymo.waymo_dataset --func create_waymo_infos \
     --cfg_file tools/cfgs/dataset_configs/waymo_dataset.yaml
 ```
-In SEE-MTDA, we use a subset of the Waymo where we selected the 100th frame from each sequence, leading to 1000 frames. We modified the waymo_processed_data and infos accordingly. Note that you do not need to install `waymo-open-dataset` if you have already processed the data before and do not need to evaluate with official Waymo Metrics. 
+In SEE-MTDA, we use a subset of the Waymo where we selected the 100th frame from each sequence, leading to 1000 frames. We modified the waymo_processed_data and infos accordingly. Note that you do not need to install `waymo-open-dataset` if you have already processed the data before and do not need to evaluate with official Waymo Metrics. The official Waymo Open Dataset can be obtained at this [link](https://waymo.com/open/download/).
