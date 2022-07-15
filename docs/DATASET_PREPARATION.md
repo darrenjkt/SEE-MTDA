@@ -48,7 +48,7 @@ Or download from our pre-generated infos [here](https://drive.google.com/drive/f
 
 ### NuScenes Dataset
 
-* Please download our [Nuscenes subset](https://unisyd-my.sharepoint.com/:u:/g/personal/julie_berrioperez_sydney_edu_au/Ea6MW4jPciVDttZx2iXVaOoBRZHnz1uAMMKiI2yATtbiHw?e=vflIjI) (39GB) and 
+* Please download our [Nuscenes subset](https://unisyd-my.sharepoint.com/:u:/g/personal/julie_berrioperez_sydney_edu_au/Ea6MW4jPciVDttZx2iXVaOoBRZHnz1uAMMKiI2yATtbiHw?e=vflIjI) (39GB Compressed) and 
 organize the downloaded files as follows: 
 ```
 SEE-MTDA
@@ -72,7 +72,7 @@ pip install nuscenes-devkit==1.0.5
 In SEE-MTDA, we use a subset of the nuScenes. We sorted the scenes by number of cars in the scene and selected the top 100 scenes, leading to 4025 frames. We modified the generated infos file from above to reflect this subset. The official dataset can be obtained from [here](https://www.nuscenes.org/download).
 
 ### Waymo Open Dataset
-* Please download our [Waymo subset](https://unisyd-my.sharepoint.com/:u:/g/personal/julie_berrioperez_sydney_edu_au/EUseiL7sd-tLt3DwzcLq0YUB1rhlam-PORdgjIbOc9zBMA?e=EuJ4I9) (3.9GB)Z and organize the downloaded files as follows: 
+* Please download our [Waymo subset](https://unisyd-my.sharepoint.com/:u:/g/personal/julie_berrioperez_sydney_edu_au/EUseiL7sd-tLt3DwzcLq0YUB1rhlam-PORdgjIbOc9zBMA?e=EuJ4I9) (3.9GB Compressed) and organize the downloaded files as follows: 
 ```
 SEE-MTDA
 ├── data
@@ -83,5 +83,5 @@ SEE-MTDA
 ├── see
 ├── detector
 ...
-
+```
 In SEE-MTDA, we use a subset of the Waymo where we selected the 100th frame from each sequence, leading to 1000 frames. We modified the waymo_processed_data and infos accordingly. Note that you do not need to install `waymo-open-dataset` if you have already processed the data before and do not need to evaluate with official Waymo Metrics. The official Waymo Open Dataset can be obtained at this [link](https://waymo.com/open/download/).
