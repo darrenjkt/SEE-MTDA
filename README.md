@@ -1,21 +1,18 @@
 # SEE-MTDA
 
-This is the official codebase for the RAL 2022 paper: "See Eye to Eye: A Lidar-Agnostic 3D Detection Framework for Unsupervised Multi-Target Domain Adaptation".
+This is the official codebase for 
 
-Being a multi-target domain adaptation approach, we enable **any** novel SOTA detectors to become an **agnostic** model for different lidar sensors without requiring any form of training. The same model trained with SEE can support any kind of scan pattern. We provide download links for all the models that were used in the paper. 
+[RAL 2022] See Eye to Eye: A Lidar-Agnostic 3D Detection Framework for Unsupervised Multi-Target Domain Adaptation.
 
-We aim to support novel SOTA detectors as they emerge in order to provide accessibility for those who do not have the training or manual labelling resources. We believe that this will be a great contribution to supporting novel and non-conventional lidars that differ from the popular lidars used in the research context.
+[Video](https://www.youtube.com/watch?v=iw-AKNLUfNQ) | [Arxiv](https://arxiv.org/abs/2111.09450) | [IEEE](https://ieeexplore.ieee.org/document/9804815)
+
+### Abstract
+Sampling discrepancies between different manufacturers and models of lidar sensors result in inconsistent representations of objects. This leads to performance degradation when 3D detectors trained for one lidar are tested on other types of lidars. Remarkable progress in lidar manufacturing has brought about advances in mechanical, solid-state, and recently, adjustable scan pattern lidars. For the latter, existing works often require fine-tuning the model each time scan patterns are adjusted, which is infeasible. We explicitly deal with the sampling discrepancy by proposing a novel unsupervised multi-target domain adaptation framework, SEE, for transferring the performance of state-of-the-art 3D detectors across both fixed and flexible scan pattern lidars without requiring fine-tuning of models by end-users. Our approach interpolates the underlying geometry and normalises the scan pattern of objects from different lidars before passing them to the detection network. We demonstrate the effectiveness of SEE on public datasets, achieving state-of-the-art results, and additionally provide quantitative results on a novel high-resolution lidar to prove the industry applications of our framework.
 
 ![pipeline](./docs/pipeline.png)
-See this [video](https://www.youtube.com/watch?v=iw-AKNLUfNQ) for a quick explanation of our work.
-
-This project builds upon the progress of other outstanding codebases in the computer vision community. We acknowledge the works of the following codebases in our project: 
-- Our instance segmentation code uses [mmdetection](https://github.com/open-mmlab/mmdetection).
-- Our detector code is based on [OpenPCDet v0.3.0](https://github.com/open-mmlab/OpenPCDet/tree/v0.3.0) with DA configurations adopted from [ST3D](https://github.com/CVMI-Lab/ST3D). 
 
 In the figure below, source-only denotes the approach where there is no domain adaptation. For the 2nd and 3rd columns, the same trained model is used for SEE. From below, we demonstrate that SEE-trained detectors give tighter bounding boxes and less false positives. 
 ![qualitative_github](https://user-images.githubusercontent.com/39115809/166407813-eaed28ef-079d-447d-b9d1-8ed36b858369.png)
-
 
 
 ## Model Zoo
@@ -100,7 +97,7 @@ python test.py --cfg_file /SEE-MTDA/detector/output/source-waymo/secondiou/see/s
 The location of further testing configuration files for the different tasks can be found [here](https://github.com/darrenjkt/SEE-MTDA/blob/main/docs/TESTING_CONFIGURATIONS.md). These should give similar results as our paper. Please modify the cfg file path and ckpt model in the command above accordingly. 
 
 # Reference
-If you find our work useful in your research, please consider citing our [paper](https://arxiv.org/pdf/2111.09450.pdf):
+If you find our work useful in your research, please consider citing our paper:
 ```
 @article{tsai2022see,
   title={See Eye to Eye: A Lidar-Agnostic 3D Detection Framework for Unsupervised Multi-Target Domain Adaptation},
@@ -110,3 +107,8 @@ If you find our work useful in your research, please consider citing our [paper]
   publisher={IEEE}
 }
 ```
+
+# Acknowledgement
+This project builds upon the progress of other outstanding codebases in the computer vision community. We acknowledge the works of the following codebases in our project: 
+- Our instance segmentation code uses [mmdetection](https://github.com/open-mmlab/mmdetection).
+- Our detector code is based on [OpenPCDet v0.3.0](https://github.com/open-mmlab/OpenPCDet/tree/v0.3.0) with DA configurations adopted from [ST3D](https://github.com/CVMI-Lab/ST3D). 
