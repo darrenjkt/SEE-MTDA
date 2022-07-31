@@ -200,12 +200,6 @@ class MeshedNuScenesDataset(DatasetTemplate):
             input_dict['gt_boxes'] = input_dict['gt_boxes'][:, [0, 1, 2, 3, 4, 5, 6]]
 
         data_dict = self.prepare_data(data_dict=input_dict)
-
-        # save_getitem = self.root_path / f'getitem-{index}.pkl'
-        # with open(save_getitem, 'wb') as f:
-        #     print(f'saving: {save_getitem}')
-        #     pickle.dump(data_dict, f)
-        print('data_dict["gt_boxes"] = ', data_dict['gt_boxes'])
         return data_dict
 
     def generate_prediction_dicts(self, batch_dict, pred_dicts, class_names, output_path=None):
