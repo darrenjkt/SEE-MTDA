@@ -51,7 +51,7 @@ Note that `nvidia-docker2` is required to run these images. We have tested that 
 Please refer to [DATASET_PREPARATION](https://github.com/darrenjkt/SEE-MTDA/blob/main/docs/DATASET_PREPARATION.md) for instructions on downloading and preparing datasets. 
 
 ## Usage
-In this section, we provide instructions specifically for the Baraja Spectrum-Scan™ ([Download link](https://drive.google.com/file/d/16_azaVGiMVycGH799FX2RyRIWHrslU0R/view?usp=sharing)) Dataset as an example of adoption to a novel industry lidar. Please modify the configuration files as necessary to train/test for different datasets. 
+In this section, we provide instructions specifically for the Baraja Spectrum-Scan™ ([Download link](https://unisyd-my.sharepoint.com/:u:/g/personal/julie_berrioperez_sydney_edu_au/EbBLKPoamxJGh6gmTAAv9hgBqo0w_d7JrHOfCzitZ8xI5Q?e=cP3uwH)) Dataset as an example of adoption to a novel industry lidar. Please modify the configuration files as necessary to train/test for different datasets. 
 
 ### 1. SEE
 In this phase, we isolate the objects, create meshes and sample from them. Firstly, run the docker image as follows. For instance segmentation, a single GPU is sufficient. If you simply wish to train/test the Source-only baseline, then you can skip this "SEE" section. 
