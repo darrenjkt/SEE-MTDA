@@ -1,7 +1,7 @@
 # Dataset Preparation
 
 ### Baraja Spectrum-Scan™ Dataset
-Please download the [Baraja Spectrum-Scan™ Dataset]([https://drive.google.com/file/d/16_azaVGiMVycGH799FX2RyRIWHrslU0R/view?usp=sharing](https://unisyd-my.sharepoint.com/:u:/g/personal/julie_berrioperez_sydney_edu_au/EbBLKPoamxJGh6gmTAAv9hgBqo0w_d7JrHOfCzitZ8xI5Q?e=cP3uwH)) and organise the downloaded files as follows:
+Please download the [Baraja Spectrum-Scan™ Dataset](https://unisyd-my.sharepoint.com/:u:/g/personal/julie_berrioperez_sydney_edu_au/EbBLKPoamxJGh6gmTAAv9hgBqo0w_d7JrHOfCzitZ8xI5Q?e=cP3uwH) and organise the downloaded files as follows:
 ```
 SEE-MTDA
 ├── data
