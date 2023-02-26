@@ -6,7 +6,7 @@ This is the official codebase for
 
 [Video](https://www.youtube.com/watch?v=iw-AKNLUfNQ) | [Arxiv](https://arxiv.org/abs/2111.09450) | [IEEE](https://ieeexplore.ieee.org/document/9804815)
 
-**An extension of this work which uses deep learning based shape completion can be found here: https://github.com/darrenjkt/SEE-VCN
+**An extension of this work is accepted in ICRA 2023 where we incorporate deep learning based shape completion. The code can be found here: https://github.com/darrenjkt/SEE-VCN
 
 ### Abstract
 Sampling discrepancies between different manufacturers and models of lidar sensors result in inconsistent representations of objects. This leads to performance degradation when 3D detectors trained for one lidar are tested on other types of lidars. Remarkable progress in lidar manufacturing has brought about advances in mechanical, solid-state, and recently, adjustable scan pattern lidars. For the latter, existing works often require fine-tuning the model each time scan patterns are adjusted, which is infeasible. We explicitly deal with the sampling discrepancy by proposing a novel unsupervised multi-target domain adaptation framework, SEE, for transferring the performance of state-of-the-art 3D detectors across both fixed and flexible scan pattern lidars without requiring fine-tuning of models by end-users. Our approach interpolates the underlying geometry and normalises the scan pattern of objects from different lidars before passing them to the detection network. We demonstrate the effectiveness of SEE on public datasets, achieving state-of-the-art results, and additionally provide quantitative results on a novel high-resolution lidar to prove the industry applications of our framework.
